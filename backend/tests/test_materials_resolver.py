@@ -67,6 +67,8 @@ def test_alias_vs_formula_alternative():
     r = resolve("PVC", online=False)
     assert r.material["id"] == "pvc"
     assert r.alternatives and r.alternatives[0]["kind"] == "formula"
+    f = resolve(r.alternatives[0]["input"], online=False)
+    assert f.kind == "formula" and set(f.composition.mass_fractions) == {"P", "V", "C"}
 
 
 def test_formula_links_density():

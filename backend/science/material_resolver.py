@@ -221,6 +221,13 @@ def resolve_single(text: str, choices: dict[str, str] | None = None, online: boo
     if not t:
         return Resolution(input=text, status="error", errors=["Please enter a material."])
 
+    # Explicit "formula:" prefix forces the chemical-formula reading.
+    if t.lower().startswith("formula:"):
+        try:
+            return _from_formula(t.split(":", 1)[1].strip(), db)
+        except (FormulaError, CompositionError) as exc:
+            return Resolution(input=t, status="error", errors=[f"Not a valid chemical formula: {exc}"])
+
     # Explicit preset / material id chosen by the user.
     chosen = choices.get(t.lower())
     if chosen:
@@ -250,7 +257,7 @@ def resolve_single(text: str, choices: dict[str, str] | None = None, online: boo
             r = _from_entry(t, obj, db)
         if formula_res is not None:
             r.alternatives.append(
-                {"label": f"Chemical formula {formula_res.formula}", "input": formula_res.formula, "kind": "formula"}
+                {"label": f"Chemical formula {formula_res.formula}", "input": f"formula:{formula_res.formula}", "kind": "formula"}
             )
         return r
 
@@ -320,7 +327,7 @@ def resolve(text: str, choices: dict[str, str] | None = None, online: bool = Tru
     if not t:
         return Resolution(input=text or "", status="error", errors=["Please enter a material."])
     # Whole-string match first (e.g. aliases containing '/').
-    if db.lookup_exact(t) or t in db.entries or (choices and t.lower() in {k.lower() for k in choices}):
+    if t.lower().startswith("formula:") or db.lookup_exact(t) or t in db.entries or (choices and t.lower() in {k.lower() for k in choices}):
         return resolve_single(t, choices, online, db)
     if not looks_composite(t):
         return resolve_single(t, choices, online, db)
