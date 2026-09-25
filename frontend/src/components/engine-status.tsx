@@ -8,10 +8,23 @@ import { api } from "@/lib/api";
 export function EngineStatus() {
   const [state, setState] = useState<"ok" | "unreachable" | "unconfigured" | "loading">("loading");
   useEffect(() => {
-    api
-      .meta()
-      .then((m) => setState(m.engine_configured ? "ok" : "unconfigured"))
-      .catch(() => setState("unreachable"));
+    // Re-check until the engine answers: it may still be starting up.
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let stopped = false;
+    const check = () =>
+      api
+        .meta()
+        .then((m) => !stopped && setState(m.engine_configured ? "ok" : "unconfigured"))
+        .catch(() => {
+          if (stopped) return;
+          setState("unreachable");
+          timer = setTimeout(check, 3000);
+        });
+    check();
+    return () => {
+      stopped = true;
+      clearTimeout(timer);
+    };
   }, []);
   if (state === "ok" || state === "loading") return null;
   return (
@@ -22,7 +35,7 @@ export function EngineStatus() {
         <AlertDescription>
           {state === "unconfigured"
             ? "The NIST XCOM data files are missing on the server. No attenuation values will be shown."
-            : "Start the FastAPI backend (see README): uvicorn api.main:app --port 8000 in the backend directory."}
+            : "Waiting for the calculation engine… If this does not disappear, check the \"Gamma - engine\" window for an error (or start it with: uvicorn api.main:app --port 8000 in the backend folder)."}
         </AlertDescription>
       </Alert>
     </div>
