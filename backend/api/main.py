@@ -69,6 +69,15 @@ class SpectrumIn(BaseModel):
     points: int = Field(default=300, ge=20, le=2000)
 
 
+class TableIn(BaseModel):
+    material: MaterialIn
+    e_min: EnergyIn | None = None
+    e_max: EnergyIn | None = None
+    energies: list[EnergyIn] = Field(default_factory=list, max_length=500)
+    density: DensityIn | None = None
+    thickness: LengthIn | None = None
+
+
 class CompareItem(BaseModel):
     material: MaterialIn
     density: DensityIn | None = None
@@ -237,6 +246,33 @@ def spectrum(body: SpectrumIn):
         raise HTTPException(422, {"message": "The upper energy must be larger than the lower energy."})
     data = _xcom_guard(calculator.spectrum, comp, lo, hi, body.points)
     return {"material": res.to_dict(), **data}
+
+
+@app.post("/api/table")
+def table(body: TableIn):
+    """Tabulated coefficients: XCOM standard grid + absorption edges in a range, or a custom energy list."""
+    _require_engine()
+    res, comp = _material(body.material)
+    if body.energies:
+        energies = _energies(body.energies)
+        labels = [None] * len(energies)
+    elif body.e_min and body.e_max:
+        lo, hi = _energies([body.e_min, body.e_max])
+        if hi <= lo:
+            raise HTTPException(422, {"message": "The upper energy must be larger than the lower energy."})
+        grid = _xcom_guard(xe.table_energies, list(comp.mass_fractions), max(lo, xe.E_MIN_MEV), min(hi, xe.E_MAX_MEV))
+        energies = [g["energy_MeV"] for g in grid]
+        labels = [g["edge"] for g in grid]
+    else:
+        raise HTTPException(422, {"message": "Give an energy range or a list of energies."})
+    if not energies:
+        raise HTTPException(422, {"message": "No XCOM grid energies in this range."})
+    dens = _density_block(body.density)
+    thickness_cm = length_to_cm(body.thickness.value, body.thickness.unit) if body.thickness else None
+    rows = _xcom_guard(calculator.attenuation_at, comp, energies, dens["value"] if dens else None, thickness_cm)
+    for row, label in zip(rows, labels):
+        row["edge"] = label
+    return {"material": res.to_dict(), "density": dens, "rows": rows, "details": calculator.calculation_details(comp)}
 
 
 @app.post("/api/compare")

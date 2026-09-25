@@ -182,6 +182,39 @@ def edges_in_range(symbols, e_min: float, e_max: float) -> list[dict]:
     return sorted(out, key=lambda d: d["energy_MeV"])
 
 
+def table_energies(symbols, e_min: float, e_max: float) -> list[dict]:
+    """Energies for a tabulated output, as XCOM prints them.
+
+    The XCOM standard energy grid (80 energies, 1 keV-100 GeV) within the
+    range, plus both tabulated sides of every absorption edge of the
+    constituent elements. Returns [{"energy_MeV", "edge"}] sorted by energy,
+    where ``edge`` labels the rows that sit at an edge (e.g. "Pb K").
+    """
+    from .interpolation import edge_pair_mask
+
+    rows: dict[float, str | None] = {}
+    std = element_data(1).energy  # hydrogen has no edges: its grid is the standard grid
+    for e in std:
+        if e_min * (1 - 1e-12) <= e <= e_max * (1 + 1e-12):
+            rows[float(e)] = None
+    for s in symbols:
+        ed = element_data(element(s).Z)
+        second = edge_pair_mask(ed.energy)
+        first = np.zeros_like(second)
+        first[:-1] = second[1:]
+        for i in np.nonzero(first | second)[0]:
+            e = float(ed.energy[i])
+            if not (e_min * (1 - 1e-12) <= e <= e_max * (1 + 1e-12)):
+                continue
+            upper = e if second[i] else float(ed.energy[i + 1])
+            label = next((x["label"] for x in ed.edges if abs(x["energy_MeV"] - upper) <= 1e-9 * upper + 2e-7), None)
+            rows[e] = f"{s} {label}" if label else rows.get(e)
+        for lo, _hi, label in ed.unavailable:
+            if e_min <= lo <= e_max:
+                rows.setdefault(lo, f"{s} {label}")
+    return [{"energy_MeV": e, "edge": rows[e]} for e in sorted(rows)]
+
+
 def plot_grid(symbols, e_min: float, e_max: float, points: int = 400) -> np.ndarray:
     """Log-spaced grid that includes both sides of every absorption edge."""
     e_min = max(e_min, E_MIN_MEV)

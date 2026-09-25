@@ -85,6 +85,18 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ material: materialBody(material), e_min: eMin, e_max: eMax, points }),
     }),
+  table: (body: {
+    material: MaterialInputState;
+    e_min?: { value: number; unit: EnergyUnit };
+    e_max?: { value: number; unit: EnergyUnit };
+    energies?: { value: number; unit: EnergyUnit }[];
+    density?: { value: number; source: "database" | "user" | "estimate" } | null;
+    thickness?: { value: number; unit: LengthUnit } | null;
+  }) =>
+    request<{ material: Resolution; density: { value: number } | null; rows: (CalculateResponse["results"][number] & { edge: string | null })[] }>(
+      "/api/table",
+      { method: "POST", body: JSON.stringify({ ...body, material: materialBody(body.material) }) }
+    ),
   compare: (body: {
     items: { material: MaterialInputState; density?: { value: number; source: string } | null; label?: string }[];
     energies: { value: number; unit: EnergyUnit }[];

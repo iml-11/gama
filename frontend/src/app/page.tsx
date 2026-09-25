@@ -13,6 +13,7 @@ import { CompositionCard, RecognitionStatus } from "@/components/composition-car
 import { EnergyInput, selectedEnergies, useIsotopes, type EnergySelection } from "@/components/energy-input";
 import { DensityInput, type DensityState } from "@/components/density-input";
 import { ResultsPanel } from "@/components/results-panel";
+import { DataTable } from "@/components/data-table";
 import { RangeInput, SpectrumChart, type RangeState } from "@/components/spectrum-chart";
 import { useResolution } from "@/hooks/use-resolution";
 import { api, ApiError } from "@/lib/api";
@@ -218,6 +219,13 @@ export default function CalculatorPage() {
           </Card>
         </div>
       </div>
+
+      <DataTable
+        material={material}
+        ready={!!ready}
+        density={density.value !== "" && Number.isFinite(d) && d > 0 ? { value: d, source: density.source } : null}
+        thickness={Number.isFinite(t) && t >= 0 && thickness.value !== "" ? { value: t, unit: thickness.unit } : null}
+      />
     </div>
   );
 }

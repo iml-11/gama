@@ -50,6 +50,7 @@ Set `GAMMA_OFFLINE=1` to disable PubChem look-ups on the server. The Online/Offl
 * **Energy input:** eV, keV, MeV or GeV, or a gamma source (15 radionuclides, lines ≥ 1 %).
 * **Results:** μ/ρ (with or without coherent scattering), all partial cross sections, μ, HVL, TVL, MFP, transmission and shielding efficiency. Thickness in mm, cm or m. Density can be left blank; density-dependent outputs are then disabled.
 * **Calculation details drawer:** composition, energy, density assumption, dataset, DOI, source SHA-256, interpolation method, constants and equations.
+* **Data table** (calculator page): partial and total μ/ρ, and μ, HVL, TVL, MFP, transmission when a density is given, on the XCOM standard energy grid (plus both sides of every absorption edge) or at your own list of energies. XCOM-style number format; download as CSV or copy into Excel.
 * **Log-log plots** of all interaction components with absorption-edge markers.
 * **Compare** up to 8 materials. μ, HVL, TVL and transmission are compared only when every material has a density.
 * **Experimental data:** enter μ or μ/ρ per energy, or import a CSV. Shows percent difference, relative error and summary statistics, plots theory against experiment, and exports a CSV.

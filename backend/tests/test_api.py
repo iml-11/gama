@@ -98,3 +98,25 @@ def test_custom_material_api():
     mid = r.json()["id"]
     assert c.post("/api/resolve", json={"input": "test resin", "online": False}).json()["status"] == "resolved"
     assert c.delete(f"/api/custom-materials/{mid}").status_code == 200
+
+
+def test_table_standard_grid_with_edges():
+    r = c.post("/api/table", json={"material": {"input": "Pb", "online": False},
+                                   "e_min": {"value": 10, "unit": "keV"}, "e_max": {"value": 1, "unit": "MeV"},
+                                   "density": {"value": 11.35}})
+    assert r.status_code == 200
+    rows = r.json()["rows"]
+    es = [x["energy_MeV"] for x in rows]
+    assert es == sorted(es) and 0.1 in es and 1.0 in es
+    # both sides of the Pb K edge are listed with the tabulated XCOM values
+    k = [x for x in rows if x["edge"] == "Pb K"]
+    assert len(k) == 2 and k[0]["mass_attenuation"]["photoelectric"] < k[1]["mass_attenuation"]["photoelectric"]
+    one = next(x for x in rows if x["energy_MeV"] == 1.0)
+    assert one["mass_attenuation"]["total_with_coherent"] == pytest.approx(0.07102, rel=6e-4)
+    assert one["shielding"]["mu_cm_inv"] == pytest.approx(11.35 * one["mass_attenuation"]["total_with_coherent"])
+
+
+def test_table_custom_energies():
+    r = c.post("/api/table", json={"material": {"input": "H2O", "online": False},
+                                   "energies": [{"value": 1, "unit": "MeV"}, {"value": 661.657, "unit": "keV"}]})
+    assert r.status_code == 200 and len(r.json()["rows"]) == 2
