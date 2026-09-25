@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MaterialInput } from "@/components/material-input";
+import { MixtureBuilder } from "@/components/mixture-builder";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CompositionCard, RecognitionStatus } from "@/components/composition-card";
 import { EnergyInput, selectedEnergies, useIsotopes, type EnergySelection } from "@/components/energy-input";
 import { DensityInput, type DensityState } from "@/components/density-input";
@@ -17,10 +19,12 @@ import { api, ApiError } from "@/lib/api";
 import { energyToMeV } from "@/lib/units";
 import type { CalculateResponse, LengthUnit, MaterialInputState } from "@/lib/types";
 
-const EXAMPLES = ["Bi2WO6", "PbWO4", "PMMA", "polyethylene", "water", "epoxy", "concrete", "60 wt% Bi2WO6 + 40 wt% PMMA", "Bi2WO6 epoxy composite with 60% filler"];
+const EXAMPLES = ["Bi2WO6", "PbWO4", "PMMA", "polyethylene", "water", "epoxy", "concrete"];
 
 export default function CalculatorPage() {
   const [material, setMaterial] = useState<MaterialInputState>({ input: "", choices: {}, composition: null });
+  const [mode, setMode] = useState<"single" | "mixture">("single");
+  const [builderKey, setBuilderKey] = useState(0);
   const { resolution, loading, error, current } = useResolution(material);
   const inputRef = useRef<HTMLInputElement>(null);
   const { isotopes, dataset } = useIsotopes();
@@ -53,7 +57,7 @@ export default function CalculatorPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [identity]);
 
-  const setInput = (text: string) => setMaterial({ input: text, choices: material.choices, composition: null });
+  const setInput = (text: string) => setMaterial((m) => ({ input: text, choices: m.choices, composition: null }));
   const ready = resolution?.status === "resolved" && current;
   const energies = selectedEnergies(energy, isotopes);
   const d = parseFloat(density.value);
@@ -97,23 +101,33 @@ export default function CalculatorPage() {
         <div>
           <h1 className="text-2xl font-semibold sm:text-3xl">Gamma-ray attenuation calculator</h1>
           <p className="text-sm text-muted-foreground">
-            Type a material name, chemical formula, polymer or composite. The composition is determined automatically and verified below.
+            Enter a single material, or build a mixture of any materials in any ratio. The composition is calculated and shown below for you to verify.
           </p>
         </div>
-        <MaterialInput
-          inputRef={inputRef}
-          value={material.input}
-          onChange={setInput}
-          loading={loading}
-          autoFocus
-        />
+        <Tabs
+          value={mode}
+          onValueChange={(v) => {
+            setMode(v as "single" | "mixture");
+            setBuilderKey((k) => k + 1);
+          }}
+        >
+          <TabsList>
+            <TabsTrigger value="single">Single material</TabsTrigger>
+            <TabsTrigger value="mixture">Mixture / composite</TabsTrigger>
+          </TabsList>
+        </Tabs>
+        {mode === "single" ? (
+          <MaterialInput inputRef={inputRef} value={material.input} onChange={setInput} loading={loading} autoFocus />
+        ) : (
+          <MixtureBuilder key={builderKey} initial={material.input} onChange={setInput} />
+        )}
         <div className="flex min-h-6 flex-wrap items-center gap-x-2 gap-y-1">
           {material.input.trim() ? (
             <RecognitionStatus resolution={resolution} loading={loading} error={error} />
           ) : (
             <>
-              <span className="text-xs text-muted-foreground">Try:</span>
-              {EXAMPLES.map((x) => (
+              <span className="text-xs text-muted-foreground">{mode === "single" ? "Examples:" : ""}</span>
+              {mode === "single" && EXAMPLES.map((x) => (
                 <button key={x} type="button" onClick={() => setInput(x)} className="rounded-md border px-2 py-0.5 text-xs text-muted-foreground hover:bg-accent hover:text-foreground">
                   {x}
                 </button>
@@ -132,6 +146,7 @@ export default function CalculatorPage() {
               onChoice={(k, id) => setMaterial({ ...material, choices: { ...material.choices, [k]: id } })}
               onManualComposition={(c) => setMaterial({ ...material, composition: c })}
               onReplaceInput={(text) => {
+                setMode("single");
                 setInput(text);
                 inputRef.current?.focus();
               }}

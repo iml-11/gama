@@ -11,6 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { MaterialInput } from "@/components/material-input";
+import { MixtureBuilder } from "@/components/mixture-builder";
 import { FamilyChooser } from "@/components/composition-card";
 import { Formula } from "@/components/formula";
 import { Plot, seriesStyle, useDark } from "@/components/plot";
@@ -46,6 +47,7 @@ function MaterialRow({
   onResolved: (id: number, r: Resolution | null) => void;
 }) {
   const { resolution, loading, current } = useResolution(row.material);
+  const [mixing, setMixing] = useState(false);
   const status = resolution?.status;
   // Report resolution up (enables the Compare button); stale results count as unresolved.
   useEffect(() => onResolved(row.id, current ? resolution : null), [resolution, current, row.id, onResolved]);
@@ -58,10 +60,13 @@ function MaterialRow({
             size="sm"
             value={row.material.input}
             loading={loading}
-            placeholder="e.g. Pb, WO3, 60% Bi2WO6 + 40% epoxy"
+            placeholder="Material or formula — or use Mix for a mixture"
             onChange={(v) => onChange({ ...row, material: { ...row.material, input: v, composition: null } })}
           />
         </div>
+        <Button variant={mixing ? "secondary" : "ghost"} size="sm" onClick={() => setMixing(!mixing)} aria-pressed={mixing}>
+          Mix
+        </Button>
         <Input
           className="w-24 text-right mono-num"
           inputMode="decimal"
@@ -74,6 +79,12 @@ function MaterialRow({
           <Trash2 className="size-4" />
         </Button>
       </div>
+      {mixing && (
+        <MixtureBuilder
+          initial={row.material.input}
+          onChange={(expr) => expr !== row.material.input && onChange({ ...row, material: { ...row.material, input: expr, composition: null } })}
+        />
+      )}
       <div className="flex flex-wrap items-center gap-2 pl-5 text-xs text-muted-foreground">
         {status === "resolved" && (
           <>
@@ -111,10 +122,10 @@ function MaterialRow({
   );
 }
 
-const DEFAULTS = ["Bi2WO6", "Pb", "WO3", "Bi2O3", "60 wt% Bi2WO6 + 40 wt% epoxy"];
+const emptyRow = (id: number): Row => ({ id, material: { input: "", choices: {} }, density: "" });
 
 export default function ComparePage() {
-  const [rows, setRows] = useState<Row[]>(DEFAULTS.map((m, i) => ({ id: i, material: { input: m, choices: {} }, density: m === "Pb" ? "11.35" : "" })));
+  const [rows, setRows] = useState<Row[]>([emptyRow(0), emptyRow(1)]);
   const [resolved, setResolved] = useState<Record<number, Resolution | null>>({});
   const [range, setRange] = useState<RangeState>({ min: "10", minUnit: "keV", max: "10", maxUnit: "MeV" });
   const [energy, setEnergy] = useState({ value: "661.657", unit: "keV" as EnergyUnit });
@@ -208,7 +219,7 @@ export default function ComparePage() {
               variant="outline"
               size="sm"
               disabled={rows.length >= 8}
-              onClick={() => setRows([...rows, { id: Math.max(-1, ...rows.map((r) => r.id)) + 1, material: { input: "", choices: {} }, density: "" }])}
+              onClick={() => setRows([...rows, emptyRow(Math.max(-1, ...rows.map((r) => r.id)) + 1)])}
             >
               <Plus /> Add material
             </Button>

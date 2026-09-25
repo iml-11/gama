@@ -7,8 +7,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { MaterialInput } from "@/components/material-input";
+import { MixtureBuilder } from "@/components/mixture-builder";
 import { CompositionCard, RecognitionStatus } from "@/components/composition-card";
 import { DensityInput, type DensityState } from "@/components/density-input";
 import { ENERGY_UNITS } from "@/components/energy-input";
@@ -59,20 +61,21 @@ function download(name: string, text: string) {
 }
 
 export default function ExperimentalPage() {
-  const [material, setMaterial] = useState<MaterialInputState>({ input: "Pb", choices: {}, composition: null });
+  const [material, setMaterial] = useState<MaterialInputState>({ input: "", choices: {}, composition: null });
   const { resolution, loading, error, current } = useResolution(material);
   const [density, setDensity] = useState<DensityState>({ value: "", source: "user" });
   const [unit, setUnit] = useState<EnergyUnit>("keV");
   const [pts, setPts] = useState<Pt[]>([
-    { ...EMPTY, energy: "661.657" },
-    { ...EMPTY, energy: "1173.23" },
-    { ...EMPTY, energy: "1332.49" },
+    { ...EMPTY },
+    { ...EMPTY },
+    { ...EMPTY },
   ]);
   const [result, setResult] = useState<ExpResult | null>(null);
   const [curve, setCurve] = useState<SpectrumData | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
+  const [mixing, setMixing] = useState(false);
   const dark = useDark();
   const ink = dark ? "#fafafa" : "#18181b";
   const soft = dark ? "#a1a1aa" : "#71717a";
@@ -178,8 +181,27 @@ export default function ExperimentalPage() {
         <div className="space-y-4">
           <Card>
             <CardContent className="space-y-3">
-              <Label>Material</Label>
-              <MaterialInput size="sm" value={material.input} loading={loading} onChange={(v) => setMaterial({ input: v, choices: material.choices, composition: null })} />
+              <div className="flex items-center justify-between">
+                <Label>Material</Label>
+                <Tabs value={mixing ? "mix" : "single"} onValueChange={(v) => setMixing(v === "mix")}>
+                  <TabsList className="h-8">
+                    <TabsTrigger value="single" className="text-xs">
+                      Single
+                    </TabsTrigger>
+                    <TabsTrigger value="mix" className="text-xs">
+                      Mixture
+                    </TabsTrigger>
+                  </TabsList>
+                </Tabs>
+              </div>
+              {mixing ? (
+                <MixtureBuilder
+                  initial={material.input}
+                  onChange={(expr) => setMaterial((m) => (expr === m.input ? m : { input: expr, choices: m.choices, composition: null }))}
+                />
+              ) : (
+                <MaterialInput size="sm" value={material.input} loading={loading} onChange={(v) => setMaterial({ input: v, choices: material.choices, composition: null })} />
+              )}
               <RecognitionStatus resolution={resolution} loading={loading} error={error} />
               <DensityInput state={density} onChange={setDensity} suggestion={suggested} estimate={ready ? resolution?.density_estimate : null} />
             </CardContent>

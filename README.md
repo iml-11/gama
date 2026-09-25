@@ -44,6 +44,7 @@ Set `GAMMA_OFFLINE=1` to disable PubChem look-ups on the server. The Online/Offl
     `Bi2WO6 epoxy composite with 60% filler`, `epoxy composite with 60 wt% Bi2WO6`, `60 wt% W in PMMA`,
     `20 vol% W + 80 vol% PMMA` (vol% needs a density for every component)
 * **Resolution order:** user custom materials → curated database / aliases → chemical formula → local PubChem cache → PubChem PUG REST (online) → *not found*. Curated entries are checked before PubChem on purpose, because PubChem does not give reliable compositions for polymers and formulated materials. When a string is both an alias and a valid formula (`PVC`, `PLA`, `PS`), the alias wins and the formula reading is offered as an alternative (`formula:PVC`).
+* **Mixture builder** ("Mixture / composite" tab, and "Mix" on the Compare and Experimental pages): any number of components — names, formulas, polymers, elements or custom materials — each with a user-chosen wt% or vol%. One fraction can be left empty to take the remainder. Nothing is pre-selected.
 * **Ambiguous materials** (epoxy, silicone, concrete, glass, lead glass, borated PE) never resolve silently. The user must pick a preset (each shows its composition, density, source and a warning) or enter a custom composition.
 * **Composition verification card:** molar mass, atom counts, wt% per element, 100.00 % total, composite components, data provenance, warnings. The composition can be edited by hand.
 * **Energy input:** eV, keV, MeV or GeV, or a gamma source (15 radionuclides, lines ≥ 1 %).
