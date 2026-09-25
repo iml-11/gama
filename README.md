@@ -24,7 +24,7 @@ backend/    Python scientific engine (NumPy, SciPy) + FastAPI
 cd backend
 pip install -r requirements.txt
 uvicorn api.main:app --port 8000
-python -m pytest            # 172 tests
+python -m pytest            # 171 tests
 
 # Frontend (port 3000; /api/* is proxied to BACKEND_URL, default http://127.0.0.1:8000)
 cd frontend
