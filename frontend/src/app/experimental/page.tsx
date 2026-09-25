@@ -14,7 +14,7 @@ import { MixtureBuilder } from "@/components/mixture-builder";
 import { CompositionCard, RecognitionStatus } from "@/components/composition-card";
 import { DensityInput, type DensityState } from "@/components/density-input";
 import { ENERGY_UNITS } from "@/components/energy-input";
-import { Plot, useDark } from "@/components/plot";
+import { Plot, SERIES, useDark } from "@/components/plot";
 import { useResolution } from "@/hooks/use-resolution";
 import { api, ApiError } from "@/lib/api";
 import { fmt } from "@/lib/format";
@@ -77,8 +77,7 @@ export default function ExperimentalPage() {
   const fileRef = useRef<HTMLInputElement>(null);
   const [mixing, setMixing] = useState(false);
   const dark = useDark();
-  const ink = dark ? "#fafafa" : "#18181b";
-  const soft = dark ? "#a1a1aa" : "#71717a";
+  const soft = (dark ? SERIES.dark : SERIES.light)[0];
 
   const suggested = resolution?.status === "resolved" ? resolution.density : null;
   const identity = resolution?.status === "resolved" && current ? JSON.stringify([resolution.name, resolution.composition?.elements.map((e) => [e.symbol, e.mass_fraction.toFixed(6)])]) : null;
@@ -160,16 +159,16 @@ export default function ExperimentalPage() {
       type: "scatter",
       mode: "markers",
       name: "Experimental",
-      marker: { color: ink, size: 8, symbol: "circle", line: { color: dark ? "#18181b" : "#ffffff", width: 1.5 } },
+      marker: { color: (dark ? SERIES.dark : SERIES.light)[1], size: 9, symbol: "circle", line: { color: dark ? "#18181b" : "#ffffff", width: 1.5 } },
       error_y: {
         type: "data",
         array: exp.map((p) => (p.uncertainty != null ? (p.exp_mu_rho_derived_from_mu && result.density ? p.uncertainty / result.density.value : p.uncertainty) : 0)),
         visible: exp.some((p) => p.uncertainty != null),
-        color: ink,
+        color: (dark ? SERIES.dark : SERIES.light)[1],
       },
     });
     return traces;
-  }, [result, curve, ink, soft, dark]);
+  }, [result, curve, soft, dark]);
 
   return (
     <div className="space-y-6">
@@ -196,6 +195,7 @@ export default function ExperimentalPage() {
               </div>
               {mixing ? (
                 <MixtureBuilder
+                  compact
                   initial={material.input}
                   onChange={(expr) => setMaterial((m) => (expr === m.input ? m : { input: expr, choices: m.choices, composition: null }))}
                 />

@@ -426,7 +426,8 @@ def resolve(text: str, choices: dict[str, str] | None = None, online: bool = Tru
     for res in resolved:
         for p in res.provenance:
             r.provenance.append({**p, "item": f"{res.name or res.input}: {p['item']}"})
-        r.warnings += [f"{res.input}: {w}" for w in res.warnings]
+        label = res.name if res.input in db.entries and res.name else res.input
+        r.warnings += [f"{label}: {w}" for w in res.warnings]
     r.provenance.append(
         {"item": "Composite density", "source": "Not in database – enter measured density (estimate shown if available)"}
     )

@@ -7,23 +7,23 @@ import { Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Plot, useDark } from "@/components/plot";
+import { Plot, SERIES, useDark } from "@/components/plot";
 import { ENERGY_UNITS } from "@/components/energy-input";
 import { api } from "@/lib/api";
 import type { EnergyUnit, MaterialInputState, SpectrumData } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-// Monochrome: curves differ by grey level (0 = strongest) and dash pattern.
+// Totals in the text ink (they are the headline); each interaction process
+// takes a categorical series colour in fixed order.
 export const CURVES = [
-  { key: "total_with_coherent", label: "Total (with coherent)", shade: 0, width: 2.4, dash: "solid" },
-  { key: "total_without_coherent", label: "Total (without coherent)", shade: 0, width: 1.3, dash: "dot" },
-  { key: "photoelectric", label: "Photoelectric", shade: 1, width: 1.6, dash: "solid" },
-  { key: "incoherent", label: "Compton (incoherent)", shade: 1, width: 1.6, dash: "dash" },
-  { key: "coherent", label: "Coherent (Rayleigh)", shade: 2, width: 1.6, dash: "dot" },
-  { key: "pair_total", label: "Pair production", shade: 2, width: 1.6, dash: "dashdot" },
+  { key: "total_with_coherent", label: "Total (with coherent)", slot: -1, width: 2.4, dash: "solid" },
+  { key: "total_without_coherent", label: "Total (without coherent)", slot: -1, width: 1.4, dash: "dot" },
+  { key: "photoelectric", label: "Photoelectric", slot: 0, width: 1.8, dash: "solid" },
+  { key: "incoherent", label: "Compton (incoherent)", slot: 1, width: 1.8, dash: "solid" },
+  { key: "coherent", label: "Coherent (Rayleigh)", slot: 2, width: 1.8, dash: "solid" },
+  { key: "pair_total", label: "Pair production", slot: 3, width: 1.8, dash: "solid" },
 ] as const;
 
-const SHADES = { light: ["#18181b", "#71717a", "#a1a1aa"], dark: ["#fafafa", "#a1a1aa", "#71717a"] };
 const DASH_SVG: Record<string, string> = { solid: "", dot: "1.5 2.5", dash: "5 3", dashdot: "6 2.5 1.5 2.5" };
 
 /** Small line sample used in legends/toggles. */
@@ -124,7 +124,8 @@ export function SpectrumChart({
   ready: boolean;
 }) {
   const dark = useDark();
-  const shades = dark ? SHADES.dark : SHADES.light;
+  const ink = dark ? "#fafafa" : "#18181b";
+  const colorOf = (slot: number) => (slot < 0 ? ink : (dark ? SERIES.dark : SERIES.light)[slot]);
   const [data, setData] = useState<SpectrumData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -171,16 +172,17 @@ export function SpectrumChart({
       type: "scatter",
       mode: "lines",
       name: c.label,
-      line: { color: shades[c.shade], width: c.width, dash: c.dash },
+      line: { color: colorOf(c.slot), width: c.width, dash: c.dash },
       connectgaps: false,
       hovertemplate: "%{y:.4g} cm²/g",
     }));
     const { shapes, annotations } = edgeShapes(data);
     for (const m of markers) {
-      shapes.push({ type: "line", xref: "x", yref: "paper", x0: m * 1000, x1: m * 1000, y0: 0, y1: 1, line: { color: shades[0], width: 1, dash: "longdash" } });
+      shapes.push({ type: "line", xref: "x", yref: "paper", x0: m * 1000, x1: m * 1000, y0: 0, y1: 1, line: { color: ink, width: 1, dash: "longdash" } });
     }
     return { traces, shapes, annotations };
-  }, [data, visible, markers, shades]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, visible, markers, dark]);
 
   return (
     <div className="space-y-3">
@@ -195,7 +197,7 @@ export function SpectrumChart({
               visible[c.key] ? "bg-card text-foreground" : "border-dashed text-muted-foreground opacity-50"
             )}
           >
-            <LineSample color={shades[c.shade]} dash={c.dash} width={c.width > 2 ? 2.2 : 1.6} />
+            <LineSample color={colorOf(c.slot)} dash={c.dash} width={c.width > 2 ? 2.4 : 2} />
             {c.label}
           </button>
         ))}

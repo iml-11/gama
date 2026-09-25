@@ -21,6 +21,7 @@ export function MaterialInput({
   loading,
   autoFocus,
   inputRef,
+  onPick,
 }: {
   value: string;
   onChange: (v: string) => void;
@@ -29,6 +30,8 @@ export function MaterialInput({
   loading?: boolean;
   autoFocus?: boolean;
   inputRef?: React.RefObject<HTMLInputElement | null>;
+  /** When set, choosing a suggestion (or pressing Enter) hands the value over instead of editing the field. */
+  onPick?: (value: string) => void;
 }) {
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState<SearchResult[]>([]);
@@ -67,6 +70,13 @@ export function MaterialInput({
     const lastRaw = value.split(/\+|\//).pop()!;
     const frac = lastRaw.match(/^\s*\d+(\.\d+)?\s*(wt|vol)?\.?\s*%\s*/i)?.[0] ?? "";
     const name = it.type === "material" && it.formula && /^[A-Z]/.test(it.match) && it.match === it.formula ? it.formula : it.name;
+    if (onPick) {
+      onPick(name);
+      typed.current = false;
+      setOpen(false);
+      ref.current?.focus();
+      return;
+    }
     onChange(prefix + (prefix ? (prefix.endsWith(" ") ? "" : " ") : "") + frac + name);
     typed.current = false;
     setOpen(false);
@@ -74,6 +84,12 @@ export function MaterialInput({
   };
 
   const onKey = (e: React.KeyboardEvent) => {
+    const listVisible = open && items.length > 0 && typed.current;
+    if (onPick && e.key === "Enter" && !listVisible && value.trim()) {
+      e.preventDefault();
+      onPick(value.trim());
+      return;
+    }
     if (!open || items.length === 0) return;
     if (e.key === "ArrowDown") {
       e.preventDefault();

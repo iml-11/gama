@@ -12,12 +12,18 @@ const PlotImpl = dynamic(
   { ssr: false, loading: () => <div className="grid h-full place-items-center text-sm text-muted-foreground">Loading chart…</div> }
 );
 
-/** Monochrome series: distinguished by grey level and dash pattern, not by hue. */
-const DASHES = ["solid", "dash", "dot", "dashdot", "longdash", "longdashdot"] as const;
-export function seriesStyle(i: number, dark: boolean): { color: string; dash: (typeof DASHES)[number]; width: number } {
-  const shades = dark ? ["#fafafa", "#a1a1aa", "#71717a"] : ["#18181b", "#71717a", "#a1a1aa"];
-  // Grey level and dash pattern both change from one series to the next.
-  return { color: shades[i % shades.length], dash: DASHES[i % DASHES.length], width: i >= DASHES.length ? 2.8 : i === 0 ? 2.2 : 1.7 };
+/**
+ * Categorical series colours (fixed order, validated for colour-vision
+ * deficiency on line charts; separate steps for the dark surface).
+ */
+export const SERIES = {
+  light: ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#4a3aa7", "#e34948"],
+  dark: ["#3987e5", "#d95926", "#199e70", "#c98500", "#d55181", "#008300", "#9085e9", "#e66767"],
+};
+
+export function seriesStyle(i: number, dark: boolean): { color: string; dash: "solid"; width: number } {
+  const p = dark ? SERIES.dark : SERIES.light;
+  return { color: p[i % p.length], dash: "solid", width: 2 };
 }
 
 export function useDark() {

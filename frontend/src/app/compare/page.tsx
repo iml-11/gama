@@ -81,6 +81,7 @@ function MaterialRow({
       </div>
       {mixing && (
         <MixtureBuilder
+          compact
           initial={row.material.input}
           onChange={(expr) => expr !== row.material.input && onChange({ ...row, material: { ...row.material, input: expr, composition: null } })}
         />
