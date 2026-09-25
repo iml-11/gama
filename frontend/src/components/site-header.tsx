@@ -40,20 +40,20 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
-      <div className="mx-auto flex h-14 max-w-7xl items-center gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-          <span className="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground text-base leading-none">γ</span>
+    <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur-md">
+      <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6">
+        <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
+          <span className="grid size-6 place-items-center rounded-[5px] bg-foreground font-mono text-[13px] leading-none text-background">γ</span>
           <span className="hidden sm:inline">Gamma Attenuation</span>
         </Link>
-        <nav className="flex flex-1 items-center gap-0.5 overflow-x-auto text-sm">
+        <nav className="flex flex-1 items-center gap-1 overflow-x-auto text-sm">
           {NAV.map((n) => (
             <Link
               key={n.href}
               href={n.href}
               className={cn(
                 "rounded-md px-2.5 py-1.5 whitespace-nowrap text-muted-foreground transition-colors hover:text-foreground",
-                (n.href === "/" ? pathname === "/" : pathname.startsWith(n.href)) && "bg-muted text-foreground"
+                (n.href === "/" ? pathname === "/" : pathname.startsWith(n.href)) && "font-medium text-foreground"
               )}
             >
               {n.label}

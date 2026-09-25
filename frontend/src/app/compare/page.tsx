@@ -13,7 +13,8 @@ import { Badge } from "@/components/ui/badge";
 import { MaterialInput } from "@/components/material-input";
 import { FamilyChooser } from "@/components/composition-card";
 import { Formula } from "@/components/formula";
-import { Plot, CHART_COLORS } from "@/components/plot";
+import { Plot, seriesStyle, useDark } from "@/components/plot";
+import { LineSample } from "@/components/spectrum-chart";
 import { RangeInput, rangeValid, edgeShapes, type RangeState } from "@/components/spectrum-chart";
 import { ENERGY_UNITS } from "@/components/energy-input";
 import { useResolution } from "@/hooks/use-resolution";
@@ -35,7 +36,9 @@ function MaterialRow({
   onChange,
   onRemove,
   onResolved,
+  dark,
 }: {
+  dark: boolean;
   row: Row;
   index: number;
   onChange: (r: Row) => void;
@@ -49,7 +52,7 @@ function MaterialRow({
   return (
     <div className="space-y-2 rounded-lg border p-3">
       <div className="flex items-center gap-2">
-        <span className="size-3 shrink-0 rounded-full" style={{ background: CHART_COLORS[index % CHART_COLORS.length] }} />
+        <LineSample {...seriesStyle(index, dark)} />
         <div className="flex-1">
           <MaterialInput
             size="sm"
@@ -60,7 +63,7 @@ function MaterialRow({
           />
         </div>
         <Input
-          className="w-24 text-right num"
+          className="w-24 text-right mono-num"
           inputMode="decimal"
           placeholder="ρ g/cm³"
           aria-label="Density"
@@ -77,7 +80,7 @@ function MaterialRow({
             <Badge variant="success">recognised</Badge>
             {resolution!.kind === "formula" && resolution!.formula ? <Formula text={resolution!.formula} className="font-normal" /> : resolution!.name}
             {resolution!.density?.value && !row.density && (
-              <button type="button" className="text-primary hover:underline" onClick={() => onChange({ ...row, density: String(resolution!.density!.value) })}>
+              <button type="button" className="link" onClick={() => onChange({ ...row, density: String(resolution!.density!.value) })}>
                 use database density {resolution!.density.value} g/cm³
               </button>
             )}
@@ -118,6 +121,7 @@ export default function ComparePage() {
   const [thickness, setThickness] = useState({ value: "1", unit: "cm" as LengthUnit });
   const [quantity, setQuantity] = useState<"mu_rho" | "mu">("mu_rho");
   const [result, setResult] = useState<CompareResult | null>(null);
+  const dark = useDark();
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -159,10 +163,10 @@ export default function ComparePage() {
       type: "scatter",
       mode: "lines",
       name: it.label,
-      line: { color: CHART_COLORS[i % CHART_COLORS.length], width: 2 },
+      line: seriesStyle(i, dark),
       hovertemplate: `%{y:.4g} ${quantity === "mu" ? "cm⁻¹" : "cm²/g"}`,
     }));
-  }, [result, quantity]);
+  }, [result, quantity, dark]);
 
   const shapes = useMemo(() => {
     if (!result?.items[0]?.spectrum) return { shapes: [], annotations: [] };
@@ -177,7 +181,7 @@ export default function ComparePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Compare materials</h1>
+        <h1 className="text-2xl font-semibold sm:text-3xl">Compare materials</h1>
         <p className="text-sm text-muted-foreground">
           Up to 8 materials on one graph. Linear quantities (μ, HVL, TVL, transmission) are only compared when every material has a density.
         </p>
@@ -194,6 +198,7 @@ export default function ComparePage() {
                 key={r.id}
                 row={r}
                 index={i}
+                dark={dark}
                 onResolved={onResolved}
                 onChange={(nr) => setRows(rows.map((x) => (x.id === r.id ? nr : x)))}
                 onRemove={() => setRows(rows.filter((x) => x.id !== r.id))}
@@ -207,37 +212,48 @@ export default function ComparePage() {
             >
               <Plus /> Add material
             </Button>
-            <div className="space-y-3 border-t pt-3">
-              <RangeInput range={range} onChange={setRange} />
-              <div className="flex flex-wrap items-center gap-2">
-                <Label className="mr-1">Table energy</Label>
-                <Input className="w-28 num" value={energy.value} aria-label="Energy" onChange={(e) => setEnergy({ ...energy, value: e.target.value })} />
-                <Select value={energy.unit} onValueChange={(u) => setEnergy({ ...energy, unit: u as EnergyUnit })}>
-                  <SelectTrigger className="w-20" aria-label="Energy unit">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {ENERGY_UNITS.map((u) => (
-                      <SelectItem key={u} value={u}>
-                        {u}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <Label className="mr-1 ml-2">Thickness</Label>
-                <Input className="w-20 num" value={thickness.value} aria-label="Thickness" onChange={(e) => setThickness({ ...thickness, value: e.target.value })} />
-                <Select value={thickness.unit} onValueChange={(u) => setThickness({ ...thickness, unit: u as LengthUnit })}>
-                  <SelectTrigger className="w-20" aria-label="Thickness unit">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {(["mm", "cm", "m"] as const).map((u) => (
-                      <SelectItem key={u} value={u}>
-                        {u}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+            <div className="grid gap-4 border-t pt-4">
+              <div className="space-y-1.5">
+                <Label>Energy range for the graph</Label>
+                <RangeInput range={range} onChange={setRange} bare />
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-1.5">
+                  <Label>Table energy</Label>
+                  <div className="flex gap-2">
+                    <Input className="flex-1 mono-num" value={energy.value} aria-label="Energy" onChange={(e) => setEnergy({ ...energy, value: e.target.value })} />
+                    <Select value={energy.unit} onValueChange={(u) => setEnergy({ ...energy, unit: u as EnergyUnit })}>
+                      <SelectTrigger className="w-20" aria-label="Energy unit">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {ENERGY_UNITS.map((u) => (
+                          <SelectItem key={u} value={u}>
+                            {u}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+                <div className="space-y-1.5">
+                  <Label>Thickness</Label>
+                  <div className="flex gap-2">
+                    <Input className="flex-1 mono-num" value={thickness.value} aria-label="Thickness" onChange={(e) => setThickness({ ...thickness, value: e.target.value })} />
+                    <Select value={thickness.unit} onValueChange={(u) => setThickness({ ...thickness, unit: u as LengthUnit })}>
+                      <SelectTrigger className="w-20" aria-label="Thickness unit">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {(["mm", "cm", "m"] as const).map((u) => (
+                          <SelectItem key={u} value={u}>
+                            {u}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
               </div>
             </div>
             <Button className="w-full" disabled={!allResolved || busy} onClick={run}>
@@ -264,6 +280,16 @@ export default function ComparePage() {
               </Tabs>
             </CardHeader>
             <CardContent>
+              {result && (
+                <div className="mb-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
+                  {result.items.map((it, i) => (
+                    <span key={i} className="flex items-center gap-1.5">
+                      <LineSample {...seriesStyle(i, dark)} />
+                      <span className="max-w-64 truncate">{it.label}</span>
+                    </span>
+                  ))}
+                </div>
+              )}
               <div className="h-[440px]">
                 {result ? (
                   <Plot
@@ -275,13 +301,14 @@ export default function ComparePage() {
                       shapes: shapes.shapes,
                       annotations: shapes.annotations,
                       margin: { l: 64, r: 16, t: 28, b: 48 },
+                      showlegend: false,
                     }}
                   />
                 ) : (
                   <div className="grid h-full place-items-center rounded-lg border border-dashed text-sm text-muted-foreground">Press Compare</div>
                 )}
               </div>
-              {result?.note && <p className="mt-2 text-xs text-warning">{result.note}</p>}
+              {result?.note && <p className="mt-2 text-xs text-muted-foreground">{result.note}</p>}
             </CardContent>
           </Card>
           {result && result.items[0]?.at_energies.length > 0 && (
@@ -306,14 +333,14 @@ export default function ComparePage() {
                       )}
                     </TableRow>
                   </TableHeader>
-                  <TableBody className="num">
+                  <TableBody className="mono-num">
                     {result.items.map((it, i) => {
                       const r = it.at_energies[0];
                       const s = r.shielding;
                       return (
                         <TableRow key={i}>
-                          <TableCell className="flex items-center gap-2">
-                            <span className="size-2.5 rounded-full" style={{ background: CHART_COLORS[i % CHART_COLORS.length] }} />
+                          <TableCell className="flex items-center gap-2 font-sans">
+                            <LineSample {...seriesStyle(i, dark)} />
                             {it.label}
                           </TableCell>
                           <TableCell>{fmt(r.mass_attenuation.total_with_coherent)}</TableCell>

@@ -36,7 +36,7 @@ export function DetailsSheet({ data }: { data: CalculateResponse }) {
             )}
           </Section>
           <Section title="Composition used (mass fractions)">
-            <table className="w-full num">
+            <table className="w-full mono-num">
               <tbody>
                 {comp.elements.map((e) => (
                   <tr key={e.symbol} className="border-b border-border/60">
@@ -69,7 +69,7 @@ export function DetailsSheet({ data }: { data: CalculateResponse }) {
             <div>{d.dataset.name}</div>
             <div className="text-muted-foreground">{d.dataset.authors}</div>
             <div className="text-muted-foreground">
-              DOI {d.dataset.doi} · <a className="text-primary hover:underline" href={d.dataset.url} target="_blank" rel="noreferrer">NIST</a>
+              DOI {d.dataset.doi} · <a className="link" href={d.dataset.url} target="_blank" rel="noreferrer">NIST</a>
             </div>
             <div className="text-xs text-muted-foreground">{d.dataset.conversion}</div>
             <div className="text-xs break-all text-muted-foreground">Source SHA-256: {d.dataset.source_sha256}</div>

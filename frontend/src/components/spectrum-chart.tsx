@@ -7,20 +7,33 @@ import { Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Plot, CHART_COLORS } from "@/components/plot";
+import { Plot, useDark } from "@/components/plot";
 import { ENERGY_UNITS } from "@/components/energy-input";
 import { api } from "@/lib/api";
 import type { EnergyUnit, MaterialInputState, SpectrumData } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
+// Monochrome: curves differ by grey level (0 = strongest) and dash pattern.
 export const CURVES = [
-  { key: "total_with_coherent", label: "Total (with coherent)", color: CHART_COLORS[0], width: 2.5 },
-  { key: "total_without_coherent", label: "Total (without coherent)", color: "#8b93a7", width: 1.5, dash: "dot" },
-  { key: "photoelectric", label: "Photoelectric", color: CHART_COLORS[1], width: 1.5 },
-  { key: "incoherent", label: "Compton (incoherent)", color: CHART_COLORS[2], width: 1.5 },
-  { key: "coherent", label: "Coherent (Rayleigh)", color: CHART_COLORS[3], width: 1.5 },
-  { key: "pair_total", label: "Pair production", color: CHART_COLORS[4], width: 1.5 },
+  { key: "total_with_coherent", label: "Total (with coherent)", shade: 0, width: 2.4, dash: "solid" },
+  { key: "total_without_coherent", label: "Total (without coherent)", shade: 0, width: 1.3, dash: "dot" },
+  { key: "photoelectric", label: "Photoelectric", shade: 1, width: 1.6, dash: "solid" },
+  { key: "incoherent", label: "Compton (incoherent)", shade: 1, width: 1.6, dash: "dash" },
+  { key: "coherent", label: "Coherent (Rayleigh)", shade: 2, width: 1.6, dash: "dot" },
+  { key: "pair_total", label: "Pair production", shade: 2, width: 1.6, dash: "dashdot" },
 ] as const;
+
+const SHADES = { light: ["#18181b", "#71717a", "#a1a1aa"], dark: ["#fafafa", "#a1a1aa", "#71717a"] };
+const DASH_SVG: Record<string, string> = { solid: "", dot: "1.5 2.5", dash: "5 3", dashdot: "6 2.5 1.5 2.5" };
+
+/** Small line sample used in legends/toggles. */
+export function LineSample({ color, dash, width = 1.8 }: { color: string; dash: string; width?: number }) {
+  return (
+    <svg width="18" height="6" aria-hidden className="shrink-0">
+      <line x1="0" y1="3" x2="18" y2="3" stroke={color} strokeWidth={width} strokeDasharray={DASH_SVG[dash] ?? ""} strokeLinecap="round" />
+    </svg>
+  );
+}
 
 export interface RangeState {
   min: string;
@@ -29,7 +42,7 @@ export interface RangeState {
   maxUnit: EnergyUnit;
 }
 
-export function RangeInput({ range, onChange }: { range: RangeState; onChange: (r: RangeState) => void }) {
+export function RangeInput({ range, onChange, bare }: { range: RangeState; onChange: (r: RangeState) => void; bare?: boolean }) {
   const unitSel = (value: EnergyUnit, set: (u: EnergyUnit) => void, label: string) => (
     <Select value={value} onValueChange={(u) => set(u as EnergyUnit)}>
       <SelectTrigger className="w-20" aria-label={label}>
@@ -46,11 +59,11 @@ export function RangeInput({ range, onChange }: { range: RangeState; onChange: (
   );
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <Label className="mr-1">Energy range</Label>
-      <Input className="w-24 num" value={range.min} aria-label="Minimum energy" onChange={(e) => onChange({ ...range, min: e.target.value })} />
+      {!bare && <Label className="mr-1">Energy range</Label>}
+      <Input className="w-24 mono-num" value={range.min} aria-label="Minimum energy" onChange={(e) => onChange({ ...range, min: e.target.value })} />
       {unitSel(range.minUnit, (u) => onChange({ ...range, minUnit: u }), "Minimum energy unit")}
       <span className="text-muted-foreground">→</span>
-      <Input className="w-24 num" value={range.max} aria-label="Maximum energy" onChange={(e) => onChange({ ...range, max: e.target.value })} />
+      <Input className="w-24 mono-num" value={range.max} aria-label="Maximum energy" onChange={(e) => onChange({ ...range, max: e.target.value })} />
       {unitSel(range.maxUnit, (u) => onChange({ ...range, maxUnit: u }), "Maximum energy unit")}
     </div>
   );
@@ -81,7 +94,7 @@ export function edgeShapes(data: SpectrumData, maxEdges = 14): { shapes: Partial
       x1: e.energy_MeV * 1000,
       y0: 0,
       y1: 1,
-      line: { color: "rgba(140,140,160,0.45)", width: 1, dash: "dot" },
+      line: { color: "rgba(128,128,128,0.35)", width: 1, dash: "dot" },
     })),
     annotations: edges
       .filter((e) => /^(K|L3)$/.test(e.label))
@@ -94,7 +107,7 @@ export function edgeShapes(data: SpectrumData, maxEdges = 14): { shapes: Partial
         showarrow: false,
         yanchor: "bottom",
         yshift: (i % 2) * 11,
-        font: { size: 10, color: "#8b93a7" },
+        font: { size: 10, color: "#8a8a93" },
       })),
   };
 }
@@ -110,6 +123,8 @@ export function SpectrumChart({
   markers?: number[]; // MeV
   ready: boolean;
 }) {
+  const dark = useDark();
+  const shades = dark ? SHADES.dark : SHADES.light;
   const [data, setData] = useState<SpectrumData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -156,16 +171,16 @@ export function SpectrumChart({
       type: "scatter",
       mode: "lines",
       name: c.label,
-      line: { color: c.color, width: c.width, dash: "dash" in c ? c.dash : undefined },
+      line: { color: shades[c.shade], width: c.width, dash: c.dash },
       connectgaps: false,
       hovertemplate: "%{y:.4g} cm²/g",
     }));
     const { shapes, annotations } = edgeShapes(data);
     for (const m of markers) {
-      shapes.push({ type: "line", xref: "x", yref: "paper", x0: m * 1000, x1: m * 1000, y0: 0, y1: 1, line: { color: CHART_COLORS[0], width: 1.2 } });
+      shapes.push({ type: "line", xref: "x", yref: "paper", x0: m * 1000, x1: m * 1000, y0: 0, y1: 1, line: { color: shades[0], width: 1, dash: "longdash" } });
     }
     return { traces, shapes, annotations };
-  }, [data, visible, markers]);
+  }, [data, visible, markers, shades]);
 
   return (
     <div className="space-y-3">
@@ -177,10 +192,10 @@ export function SpectrumChart({
             onClick={() => setVisible({ ...visible, [c.key]: !visible[c.key] })}
             className={cn(
               "flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs transition-colors",
-              visible[c.key] ? "bg-card text-foreground" : "text-muted-foreground opacity-60"
+              visible[c.key] ? "bg-card text-foreground" : "border-dashed text-muted-foreground opacity-50"
             )}
           >
-            <span className="inline-block h-0.5 w-3.5 rounded" style={{ background: c.color }} />
+            <LineSample color={shades[c.shade]} dash={c.dash} width={c.width > 2 ? 2.2 : 1.6} />
             {c.label}
           </button>
         ))}
@@ -198,6 +213,7 @@ export function SpectrumChart({
               shapes: plot.shapes,
               annotations: plot.annotations,
               margin: { l: 64, r: 16, t: 28, b: 48 },
+              showlegend: false,
             }}
           />
         ) : (
@@ -207,7 +223,7 @@ export function SpectrumChart({
         )}
       </div>
       {data && data.unavailable.length > 0 && (
-        <p className="text-xs text-warning">
+        <p className="text-xs text-muted-foreground">
           Gaps: the photoelectric cross section is unavailable just above{" "}
           {data.unavailable.map((u) => `${u.element} ${u.edge} (${(u.from_MeV * 1000).toFixed(2)}–${(u.to_MeV * 1000).toFixed(0)} keV)`).join(", ")} in the source data;
           no values are interpolated there.

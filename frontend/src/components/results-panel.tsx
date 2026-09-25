@@ -13,23 +13,23 @@ import { fmt, fmtEnergy } from "@/lib/format";
 import type { CalculateResponse, LengthUnit, ResultRow } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-function Metric({ label, value, unit, hint, disabled, emphasis }: { label: string; value: string; unit?: string; hint?: string; disabled?: boolean; emphasis?: boolean }) {
+function Metric({ label, value, unit, hint, disabled, large }: { label: string; value: string; unit?: string; hint?: string; disabled?: boolean; large?: boolean }) {
   return (
-    <div className={cn("rounded-lg border bg-card p-3", disabled && "opacity-50", emphasis && "border-primary/30 bg-primary/[0.04]")}>
+    <div className={cn("bg-card px-4 py-3.5", disabled && "text-muted-foreground")}>
       <div className="flex items-center gap-1 text-xs text-muted-foreground">
         {label}
         {hint && (
           <Tooltip>
             <TooltipTrigger asChild>
-              <Info className="size-3" />
+              <Info className="size-3 opacity-60" />
             </TooltipTrigger>
             <TooltipContent>{hint}</TooltipContent>
           </Tooltip>
         )}
       </div>
-      <div className={cn("mt-1 font-semibold tracking-tight num", emphasis ? "text-2xl" : "text-xl")}>
+      <div className={cn("mt-1.5 font-medium mono-num", large ? "text-[1.7rem] leading-tight" : "text-lg", disabled && "opacity-40")}>
         {value}
-        {unit && <span className="ml-1 text-sm font-normal text-muted-foreground">{unit}</span>}
+        {unit && <span className="ml-1.5 font-sans text-xs font-normal text-muted-foreground">{unit}</span>}
       </div>
     </div>
   );
@@ -77,7 +77,7 @@ export function ResultsPanel({ data, lengthUnit }: { data: CalculateResponse; le
                   type="button"
                   key={i}
                   onClick={() => setIdx(i)}
-                  className={cn("rounded-md border px-2 py-1 text-xs num", i === idx ? "border-primary/50 bg-primary/10" : "text-muted-foreground hover:bg-accent/50")}
+                  className={cn("rounded-md border px-2 py-1 text-xs mono-num", i === idx ? "border-foreground bg-foreground text-background" : "text-muted-foreground hover:bg-accent/50")}
                 >
                   {fmtEnergy(r.energy_MeV)}
                 </button>
@@ -85,37 +85,35 @@ export function ResultsPanel({ data, lengthUnit }: { data: CalculateResponse; le
             </div>
           )}
           {!row.available ? (
-            <div className="flex gap-2 rounded-lg border border-warning/40 bg-warning/8 p-3 text-sm">
+            <div className="flex gap-2 rounded-lg border bg-subtle p-3 text-sm">
               <AlertTriangle className="size-4 shrink-0 text-warning" /> {row.unavailable_reason}
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-                <div className="col-span-2">
+              <div className="overflow-hidden rounded-lg border">
+                <div className="grid gap-px bg-border sm:grid-cols-2">
                   <Metric
-                    emphasis
-                    label={`Mass attenuation coefficient μ/ρ ${withCoherent ? "(with coherent)" : "(without coherent)"}`}
+                    large
+                    label={`Mass attenuation coefficient μ/ρ${withCoherent ? "" : " (without coherent)"}`}
                     value={fmt(total, 5)}
                     unit="cm²/g"
                     hint="Independent of density. Mixture rule over elemental XCOM values."
                   />
+                  <Metric large label="Linear attenuation coefficient μ" value={sh ? fmt(sh.mu_cm_inv, 5) : "—"} unit="cm⁻¹" disabled={noDensity} hint="μ = ρ · (μ/ρ)" />
                 </div>
-                <div className="col-span-2">
-                  <Metric emphasis label="Linear attenuation coefficient μ" value={sh ? fmt(sh.mu_cm_inv, 5) : "—"} unit="cm⁻¹" disabled={noDensity} hint="μ = ρ · (μ/ρ)" />
-                </div>
-                <Metric label="Half-value layer" value={L(sh?.hvl_cm)} unit={lengthUnit} disabled={noDensity} hint="HVL = ln 2 / μ" />
-                <Metric label="Tenth-value layer" value={L(sh?.tvl_cm)} unit={lengthUnit} disabled={noDensity} hint="TVL = ln 10 / μ" />
-                <Metric label="Mean free path" value={L(sh?.mfp_cm)} unit={lengthUnit} disabled={noDensity} hint="MFP = 1 / μ" />
-                <Metric
-                  label={data.thickness ? `Transmission (${data.thickness.value} ${data.thickness.unit})` : "Transmission"}
-                  value={sh?.transmission !== null && sh?.transmission !== undefined ? fmt(sh.transmission * 100, 4) : "—"}
-                  unit="%"
-                  disabled={noDensity || !data.thickness}
-                  hint="I/I₀ = exp(−μx), narrow beam"
-                />
-                <div className="col-span-2 md:col-span-4">
+                <div className="grid grid-cols-2 gap-px border-t bg-border md:grid-cols-5">
+                  <Metric label="Half-value layer" value={L(sh?.hvl_cm)} unit={lengthUnit} disabled={noDensity} hint="HVL = ln 2 / μ" />
+                  <Metric label="Tenth-value layer" value={L(sh?.tvl_cm)} unit={lengthUnit} disabled={noDensity} hint="TVL = ln 10 / μ" />
+                  <Metric label="Mean free path" value={L(sh?.mfp_cm)} unit={lengthUnit} disabled={noDensity} hint="MFP = 1 / μ" />
                   <Metric
-                    label={data.thickness ? `Shielding efficiency (${data.thickness.value} ${data.thickness.unit})` : "Shielding efficiency"}
+                    label={data.thickness ? `Transmission · ${data.thickness.value} ${data.thickness.unit}` : "Transmission"}
+                    value={sh?.transmission !== null && sh?.transmission !== undefined ? fmt(sh.transmission * 100, 4) : "—"}
+                    unit="%"
+                    disabled={noDensity || !data.thickness}
+                    hint="I/I₀ = exp(−μx), narrow beam"
+                  />
+                  <Metric
+                    label={data.thickness ? `Shielding eff. · ${data.thickness.value} ${data.thickness.unit}` : "Shielding efficiency"}
                     value={sh?.shielding_efficiency_percent !== null && sh?.shielding_efficiency_percent !== undefined ? fmt(sh.shielding_efficiency_percent, 4) : "—"}
                     unit="%"
                     disabled={noDensity || !data.thickness}
@@ -129,7 +127,7 @@ export function ResultsPanel({ data, lengthUnit }: { data: CalculateResponse; le
                     Density {data.density.value} g/cm³ <Badge variant={data.density.source === "user" ? "secondary" : data.density.source === "estimate" ? "warning" : "default"}>{data.density.label}</Badge>
                   </>
                 ) : (
-                  <span className="text-warning">No density given – density-dependent quantities are disabled.</span>
+                  <span>No density given – density-dependent quantities are disabled.</span>
                 )}
                 <span>· Narrow-beam attenuation (no build-up).</span>
               </div>
@@ -147,7 +145,7 @@ export function ResultsPanel({ data, lengthUnit }: { data: CalculateResponse; le
                       <TableHead>Total w/o coh.</TableHead>
                     </TableRow>
                   </TableHeader>
-                  <TableBody className="num">
+                  <TableBody className="mono-num text-[13px]">
                     <TableRow>
                       <TableCell>{fmt(ma.coherent)}</TableCell>
                       <TableCell>{fmt(ma.incoherent)}</TableCell>
@@ -182,7 +180,7 @@ export function ResultsPanel({ data, lengthUnit }: { data: CalculateResponse; le
                   <TableHead>Transmission (%)</TableHead>
                 </TableRow>
               </TableHeader>
-              <TableBody className="num">
+              <TableBody className="mono-num text-[13px]">
                 {data.results.map((r, i) => {
                   const s = withCoherent ? r.shielding : r.shielding_without_coherent;
                   return (

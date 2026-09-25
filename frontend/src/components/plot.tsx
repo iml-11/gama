@@ -12,14 +12,24 @@ const PlotImpl = dynamic(
   { ssr: false, loading: () => <div className="grid h-full place-items-center text-sm text-muted-foreground">Loading chart…</div> }
 );
 
-export const CHART_COLORS = ["#4f6bed", "#e2703a", "#2e9e6a", "#a35bd1", "#d9a21b", "#d6457a", "#3aa6c9", "#6b7280"];
+/** Monochrome series: distinguished by grey level and dash pattern, not by hue. */
+const DASHES = ["solid", "dash", "dot", "dashdot", "longdash", "longdashdot"] as const;
+export function seriesStyle(i: number, dark: boolean): { color: string; dash: (typeof DASHES)[number]; width: number } {
+  const shades = dark ? ["#fafafa", "#a1a1aa", "#71717a"] : ["#18181b", "#71717a", "#a1a1aa"];
+  // Grey level and dash pattern both change from one series to the next.
+  return { color: shades[i % shades.length], dash: DASHES[i % DASHES.length], width: i >= DASHES.length ? 2.8 : i === 0 ? 2.2 : 1.7 };
+}
+
+export function useDark() {
+  const { resolvedTheme } = useTheme();
+  return resolvedTheme === "dark";
+}
 
 /** Plotly wrapper with theme-aware defaults. */
 export function Plot({ data, layout, className, config }: { data: Data[]; layout?: Partial<Layout>; config?: Partial<Config>; className?: string }) {
-  const { resolvedTheme } = useTheme();
-  const dark = resolvedTheme === "dark";
-  const fg = dark ? "#d8dce6" : "#2a2f3a";
-  const grid = dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)";
+  const dark = useDark();
+  const fg = dark ? "#d4d4d8" : "#3f3f46";
+  const grid = dark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.06)";
   const axis = { gridcolor: grid, zerolinecolor: grid, linecolor: grid, color: fg };
   return (
     <div className={className}>
@@ -29,7 +39,8 @@ export function Plot({ data, layout, className, config }: { data: Data[]; layout
           autosize: true,
           paper_bgcolor: "rgba(0,0,0,0)",
           plot_bgcolor: "rgba(0,0,0,0)",
-          font: { family: "ui-sans-serif, system-ui, sans-serif", size: 12, color: fg },
+          font: { family: "var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif", size: 11.5, color: fg },
+          hoverlabel: { bgcolor: dark ? "#18181b" : "#ffffff", bordercolor: dark ? "#3f3f46" : "#e4e4e7", font: { color: dark ? "#fafafa" : "#18181b" } },
           margin: { l: 64, r: 16, t: 16, b: 48 },
           legend: { orientation: "h", y: -0.2, font: { size: 11 } },
           hovermode: "x unified",

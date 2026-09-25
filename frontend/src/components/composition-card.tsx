@@ -44,8 +44,8 @@ export function RecognitionStatus({ resolution, loading, error }: { resolution: 
     <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
       {ok &&
         resolution.name && (
-          <li className="flex items-center gap-1.5 text-success">
-            <Check className="size-4" />
+          <li className="flex items-center gap-1.5 font-medium">
+            <Check className="size-4 text-success" />
             <span>
               <MaybeFormula text={resolution.formula && resolution.kind === "formula" ? resolution.formula : resolution.name} /> recognised
             </span>
@@ -57,8 +57,8 @@ export function RecognitionStatus({ resolution, loading, error }: { resolution: 
         </li>
       ))}
       {resolution.status === "needs_choice" && (
-        <li className="flex items-center gap-1.5 text-warning">
-          <AlertTriangle className="size-4" /> Choose a composition preset
+        <li className="flex items-center gap-1.5 font-medium">
+          <AlertTriangle className="size-4 text-warning" /> Choose a composition preset
         </li>
       )}
       {resolution.errors.map((e, i) => (
@@ -83,10 +83,10 @@ function ElementTable({ comp, compact }: { comp: CompositionData; compact?: bool
           <th className="w-1/3 py-1.5 pl-3" />
         </tr>
       </thead>
-      <tbody className="num">
+      <tbody className="mono-num">
         {comp.elements.map((e) => (
           <tr key={e.symbol} className="border-b border-border/60 last:border-0">
-            <td className="py-1.5">
+            <td className="py-1.5 font-sans">
               <span className="font-medium">{e.symbol}</span> <span className="text-xs text-muted-foreground">{e.name}</span>
             </td>
             {!compact && <td className="py-1.5 text-right text-muted-foreground">{e.Z}</td>}
@@ -96,13 +96,13 @@ function ElementTable({ comp, compact }: { comp: CompositionData; compact?: bool
             <td className="py-1.5 text-right font-medium">{(e.mass_fraction * 100).toFixed(2)}</td>
             <td className="py-1.5 pl-3">
               <div className="h-1.5 rounded-full bg-muted">
-                <div className="h-1.5 rounded-full bg-primary/70" style={{ width: `${Math.max(1, e.mass_fraction * 100)}%` }} />
+                <div className="h-1.5 rounded-full bg-foreground/55" style={{ width: `${Math.max(1, e.mass_fraction * 100)}%` }} />
               </div>
             </td>
           </tr>
         ))}
         <tr className="text-xs text-muted-foreground">
-          <td className="pt-2">Total</td>
+          <td className="pt-2 font-sans">Total</td>
           {!compact && <td />}
           {!compact && comp.elements.some((e) => e.atom_count) && <td />}
           <td className="pt-2 text-right font-medium text-foreground">{(total * 100).toFixed(2)}</td>
@@ -139,7 +139,7 @@ function CompositionEditor({
             value={r.percent}
             aria-label="Weight percent"
             inputMode="decimal"
-            className="w-32 text-right num"
+            className="w-32 text-right mono-num"
             onChange={(e) => setRows(rows.map((x, j) => (j === i ? { ...x, percent: e.target.value } : x)))}
           />
           <span className="text-xs text-muted-foreground">wt%</span>
@@ -152,7 +152,7 @@ function CompositionEditor({
         <Button variant="outline" size="sm" onClick={() => setRows([...rows, { symbol: "", percent: "0" }])}>
           <Plus /> Element
         </Button>
-        <span className={cn("text-sm num", valid ? "text-success" : "text-destructive")}>Total {total.toFixed(2)} %</span>
+        <span className={cn("text-sm mono-num", valid ? "text-success" : "text-destructive")}>Total {total.toFixed(2)} %</span>
         {!valid && <span className="text-xs text-muted-foreground">Must be 100 % (±0.5 %) with valid symbols</span>}
         <div className="ml-auto flex gap-2">
           <Button variant="ghost" size="sm" onClick={onCancel}>
@@ -177,7 +177,7 @@ function PresetCard({ preset, onChoose }: { preset: MaterialSummary; onChoose: (
     <button
       type="button"
       onClick={onChoose}
-      className="group flex flex-col gap-1.5 rounded-lg border bg-card p-3 text-left transition-colors hover:border-primary/50 hover:bg-accent/40"
+      className="group flex flex-col gap-1.5 rounded-lg border bg-card p-3 text-left transition-colors hover:border-foreground/30"
     >
       <div className="flex items-start justify-between gap-2">
         <span className="text-sm font-medium">{preset.name}</span>
@@ -187,7 +187,7 @@ function PresetCard({ preset, onChoose }: { preset: MaterialSummary; onChoose: (
           </span>
         )}
       </div>
-      <div className="flex flex-wrap gap-1 text-[11px] text-muted-foreground num">
+      <div className="flex flex-wrap gap-1 text-[11px] text-muted-foreground mono-num">
         {top.map((e) => (
           <span key={e.symbol} className="rounded bg-muted px-1.5 py-0.5">
             {e.symbol} {(e.mass_fraction * 100).toFixed(2)}%
@@ -203,7 +203,7 @@ function PresetCard({ preset, onChoose }: { preset: MaterialSummary; onChoose: (
         )}
       </div>
       <div className="text-[11px] text-muted-foreground">Source: {preset.composition_source}</div>
-      {preset.notes && <div className="text-[11px] text-warning">{preset.notes}</div>}
+      {preset.notes && <div className="text-[11px] text-muted-foreground italic">{preset.notes}</div>}
     </button>
   );
 }
@@ -223,7 +223,7 @@ export function FamilyChooser({
 }) {
   return (
     <div className="space-y-3">
-      <div className="flex items-start gap-2 rounded-lg border border-warning/40 bg-warning/8 p-3 text-sm">
+      <div className="flex items-start gap-2 rounded-lg border bg-subtle p-3 text-sm">
         <AlertTriangle className="mt-0.5 size-4 shrink-0 text-warning" />
         <div>
           <div className="font-medium">
@@ -385,8 +385,8 @@ export function CompositionCard({
       <CardContent className="space-y-4">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <div className="flex items-center gap-2 text-xs font-medium text-success">
-              <Check className="size-3.5" /> {isComposite ? "Composite recognised" : "Material recognised"}
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <Check className="size-3.5 text-success" /> {isComposite ? "Composite recognised" : "Material recognised"}
             </div>
             <div className="mt-1 text-lg font-semibold">
               {r.kind === "formula" && r.formula ? <Formula text={r.formula} repeat={r.repeat_unit} /> : isComposite ? "Composite material" : r.name}
@@ -395,7 +395,7 @@ export function CompositionCard({
               {r.kind === "formula" && r.name !== r.formula && r.name}
               {r.kind !== "formula" && r.formula && <Formula text={r.formula} repeat={r.repeat_unit} className="font-normal" />}
               {r.pubchem && (
-                <a href={r.pubchem.url} target="_blank" rel="noreferrer" className="ml-2 inline-flex items-center gap-1 text-primary hover:underline">
+                <a href={r.pubchem.url} target="_blank" rel="noreferrer" className="ml-2 inline-flex items-center gap-1 link">
                   PubChem CID {r.pubchem.cid} <ExternalLink className="size-3" />
                 </a>
               )}
@@ -412,7 +412,7 @@ export function CompositionCard({
           <div className="flex gap-6 text-sm">
             <div>
               <div className="text-xs text-muted-foreground">{r.repeat_unit ? "Repeat-unit molar mass" : "Molar mass"}</div>
-              <div className="font-medium num">{comp.molar_mass.toFixed(2)} g/mol</div>
+              <div className="font-medium mono-num">{comp.molar_mass.toFixed(2)} g/mol</div>
             </div>
           </div>
         )}
@@ -469,7 +469,7 @@ export function CompositionCard({
         )}
 
         <div>
-          <button type="button" className="text-xs text-primary hover:underline" onClick={() => setShowProv(!showProv)}>
+          <button type="button" className="text-xs link" onClick={() => setShowProv(!showProv)}>
             {showProv ? "Hide" : "Show"} data provenance
           </button>
           {showProv && (
@@ -480,7 +480,7 @@ export function CompositionCard({
                   <span>
                     {p.source}
                     {p.url && (
-                      <a className="ml-1 text-primary" href={p.url} target="_blank" rel="noreferrer">
+                      <a className="ml-1 text-muted-foreground hover:text-foreground" href={p.url} target="_blank" rel="noreferrer">
                         <ExternalLink className="inline size-3" />
                       </a>
                     )}
@@ -513,7 +513,7 @@ function ComponentsList({ r }: { r: Resolution }) {
               {c.resolution.status === "needs_choice" ? "preset required" : SOURCE_LABEL[c.resolution.kind ?? ""] ?? c.resolution.kind}
             </div>
           </div>
-          <div className="text-right num">
+          <div className="text-right mono-num">
             <div className="font-medium">{(c.mass_percent ?? c.percent).toFixed(2)} wt%</div>
             {c.basis === "vol" && <div className="text-xs text-muted-foreground">{c.percent.toFixed(2)} vol%</div>}
           </div>

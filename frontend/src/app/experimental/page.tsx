@@ -12,7 +12,7 @@ import { MaterialInput } from "@/components/material-input";
 import { CompositionCard, RecognitionStatus } from "@/components/composition-card";
 import { DensityInput, type DensityState } from "@/components/density-input";
 import { ENERGY_UNITS } from "@/components/energy-input";
-import { Plot, CHART_COLORS } from "@/components/plot";
+import { Plot, useDark } from "@/components/plot";
 import { useResolution } from "@/hooks/use-resolution";
 import { api, ApiError } from "@/lib/api";
 import { fmt } from "@/lib/format";
@@ -73,10 +73,20 @@ export default function ExperimentalPage() {
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
+  const dark = useDark();
+  const ink = dark ? "#fafafa" : "#18181b";
+  const soft = dark ? "#a1a1aa" : "#71717a";
 
   const suggested = resolution?.status === "resolved" ? resolution.density : null;
   const identity = resolution?.status === "resolved" && current ? JSON.stringify([resolution.name, resolution.composition?.elements.map((e) => [e.symbol, e.mass_fraction.toFixed(6)])]) : null;
   const lastIdentity = useRef<string | null>(null);
+  // A new input that is not (yet) a recognised material: forget the old density.
+  const unresolvedNow = current && !!resolution && resolution.status !== "resolved";
+  useEffect(() => {
+    if (!unresolvedNow) return;
+    lastIdentity.current = null;
+    setDensity({ value: "", source: "user" });
+  }, [unresolvedNow]);
   useEffect(() => {
     // Manual edits of the composition keep the current density.
     if (!identity || identity === lastIdentity.current || resolution?.kind === "manual") return;
@@ -138,7 +148,7 @@ export default function ExperimentalPage() {
         type: "scatter",
         mode: "lines",
         name: "XCOM (theory)",
-        line: { color: CHART_COLORS[0], width: 2 },
+        line: { color: soft, width: 1.8 },
       });
     const exp = result.points.filter((p) => p.exp_mu_rho);
     traces.push({
@@ -147,21 +157,21 @@ export default function ExperimentalPage() {
       type: "scatter",
       mode: "markers",
       name: "Experimental",
-      marker: { color: CHART_COLORS[1], size: 9, symbol: "circle" },
+      marker: { color: ink, size: 8, symbol: "circle", line: { color: dark ? "#18181b" : "#ffffff", width: 1.5 } },
       error_y: {
         type: "data",
         array: exp.map((p) => (p.uncertainty != null ? (p.exp_mu_rho_derived_from_mu && result.density ? p.uncertainty / result.density.value : p.uncertainty) : 0)),
         visible: exp.some((p) => p.uncertainty != null),
-        color: CHART_COLORS[1],
+        color: ink,
       },
     });
     return traces;
-  }, [result, curve]);
+  }, [result, curve, ink, soft, dark]);
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Experimental data comparison</h1>
+        <h1 className="text-2xl font-semibold sm:text-3xl">Experimental data comparison</h1>
         <p className="text-sm text-muted-foreground">Compare measured μ or μ/ρ with XCOM theory (total attenuation with coherent scattering). CSV import and export supported.</p>
       </div>
       <div className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
@@ -215,7 +225,7 @@ export default function ExperimentalPage() {
                   {(["energy", "mu", "mu_rho", "unc"] as const).map((k) => (
                     <Input
                       key={k}
-                      className="num"
+                      className="mono-num"
                       inputMode="decimal"
                       aria-label={`${k} row ${i + 1}`}
                       value={p[k]}
@@ -292,7 +302,7 @@ export default function ExperimentalPage() {
                 <div>
                   <CardTitle>Deviation from XCOM</CardTitle>
                   {result.summary && (
-                    <CardDescription className="num">
+                    <CardDescription className="mono-num">
                       n = {result.summary.n} · mean {fmt(result.summary.mean_percent_difference, 3)} % · mean |Δ| {fmt(result.summary.mean_absolute_percent_difference, 3)} % · RMS{" "}
                       {fmt(result.summary.rms_percent_difference, 3)} %
                     </CardDescription>
@@ -315,7 +325,7 @@ export default function ExperimentalPage() {
                       <TableHead>Rel. error</TableHead>
                     </TableRow>
                   </TableHeader>
-                  <TableBody className="num">
+                  <TableBody className="mono-num">
                     {result.points.map((p, i) => (
                       <TableRow key={i}>
                         <TableCell>{p.energy}</TableCell>
@@ -326,7 +336,7 @@ export default function ExperimentalPage() {
                         <TableCell>{fmt(p.xcom_mu_rho)}</TableCell>
                         <TableCell>{fmt(p.exp_mu)}</TableCell>
                         <TableCell>{fmt(p.xcom_mu)}</TableCell>
-                        <TableCell className={cn(p.percent_difference != null && Math.abs(p.percent_difference) > 5 && "text-warning")}>
+                        <TableCell className={cn(p.percent_difference != null && Math.abs(p.percent_difference) > 5 && "font-semibold")}>
                           {p.percent_difference != null ? fmt(p.percent_difference, 3) : "—"}
                         </TableCell>
                         <TableCell>{fmt(p.relative_error, 3)}</TableCell>

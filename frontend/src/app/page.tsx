@@ -38,6 +38,13 @@ export default function CalculatorPage() {
   const suggested = resolution?.status === "resolved" ? resolution.density : null;
   const identity = resolution?.status === "resolved" && current ? JSON.stringify([resolution.name, resolution.composition?.elements.map((e) => [e.symbol, e.mass_fraction.toFixed(6)])]) : null;
   const lastIdentity = useRef<string | null>(null);
+  // A new input that is not (yet) a recognised material: forget the old density.
+  const unresolvedNow = current && !!resolution && resolution.status !== "resolved";
+  useEffect(() => {
+    if (!unresolvedNow) return;
+    lastIdentity.current = null;
+    setDensity({ value: "", source: "user" });
+  }, [unresolvedNow]);
   useEffect(() => {
     // Manual edits of the composition keep the current density.
     if (!identity || identity === lastIdentity.current || resolution?.kind === "manual") return;
@@ -88,7 +95,7 @@ export default function CalculatorPage() {
     <div className="space-y-6">
       <section className="space-y-3">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Gamma-ray attenuation calculator</h1>
+          <h1 className="text-2xl font-semibold sm:text-3xl">Gamma-ray attenuation calculator</h1>
           <p className="text-sm text-muted-foreground">
             Type a material name, chemical formula, polymer or composite. The composition is determined automatically and verified below.
           </p>
@@ -139,7 +146,7 @@ export default function CalculatorPage() {
                 <div className="flex gap-2">
                   <Input
                     inputMode="decimal"
-                    className="h-10 flex-1 text-base num"
+                    className="h-10 flex-1 text-base mono-num"
                     value={thickness.value}
                     aria-label="Thickness"
                     onChange={(e) => setThickness({ ...thickness, value: e.target.value })}
@@ -158,8 +165,8 @@ export default function CalculatorPage() {
                   </Select>
                 </div>
               </div>
-              <Button size="lg" className="w-full text-sm font-semibold tracking-wide" disabled={!canCalc || calculating} onClick={calculate}>
-                {calculating ? <Loader2 className="animate-spin" /> : <Calculator />} CALCULATE
+              <Button size="lg" className="w-full" disabled={!canCalc || calculating} onClick={calculate}>
+                {calculating ? <Loader2 className="animate-spin" /> : <Calculator />} Calculate
               </Button>
               {!ready && material.input.trim() && resolution && (
                 <p className="text-center text-xs text-muted-foreground">Resolve the material above to enable the calculation.</p>
@@ -176,7 +183,7 @@ export default function CalculatorPage() {
           ) : (
             <Card className="border-dashed">
               <CardContent className="grid min-h-40 place-items-center text-center text-sm text-muted-foreground">
-                {ready ? "Press CALCULATE to compute attenuation and shielding quantities." : "Results will appear here."}
+                {ready ? "Press Calculate to compute attenuation and shielding quantities." : "Results will appear here."}
               </CardContent>
             </Card>
           )}

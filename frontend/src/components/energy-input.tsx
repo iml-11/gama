@@ -88,7 +88,7 @@ export function EnergyInput({
             aria-invalid={invalid}
             aria-label="Photon energy"
             placeholder="661.657"
-            className="h-10 flex-1 text-base num"
+            className="h-10 flex-1 text-base mono-num"
             onChange={(e) => onChange({ ...sel, value: e.target.value })}
           />
           <Select value={sel.unit} onValueChange={(u) => onChange({ ...sel, unit: u as EnergyUnit })}>
@@ -138,7 +138,7 @@ export function EnergyInput({
                       }
                       className={cn(
                         "rounded-md border px-2 py-1 text-xs num transition-colors",
-                        on ? "border-primary/50 bg-primary/10 text-foreground" : "text-muted-foreground hover:bg-accent/50"
+                        on ? "border-foreground bg-foreground text-background" : "text-muted-foreground hover:bg-accent/50"
                       )}
                     >
                       <span className="font-medium">{fmtPlain(l.energy_keV, 7)} keV</span>

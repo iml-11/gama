@@ -58,7 +58,7 @@ export function MaterialsBrowser() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Material database</h1>
+        <h1 className="text-2xl font-semibold sm:text-3xl">Material database</h1>
         <p className="text-sm text-muted-foreground">
           Curated polymers and presets, NIST ESTAR reference materials, elements and your custom materials. Every entry lists the source of its composition and density.
         </p>
@@ -77,7 +77,7 @@ export function MaterialsBrowser() {
                   key={g.key}
                   type="button"
                   onClick={() => setGroup(g.key)}
-                  className={cn("rounded-md border px-2 py-1 text-xs", group === g.key ? "border-primary/50 bg-primary/10" : "text-muted-foreground hover:bg-accent/50")}
+                  className={cn("rounded-md border px-2 py-1 text-xs", group === g.key ? "border-foreground bg-foreground text-background" : "text-muted-foreground hover:bg-accent/50")}
                 >
                   {g.label}
                 </button>
@@ -115,7 +115,7 @@ export function MaterialsBrowser() {
                       <Formula text={m.formula} repeat={m.repeat_unit} className="font-normal" />
                     </span>
                   )}
-                  <span className="w-20 text-right text-xs text-muted-foreground num">{m.density?.value ? `${m.density.value} g/cm³` : "—"}</span>
+                  <span className="w-20 text-right text-xs text-muted-foreground mono-num">{m.density?.value ? `${m.density.value} g/cm³` : "—"}</span>
                 </button>
               ))}
             </div>
@@ -152,7 +152,7 @@ function MaterialDetail({ m, onDeleted }: { m: MaterialSummary; onDeleted: () =>
           </div>
         )}
         {m.composition && (
-          <div className="flex flex-wrap gap-1 text-xs num">
+          <div className="flex flex-wrap gap-1 text-xs mono-num">
             {m.composition.elements.map((e) => (
               <span key={e.symbol} className="rounded bg-muted px-1.5 py-0.5">
                 {e.symbol} {(e.mass_fraction * 100).toFixed(3)}%
@@ -256,7 +256,7 @@ function CustomCreator({ initialName, onCreated }: { initialName: string; onCrea
               <div key={i} className="flex items-center gap-2">
                 <Input className="w-20" value={r.symbol} aria-label="Element" onChange={(e) => setRows(rows.map((x, j) => (j === i ? { ...x, symbol: e.target.value.trim() } : x)))} />
                 <Input
-                  className="w-28 text-right num"
+                  className="w-28 text-right mono-num"
                   inputMode="decimal"
                   value={r.pct}
                   aria-label="wt%"
@@ -272,7 +272,7 @@ function CustomCreator({ initialName, onCreated }: { initialName: string; onCrea
               <Button variant="outline" size="sm" onClick={() => setRows([...rows, { symbol: "", pct: "" }])}>
                 <Plus /> Element
               </Button>
-              <span className={cn("text-sm num", sumOk ? "text-success" : "text-destructive")}>
+              <span className={cn("text-sm mono-num", sumOk ? "text-success" : "text-destructive")}>
                 Total {total.toFixed(2)} % {sumOk && <Check className="inline size-3.5" />}
               </span>
             </div>

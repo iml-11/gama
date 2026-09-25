@@ -59,7 +59,7 @@ export function DensityInput({
             ) : (
               <p>
                 Database value available:{" "}
-                <button type="button" className="text-primary hover:underline" onClick={() => onChange({ value: String(suggestion.value), source: "database" })}>
+                <button type="button" className="link" onClick={() => onChange({ value: String(suggestion.value), source: "database" })}>
                   use {suggestion.value} g/cm³
                 </button>{" "}
                 ({suggestion.source})
@@ -70,14 +70,14 @@ export function DensityInput({
           )}
           {estimate?.value && state.source !== "estimate" && (
             <p>
-              <button type="button" className="text-primary hover:underline" onClick={() => onChange({ value: estimate.value!.toFixed(4), source: "estimate" })}>
+              <button type="button" className="link" onClick={() => onChange({ value: estimate.value!.toFixed(4), source: "estimate" })}>
                 Use estimate {estimate.value.toFixed(3)} g/cm³
               </button>{" "}
               — {estimate.source}
             </p>
           )}
           {state.source === "estimate" && estimate && <p>{estimate.source}. Replace with a measured density if available.</p>}
-          {state.value === "" && <p className="text-warning">Density-dependent outputs (μ, HVL, TVL, MFP, transmission) are disabled.</p>}
+          {state.value === "" && <p>Density-dependent outputs (μ, HVL, TVL, MFP, transmission) are disabled.</p>}
         </div>
       )}
     </div>
