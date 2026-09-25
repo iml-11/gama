@@ -1,0 +1,5 @@
+# Only needed to rebuild the data files in backend/data from their sources.
+nist-calculators==0.0.5
+tables
+periodictable==2.1.0
+actigamma==0.1.5
