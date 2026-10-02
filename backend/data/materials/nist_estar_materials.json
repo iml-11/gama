@@ -1,0 +1,2977 @@
+{
+ "source": "NIST ESTAR/PSTAR/ASTAR material composition table",
+ "reference": "M.J. Berger, J.S. Coursey, M.A. Zucker, J. Chang, ESTAR, PSTAR, and ASTAR: Computer Programs for Calculating Stopping-Power and Range Tables for Electrons, Protons, and Helium Ions, NIST Standard Reference Database 124, doi:10.18434/T4NC7P. Compositions follow ICRU Report 37 (1984).",
+ "url": "https://physics.nist.gov/PhysRefData/Star/Text/method.html",
+ "distribution": "HDF5 conversion in nist-calculators 0.0.5 (MIT licence)",
+ "source_sha256": "c1393f176689b3f843e5181bb4d17a5ef18870cd41976c7b9916fd23f4bc6104",
+ "notes": [
+  "mass_fractions keyed by atomic number Z; densities in g/cm3 as given by NIST."
+ ],
+ "built": "2026-09-25",
+ "materials": [
+  {
+   "estar_id": 1,
+   "name": "HYDROGEN",
+   "density_g_cm3": 8.3748e-05,
+   "mean_excitation_energy_eV": 19.2,
+   "mass_fractions": {
+    "1": 1.0
+   }
+  },
+  {
+   "estar_id": 2,
+   "name": "HELIUM",
+   "density_g_cm3": 0.000166322,
+   "mean_excitation_energy_eV": 41.8,
+   "mass_fractions": {
+    "2": 1.0
+   }
+  },
+  {
+   "estar_id": 3,
+   "name": "LITHIUM",
+   "density_g_cm3": 0.534,
+   "mean_excitation_energy_eV": 40.0,
+   "mass_fractions": {
+    "3": 1.0
+   }
+  },
+  {
+   "estar_id": 4,
+   "name": "BERYLLIUM",
+   "density_g_cm3": 1.848,
+   "mean_excitation_energy_eV": 63.7,
+   "mass_fractions": {
+    "4": 1.0
+   }
+  },
+  {
+   "estar_id": 5,
+   "name": "BORON",
+   "density_g_cm3": 2.37,
+   "mean_excitation_energy_eV": 76.0,
+   "mass_fractions": {
+    "5": 1.0
+   }
+  },
+  {
+   "estar_id": 6,
+   "name": "AMORPHOUS_CARBON",
+   "density_g_cm3": 2.0,
+   "mean_excitation_energy_eV": 81.0,
+   "mass_fractions": {
+    "6": 1.0
+   }
+  },
+  {
+   "estar_id": 7,
+   "name": "NITROGEN",
+   "density_g_cm3": 0.00116528,
+   "mean_excitation_energy_eV": 82.0,
+   "mass_fractions": {
+    "7": 1.0
+   }
+  },
+  {
+   "estar_id": 8,
+   "name": "OXYGEN",
+   "density_g_cm3": 0.00133151,
+   "mean_excitation_energy_eV": 95.0,
+   "mass_fractions": {
+    "8": 1.0
+   }
+  },
+  {
+   "estar_id": 9,
+   "name": "FLUORINE",
+   "density_g_cm3": 0.00158029,
+   "mean_excitation_energy_eV": 115.0,
+   "mass_fractions": {
+    "9": 1.0
+   }
+  },
+  {
+   "estar_id": 10,
+   "name": "NEON",
+   "density_g_cm3": 0.000838505,
+   "mean_excitation_energy_eV": 137.0,
+   "mass_fractions": {
+    "10": 1.0
+   }
+  },
+  {
+   "estar_id": 11,
+   "name": "SODIUM",
+   "density_g_cm3": 0.971,
+   "mean_excitation_energy_eV": 149.0,
+   "mass_fractions": {
+    "11": 1.0
+   }
+  },
+  {
+   "estar_id": 12,
+   "name": "MAGNESIUM",
+   "density_g_cm3": 1.74,
+   "mean_excitation_energy_eV": 156.0,
+   "mass_fractions": {
+    "12": 1.0
+   }
+  },
+  {
+   "estar_id": 13,
+   "name": "ALUMINUM",
+   "density_g_cm3": 2.6989,
+   "mean_excitation_energy_eV": 166.0,
+   "mass_fractions": {
+    "13": 1.0
+   }
+  },
+  {
+   "estar_id": 14,
+   "name": "SILICON",
+   "density_g_cm3": 2.33,
+   "mean_excitation_energy_eV": 173.0,
+   "mass_fractions": {
+    "14": 1.0
+   }
+  },
+  {
+   "estar_id": 15,
+   "name": "PHOSPHORUS",
+   "density_g_cm3": 2.2,
+   "mean_excitation_energy_eV": 173.0,
+   "mass_fractions": {
+    "15": 1.0
+   }
+  },
+  {
+   "estar_id": 16,
+   "name": "SULFUR",
+   "density_g_cm3": 2.0,
+   "mean_excitation_energy_eV": 180.0,
+   "mass_fractions": {
+    "16": 1.0
+   }
+  },
+  {
+   "estar_id": 17,
+   "name": "CHLORINE",
+   "density_g_cm3": 0.00299473,
+   "mean_excitation_energy_eV": 174.0,
+   "mass_fractions": {
+    "17": 1.0
+   }
+  },
+  {
+   "estar_id": 18,
+   "name": "ARGON",
+   "density_g_cm3": 0.00166201,
+   "mean_excitation_energy_eV": 188.0,
+   "mass_fractions": {
+    "18": 1.0
+   }
+  },
+  {
+   "estar_id": 19,
+   "name": "POTASSIUM",
+   "density_g_cm3": 0.862,
+   "mean_excitation_energy_eV": 190.0,
+   "mass_fractions": {
+    "19": 1.0
+   }
+  },
+  {
+   "estar_id": 20,
+   "name": "CALCIUM",
+   "density_g_cm3": 1.55,
+   "mean_excitation_energy_eV": 191.0,
+   "mass_fractions": {
+    "20": 1.0
+   }
+  },
+  {
+   "estar_id": 21,
+   "name": "SCANDIUM",
+   "density_g_cm3": 2.989,
+   "mean_excitation_energy_eV": 216.0,
+   "mass_fractions": {
+    "21": 1.0
+   }
+  },
+  {
+   "estar_id": 22,
+   "name": "TITANIUM",
+   "density_g_cm3": 4.54,
+   "mean_excitation_energy_eV": 233.0,
+   "mass_fractions": {
+    "22": 1.0
+   }
+  },
+  {
+   "estar_id": 23,
+   "name": "VANADIUM",
+   "density_g_cm3": 6.11,
+   "mean_excitation_energy_eV": 245.0,
+   "mass_fractions": {
+    "23": 1.0
+   }
+  },
+  {
+   "estar_id": 24,
+   "name": "CHROMIUM",
+   "density_g_cm3": 7.18,
+   "mean_excitation_energy_eV": 257.0,
+   "mass_fractions": {
+    "24": 1.0
+   }
+  },
+  {
+   "estar_id": 25,
+   "name": "MANGANESE",
+   "density_g_cm3": 7.44,
+   "mean_excitation_energy_eV": 272.0,
+   "mass_fractions": {
+    "25": 1.0
+   }
+  },
+  {
+   "estar_id": 26,
+   "name": "IRON",
+   "density_g_cm3": 7.874,
+   "mean_excitation_energy_eV": 286.0,
+   "mass_fractions": {
+    "26": 1.0
+   }
+  },
+  {
+   "estar_id": 27,
+   "name": "COBALT",
+   "density_g_cm3": 8.9,
+   "mean_excitation_energy_eV": 297.0,
+   "mass_fractions": {
+    "27": 1.0
+   }
+  },
+  {
+   "estar_id": 28,
+   "name": "NICKEL",
+   "density_g_cm3": 8.902,
+   "mean_excitation_energy_eV": 311.0,
+   "mass_fractions": {
+    "28": 1.0
+   }
+  },
+  {
+   "estar_id": 29,
+   "name": "COPPER",
+   "density_g_cm3": 8.96,
+   "mean_excitation_energy_eV": 322.0,
+   "mass_fractions": {
+    "29": 1.0
+   }
+  },
+  {
+   "estar_id": 30,
+   "name": "ZINC",
+   "density_g_cm3": 7.133,
+   "mean_excitation_energy_eV": 330.0,
+   "mass_fractions": {
+    "30": 1.0
+   }
+  },
+  {
+   "estar_id": 31,
+   "name": "GALLIUM",
+   "density_g_cm3": 5.904,
+   "mean_excitation_energy_eV": 334.0,
+   "mass_fractions": {
+    "31": 1.0
+   }
+  },
+  {
+   "estar_id": 32,
+   "name": "GERMANIUM",
+   "density_g_cm3": 5.323,
+   "mean_excitation_energy_eV": 350.0,
+   "mass_fractions": {
+    "32": 1.0
+   }
+  },
+  {
+   "estar_id": 33,
+   "name": "ARSENIC",
+   "density_g_cm3": 5.73,
+   "mean_excitation_energy_eV": 347.0,
+   "mass_fractions": {
+    "33": 1.0
+   }
+  },
+  {
+   "estar_id": 34,
+   "name": "SELENIUM",
+   "density_g_cm3": 4.5,
+   "mean_excitation_energy_eV": 348.0,
+   "mass_fractions": {
+    "34": 1.0
+   }
+  },
+  {
+   "estar_id": 35,
+   "name": "BROMINE",
+   "density_g_cm3": 0.00707218,
+   "mean_excitation_energy_eV": 343.0,
+   "mass_fractions": {
+    "35": 1.0
+   }
+  },
+  {
+   "estar_id": 36,
+   "name": "KRYPTON",
+   "density_g_cm3": 0.00347832,
+   "mean_excitation_energy_eV": 352.0,
+   "mass_fractions": {
+    "36": 1.0
+   }
+  },
+  {
+   "estar_id": 37,
+   "name": "RUBIDIUM",
+   "density_g_cm3": 1.532,
+   "mean_excitation_energy_eV": 363.0,
+   "mass_fractions": {
+    "37": 1.0
+   }
+  },
+  {
+   "estar_id": 38,
+   "name": "STRONTIUM",
+   "density_g_cm3": 2.54,
+   "mean_excitation_energy_eV": 366.0,
+   "mass_fractions": {
+    "38": 1.0
+   }
+  },
+  {
+   "estar_id": 39,
+   "name": "YTTRIUM",
+   "density_g_cm3": 4.469,
+   "mean_excitation_energy_eV": 379.0,
+   "mass_fractions": {
+    "39": 1.0
+   }
+  },
+  {
+   "estar_id": 40,
+   "name": "ZIRCONIUM",
+   "density_g_cm3": 6.506,
+   "mean_excitation_energy_eV": 393.0,
+   "mass_fractions": {
+    "40": 1.0
+   }
+  },
+  {
+   "estar_id": 41,
+   "name": "NIOBIUM",
+   "density_g_cm3": 8.57,
+   "mean_excitation_energy_eV": 417.0,
+   "mass_fractions": {
+    "41": 1.0
+   }
+  },
+  {
+   "estar_id": 42,
+   "name": "MOLYBDENUM",
+   "density_g_cm3": 10.22,
+   "mean_excitation_energy_eV": 424.0,
+   "mass_fractions": {
+    "42": 1.0
+   }
+  },
+  {
+   "estar_id": 43,
+   "name": "TECHNETIUM",
+   "density_g_cm3": 11.5,
+   "mean_excitation_energy_eV": 428.0,
+   "mass_fractions": {
+    "43": 1.0
+   }
+  },
+  {
+   "estar_id": 44,
+   "name": "RUTHENIUM",
+   "density_g_cm3": 12.41,
+   "mean_excitation_energy_eV": 441.0,
+   "mass_fractions": {
+    "44": 1.0
+   }
+  },
+  {
+   "estar_id": 45,
+   "name": "RHODIUM",
+   "density_g_cm3": 12.41,
+   "mean_excitation_energy_eV": 449.0,
+   "mass_fractions": {
+    "45": 1.0
+   }
+  },
+  {
+   "estar_id": 46,
+   "name": "PALLADIUM",
+   "density_g_cm3": 12.02,
+   "mean_excitation_energy_eV": 470.0,
+   "mass_fractions": {
+    "46": 1.0
+   }
+  },
+  {
+   "estar_id": 47,
+   "name": "SILVER",
+   "density_g_cm3": 10.5,
+   "mean_excitation_energy_eV": 470.0,
+   "mass_fractions": {
+    "47": 1.0
+   }
+  },
+  {
+   "estar_id": 48,
+   "name": "CADMIUM",
+   "density_g_cm3": 8.65,
+   "mean_excitation_energy_eV": 469.0,
+   "mass_fractions": {
+    "48": 1.0
+   }
+  },
+  {
+   "estar_id": 49,
+   "name": "INDIUM",
+   "density_g_cm3": 7.31,
+   "mean_excitation_energy_eV": 488.0,
+   "mass_fractions": {
+    "49": 1.0
+   }
+  },
+  {
+   "estar_id": 50,
+   "name": "TIN",
+   "density_g_cm3": 7.31,
+   "mean_excitation_energy_eV": 488.0,
+   "mass_fractions": {
+    "50": 1.0
+   }
+  },
+  {
+   "estar_id": 51,
+   "name": "ANTIMONY",
+   "density_g_cm3": 6.691,
+   "mean_excitation_energy_eV": 487.0,
+   "mass_fractions": {
+    "51": 1.0
+   }
+  },
+  {
+   "estar_id": 52,
+   "name": "TELLURIUM",
+   "density_g_cm3": 6.24,
+   "mean_excitation_energy_eV": 485.0,
+   "mass_fractions": {
+    "52": 1.0
+   }
+  },
+  {
+   "estar_id": 53,
+   "name": "IODINE",
+   "density_g_cm3": 4.93,
+   "mean_excitation_energy_eV": 491.0,
+   "mass_fractions": {
+    "53": 1.0
+   }
+  },
+  {
+   "estar_id": 54,
+   "name": "XENON",
+   "density_g_cm3": 0.00548536,
+   "mean_excitation_energy_eV": 482.0,
+   "mass_fractions": {
+    "54": 1.0
+   }
+  },
+  {
+   "estar_id": 55,
+   "name": "CESIUM",
+   "density_g_cm3": 1.873,
+   "mean_excitation_energy_eV": 488.0,
+   "mass_fractions": {
+    "55": 1.0
+   }
+  },
+  {
+   "estar_id": 56,
+   "name": "BARIUM",
+   "density_g_cm3": 3.5,
+   "mean_excitation_energy_eV": 491.0,
+   "mass_fractions": {
+    "56": 1.0
+   }
+  },
+  {
+   "estar_id": 57,
+   "name": "LANTHANUM",
+   "density_g_cm3": 6.154,
+   "mean_excitation_energy_eV": 501.0,
+   "mass_fractions": {
+    "57": 1.0
+   }
+  },
+  {
+   "estar_id": 58,
+   "name": "CERIUM",
+   "density_g_cm3": 6.657,
+   "mean_excitation_energy_eV": 523.0,
+   "mass_fractions": {
+    "58": 1.0
+   }
+  },
+  {
+   "estar_id": 59,
+   "name": "PRASEODYMIUM",
+   "density_g_cm3": 6.71,
+   "mean_excitation_energy_eV": 535.0,
+   "mass_fractions": {
+    "59": 1.0
+   }
+  },
+  {
+   "estar_id": 60,
+   "name": "NEODYMIUM",
+   "density_g_cm3": 6.9,
+   "mean_excitation_energy_eV": 546.0,
+   "mass_fractions": {
+    "60": 1.0
+   }
+  },
+  {
+   "estar_id": 61,
+   "name": "PROMETHIUM",
+   "density_g_cm3": 7.22,
+   "mean_excitation_energy_eV": 560.0,
+   "mass_fractions": {
+    "61": 1.0
+   }
+  },
+  {
+   "estar_id": 62,
+   "name": "SAMARIUM",
+   "density_g_cm3": 7.46,
+   "mean_excitation_energy_eV": 574.0,
+   "mass_fractions": {
+    "62": 1.0
+   }
+  },
+  {
+   "estar_id": 63,
+   "name": "EUROPIUM",
+   "density_g_cm3": 5.243,
+   "mean_excitation_energy_eV": 580.0,
+   "mass_fractions": {
+    "63": 1.0
+   }
+  },
+  {
+   "estar_id": 64,
+   "name": "GADOLINIUM",
+   "density_g_cm3": 7.9004,
+   "mean_excitation_energy_eV": 591.0,
+   "mass_fractions": {
+    "64": 1.0
+   }
+  },
+  {
+   "estar_id": 65,
+   "name": "TERBIUM",
+   "density_g_cm3": 8.229,
+   "mean_excitation_energy_eV": 614.0,
+   "mass_fractions": {
+    "65": 1.0
+   }
+  },
+  {
+   "estar_id": 66,
+   "name": "DYSPROSIUM",
+   "density_g_cm3": 8.55,
+   "mean_excitation_energy_eV": 628.0,
+   "mass_fractions": {
+    "66": 1.0
+   }
+  },
+  {
+   "estar_id": 67,
+   "name": "HOLMIUM",
+   "density_g_cm3": 8.795,
+   "mean_excitation_energy_eV": 650.0,
+   "mass_fractions": {
+    "67": 1.0
+   }
+  },
+  {
+   "estar_id": 68,
+   "name": "ERBIUM",
+   "density_g_cm3": 9.066,
+   "mean_excitation_energy_eV": 658.0,
+   "mass_fractions": {
+    "68": 1.0
+   }
+  },
+  {
+   "estar_id": 69,
+   "name": "THULIUM",
+   "density_g_cm3": 9.321,
+   "mean_excitation_energy_eV": 674.0,
+   "mass_fractions": {
+    "69": 1.0
+   }
+  },
+  {
+   "estar_id": 70,
+   "name": "YTTERBIUM",
+   "density_g_cm3": 6.73,
+   "mean_excitation_energy_eV": 684.0,
+   "mass_fractions": {
+    "70": 1.0
+   }
+  },
+  {
+   "estar_id": 71,
+   "name": "LUTETIUM",
+   "density_g_cm3": 9.84,
+   "mean_excitation_energy_eV": 694.0,
+   "mass_fractions": {
+    "71": 1.0
+   }
+  },
+  {
+   "estar_id": 72,
+   "name": "HAFNIUM",
+   "density_g_cm3": 13.31,
+   "mean_excitation_energy_eV": 705.0,
+   "mass_fractions": {
+    "72": 1.0
+   }
+  },
+  {
+   "estar_id": 73,
+   "name": "TANTALUM",
+   "density_g_cm3": 16.654,
+   "mean_excitation_energy_eV": 718.0,
+   "mass_fractions": {
+    "73": 1.0
+   }
+  },
+  {
+   "estar_id": 74,
+   "name": "TUNGSTEN",
+   "density_g_cm3": 19.3,
+   "mean_excitation_energy_eV": 727.0,
+   "mass_fractions": {
+    "74": 1.0
+   }
+  },
+  {
+   "estar_id": 75,
+   "name": "RHENIUM",
+   "density_g_cm3": 21.02,
+   "mean_excitation_energy_eV": 736.0,
+   "mass_fractions": {
+    "75": 1.0
+   }
+  },
+  {
+   "estar_id": 76,
+   "name": "OSMIUM",
+   "density_g_cm3": 22.57,
+   "mean_excitation_energy_eV": 746.0,
+   "mass_fractions": {
+    "76": 1.0
+   }
+  },
+  {
+   "estar_id": 77,
+   "name": "IRIDIUM",
+   "density_g_cm3": 22.42,
+   "mean_excitation_energy_eV": 757.0,
+   "mass_fractions": {
+    "77": 1.0
+   }
+  },
+  {
+   "estar_id": 78,
+   "name": "PLATINUM",
+   "density_g_cm3": 21.45,
+   "mean_excitation_energy_eV": 790.0,
+   "mass_fractions": {
+    "78": 1.0
+   }
+  },
+  {
+   "estar_id": 79,
+   "name": "GOLD",
+   "density_g_cm3": 19.32,
+   "mean_excitation_energy_eV": 790.0,
+   "mass_fractions": {
+    "79": 1.0
+   }
+  },
+  {
+   "estar_id": 80,
+   "name": "MERCURY",
+   "density_g_cm3": 13.546,
+   "mean_excitation_energy_eV": 800.0,
+   "mass_fractions": {
+    "80": 1.0
+   }
+  },
+  {
+   "estar_id": 81,
+   "name": "THALLIUM",
+   "density_g_cm3": 11.72,
+   "mean_excitation_energy_eV": 810.0,
+   "mass_fractions": {
+    "81": 1.0
+   }
+  },
+  {
+   "estar_id": 82,
+   "name": "LEAD",
+   "density_g_cm3": 11.35,
+   "mean_excitation_energy_eV": 823.0,
+   "mass_fractions": {
+    "82": 1.0
+   }
+  },
+  {
+   "estar_id": 83,
+   "name": "BISMUTH",
+   "density_g_cm3": 9.747,
+   "mean_excitation_energy_eV": 823.0,
+   "mass_fractions": {
+    "83": 1.0
+   }
+  },
+  {
+   "estar_id": 84,
+   "name": "POLONIUM",
+   "density_g_cm3": 9.32,
+   "mean_excitation_energy_eV": 830.0,
+   "mass_fractions": {
+    "84": 1.0
+   }
+  },
+  {
+   "estar_id": 85,
+   "name": "ASTATINE",
+   "density_g_cm3": 9.32,
+   "mean_excitation_energy_eV": 825.0,
+   "mass_fractions": {
+    "85": 1.0
+   }
+  },
+  {
+   "estar_id": 86,
+   "name": "RADON",
+   "density_g_cm3": 0.00906618,
+   "mean_excitation_energy_eV": 794.0,
+   "mass_fractions": {
+    "86": 1.0
+   }
+  },
+  {
+   "estar_id": 87,
+   "name": "FRANCIUM",
+   "density_g_cm3": 1.0,
+   "mean_excitation_energy_eV": 827.0,
+   "mass_fractions": {
+    "87": 1.0
+   }
+  },
+  {
+   "estar_id": 88,
+   "name": "RADIUM",
+   "density_g_cm3": 5.0,
+   "mean_excitation_energy_eV": 826.0,
+   "mass_fractions": {
+    "88": 1.0
+   }
+  },
+  {
+   "estar_id": 89,
+   "name": "ACTINIUM",
+   "density_g_cm3": 10.07,
+   "mean_excitation_energy_eV": 841.0,
+   "mass_fractions": {
+    "89": 1.0
+   }
+  },
+  {
+   "estar_id": 90,
+   "name": "THORIUM",
+   "density_g_cm3": 11.72,
+   "mean_excitation_energy_eV": 847.0,
+   "mass_fractions": {
+    "90": 1.0
+   }
+  },
+  {
+   "estar_id": 91,
+   "name": "PROTACTINIUM",
+   "density_g_cm3": 15.37,
+   "mean_excitation_energy_eV": 878.0,
+   "mass_fractions": {
+    "91": 1.0
+   }
+  },
+  {
+   "estar_id": 92,
+   "name": "URANIUM",
+   "density_g_cm3": 18.95,
+   "mean_excitation_energy_eV": 890.0,
+   "mass_fractions": {
+    "92": 1.0
+   }
+  },
+  {
+   "estar_id": 93,
+   "name": "NEPTUNIUM",
+   "density_g_cm3": 20.25,
+   "mean_excitation_energy_eV": 902.0,
+   "mass_fractions": {
+    "93": 1.0
+   }
+  },
+  {
+   "estar_id": 94,
+   "name": "PLUTONIUM",
+   "density_g_cm3": 19.84,
+   "mean_excitation_energy_eV": 921.0,
+   "mass_fractions": {
+    "94": 1.0
+   }
+  },
+  {
+   "estar_id": 95,
+   "name": "AMERICIUM",
+   "density_g_cm3": 13.67,
+   "mean_excitation_energy_eV": 934.0,
+   "mass_fractions": {
+    "95": 1.0
+   }
+  },
+  {
+   "estar_id": 96,
+   "name": "CURIUM",
+   "density_g_cm3": 13.51,
+   "mean_excitation_energy_eV": 939.0,
+   "mass_fractions": {
+    "96": 1.0
+   }
+  },
+  {
+   "estar_id": 97,
+   "name": "BERKELIUM",
+   "density_g_cm3": 14.0,
+   "mean_excitation_energy_eV": 952.0,
+   "mass_fractions": {
+    "97": 1.0
+   }
+  },
+  {
+   "estar_id": 98,
+   "name": "CALIFORNIUM",
+   "density_g_cm3": 10.0,
+   "mean_excitation_energy_eV": 966.0,
+   "mass_fractions": {
+    "98": 1.0
+   }
+  },
+  {
+   "estar_id": 99,
+   "name": "A-150_TISSUE-EQUIVALENT_PLASTIC",
+   "density_g_cm3": 1.127,
+   "mean_excitation_energy_eV": 65.1,
+   "mass_fractions": {
+    "1": 0.101327,
+    "6": 0.775501,
+    "7": 0.035057,
+    "8": 0.052316,
+    "9": 0.017422,
+    "20": 0.018378
+   }
+  },
+  {
+   "estar_id": 100,
+   "name": "ACETONE",
+   "density_g_cm3": 0.7899,
+   "mean_excitation_energy_eV": 64.2,
+   "mass_fractions": {
+    "1": 0.104122,
+    "6": 0.620405,
+    "8": 0.275473
+   }
+  },
+  {
+   "estar_id": 101,
+   "name": "ACETYLENE",
+   "density_g_cm3": 0.0010967,
+   "mean_excitation_energy_eV": 58.2,
+   "mass_fractions": {
+    "1": 0.077418,
+    "6": 0.922582
+   }
+  },
+  {
+   "estar_id": 102,
+   "name": "ADENINE",
+   "density_g_cm3": 1.35,
+   "mean_excitation_energy_eV": 71.4,
+   "mass_fractions": {
+    "1": 0.037294,
+    "6": 0.44443,
+    "7": 0.518275
+   }
+  },
+  {
+   "estar_id": 103,
+   "name": "ADIPOSE_TISSUE_(ICRP)",
+   "density_g_cm3": 0.92,
+   "mean_excitation_energy_eV": 63.2,
+   "mass_fractions": {
+    "1": 0.119477,
+    "6": 0.63724,
+    "7": 0.00797,
+    "8": 0.232333,
+    "11": 0.0005,
+    "12": 2e-05,
+    "15": 0.00016,
+    "16": 0.00073,
+    "17": 0.00119,
+    "19": 0.00032,
+    "20": 2e-05,
+    "26": 2e-05,
+    "30": 2e-05
+   }
+  },
+  {
+   "estar_id": 104,
+   "name": "AIR,_DRY_(NEAR_SEA_LEVEL)",
+   "density_g_cm3": 0.00120479,
+   "mean_excitation_energy_eV": 85.7,
+   "mass_fractions": {
+    "6": 0.000124,
+    "7": 0.755267,
+    "8": 0.231781,
+    "18": 0.012827
+   }
+  },
+  {
+   "estar_id": 105,
+   "name": "ALANINE",
+   "density_g_cm3": 1.42,
+   "mean_excitation_energy_eV": 71.9,
+   "mass_fractions": {
+    "1": 0.07919,
+    "6": 0.404439,
+    "7": 0.157213,
+    "8": 0.359159
+   }
+  },
+  {
+   "estar_id": 106,
+   "name": "ALUMINUM_OXIDE",
+   "density_g_cm3": 3.97,
+   "mean_excitation_energy_eV": 145.2,
+   "mass_fractions": {
+    "8": 0.470749,
+    "13": 0.529251
+   }
+  },
+  {
+   "estar_id": 107,
+   "name": "AMBER",
+   "density_g_cm3": 1.1,
+   "mean_excitation_energy_eV": 63.2,
+   "mass_fractions": {
+    "1": 0.10593,
+    "6": 0.788973,
+    "8": 0.105096
+   }
+  },
+  {
+   "estar_id": 108,
+   "name": "AMMONIA",
+   "density_g_cm3": 0.000826019,
+   "mean_excitation_energy_eV": 53.7,
+   "mass_fractions": {
+    "1": 0.177547,
+    "7": 0.822453
+   }
+  },
+  {
+   "estar_id": 109,
+   "name": "ANILINE",
+   "density_g_cm3": 1.0235,
+   "mean_excitation_energy_eV": 66.2,
+   "mass_fractions": {
+    "1": 0.075759,
+    "6": 0.773838,
+    "7": 0.150403
+   }
+  },
+  {
+   "estar_id": 110,
+   "name": "ANTHRACENE",
+   "density_g_cm3": 1.283,
+   "mean_excitation_energy_eV": 69.5,
+   "mass_fractions": {
+    "1": 0.05655,
+    "6": 0.94345
+   }
+  },
+  {
+   "estar_id": 111,
+   "name": "B-100_BONE-EQUIVALENT_PLASTIC",
+   "density_g_cm3": 1.45,
+   "mean_excitation_energy_eV": 85.9,
+   "mass_fractions": {
+    "1": 0.065471,
+    "6": 0.536945,
+    "7": 0.0215,
+    "8": 0.032085,
+    "9": 0.167411,
+    "20": 0.176589
+   }
+  },
+  {
+   "estar_id": 112,
+   "name": "BAKELITE",
+   "density_g_cm3": 1.25,
+   "mean_excitation_energy_eV": 72.4,
+   "mass_fractions": {
+    "1": 0.057441,
+    "6": 0.774591,
+    "8": 0.167968
+   }
+  },
+  {
+   "estar_id": 113,
+   "name": "BARIUM_FLUORIDE",
+   "density_g_cm3": 4.89,
+   "mean_excitation_energy_eV": 375.9,
+   "mass_fractions": {
+    "9": 0.21672,
+    "56": 0.78328
+   }
+  },
+  {
+   "estar_id": 114,
+   "name": "BARIUM_SULFATE",
+   "density_g_cm3": 4.5,
+   "mean_excitation_energy_eV": 285.7,
+   "mass_fractions": {
+    "8": 0.274212,
+    "16": 0.137368,
+    "56": 0.58842
+   }
+  },
+  {
+   "estar_id": 115,
+   "name": "BENZENE",
+   "density_g_cm3": 0.87865,
+   "mean_excitation_energy_eV": 63.4,
+   "mass_fractions": {
+    "1": 0.077418,
+    "6": 0.922582
+   }
+  },
+  {
+   "estar_id": 116,
+   "name": "BERYLLIUM_OXIDE",
+   "density_g_cm3": 3.01,
+   "mean_excitation_energy_eV": 93.2,
+   "mass_fractions": {
+    "4": 0.36032,
+    "8": 0.63968
+   }
+  },
+  {
+   "estar_id": 117,
+   "name": "BISMUTH_GERMANIUM_OXIDE",
+   "density_g_cm3": 7.13,
+   "mean_excitation_energy_eV": 534.1,
+   "mass_fractions": {
+    "8": 0.154126,
+    "32": 0.17482,
+    "83": 0.671054
+   }
+  },
+  {
+   "estar_id": 118,
+   "name": "BLOOD_(ICRP)",
+   "density_g_cm3": 1.06,
+   "mean_excitation_energy_eV": 75.2,
+   "mass_fractions": {
+    "1": 0.101866,
+    "6": 0.10002,
+    "7": 0.02964,
+    "8": 0.759414,
+    "11": 0.00185,
+    "12": 4e-05,
+    "14": 3e-05,
+    "15": 0.00035,
+    "16": 0.00185,
+    "17": 0.00278,
+    "19": 0.00163,
+    "20": 6e-05,
+    "26": 0.00046,
+    "30": 1e-05
+   }
+  },
+  {
+   "estar_id": 119,
+   "name": "BONE,_COMPACT_(ICRU)",
+   "density_g_cm3": 1.85,
+   "mean_excitation_energy_eV": 91.9,
+   "mass_fractions": {
+    "1": 0.063984,
+    "6": 0.278,
+    "7": 0.027,
+    "8": 0.410016,
+    "12": 0.002,
+    "15": 0.07,
+    "16": 0.002,
+    "20": 0.147
+   }
+  },
+  {
+   "estar_id": 120,
+   "name": "BONE,_CORTICAL_(ICRP)",
+   "density_g_cm3": 1.85,
+   "mean_excitation_energy_eV": 106.4,
+   "mass_fractions": {
+    "1": 0.047234,
+    "6": 0.14433,
+    "7": 0.04199,
+    "8": 0.446096,
+    "12": 0.0022,
+    "15": 0.10497,
+    "16": 0.00315,
+    "20": 0.20993,
+    "30": 0.0001
+   }
+  },
+  {
+   "estar_id": 121,
+   "name": "BORON_CARBIDE",
+   "density_g_cm3": 2.52,
+   "mean_excitation_energy_eV": 84.7,
+   "mass_fractions": {
+    "5": 0.78261,
+    "6": 0.21739
+   }
+  },
+  {
+   "estar_id": 122,
+   "name": "BORON_OXIDE",
+   "density_g_cm3": 1.812,
+   "mean_excitation_energy_eV": 99.6,
+   "mass_fractions": {
+    "5": 0.310551,
+    "8": 0.689449
+   }
+  },
+  {
+   "estar_id": 123,
+   "name": "BRAIN_(ICRP)",
+   "density_g_cm3": 1.03,
+   "mean_excitation_energy_eV": 73.3,
+   "mass_fractions": {
+    "1": 0.110667,
+    "6": 0.12542,
+    "7": 0.01328,
+    "8": 0.737723,
+    "11": 0.00184,
+    "12": 0.00015,
+    "15": 0.00354,
+    "16": 0.00177,
+    "17": 0.00236,
+    "19": 0.0031,
+    "20": 9e-05,
+    "26": 5e-05,
+    "30": 1e-05
+   }
+  },
+  {
+   "estar_id": 124,
+   "name": "BUTANE",
+   "density_g_cm3": 0.00249343,
+   "mean_excitation_energy_eV": 48.3,
+   "mass_fractions": {
+    "1": 0.173408,
+    "6": 0.826592
+   }
+  },
+  {
+   "estar_id": 125,
+   "name": "N-BUTYL_ALCOHOL",
+   "density_g_cm3": 0.8098,
+   "mean_excitation_energy_eV": 59.9,
+   "mass_fractions": {
+    "1": 0.135978,
+    "6": 0.648171,
+    "8": 0.215851
+   }
+  },
+  {
+   "estar_id": 126,
+   "name": "C-552_AIR-EQUIVALENT_PLASTIC",
+   "density_g_cm3": 1.76,
+   "mean_excitation_energy_eV": 86.8,
+   "mass_fractions": {
+    "1": 0.02468,
+    "6": 0.50161,
+    "8": 0.004527,
+    "9": 0.465209,
+    "14": 0.003973
+   }
+  },
+  {
+   "estar_id": 127,
+   "name": "CADMIUM_TELLURIDE",
+   "density_g_cm3": 6.2,
+   "mean_excitation_energy_eV": 539.3,
+   "mass_fractions": {
+    "48": 0.468355,
+    "52": 0.531645
+   }
+  },
+  {
+   "estar_id": 128,
+   "name": "CADMIUM_TUNGSTATE",
+   "density_g_cm3": 7.9,
+   "mean_excitation_energy_eV": 468.3,
+   "mass_fractions": {
+    "8": 0.177644,
+    "48": 0.312027,
+    "74": 0.510329
+   }
+  },
+  {
+   "estar_id": 129,
+   "name": "CALCIUM_CARBONATE",
+   "density_g_cm3": 2.8,
+   "mean_excitation_energy_eV": 136.4,
+   "mass_fractions": {
+    "6": 0.120003,
+    "8": 0.479554,
+    "20": 0.400443
+   }
+  },
+  {
+   "estar_id": 130,
+   "name": "CALCIUM_FLUORIDE",
+   "density_g_cm3": 3.18,
+   "mean_excitation_energy_eV": 166.0,
+   "mass_fractions": {
+    "9": 0.486659,
+    "20": 0.513341
+   }
+  },
+  {
+   "estar_id": 131,
+   "name": "CALCIUM_OXIDE",
+   "density_g_cm3": 3.3,
+   "mean_excitation_energy_eV": 176.1,
+   "mass_fractions": {
+    "8": 0.285299,
+    "20": 0.714701
+   }
+  },
+  {
+   "estar_id": 132,
+   "name": "CALCIUM_SULFATE",
+   "density_g_cm3": 2.96,
+   "mean_excitation_energy_eV": 152.3,
+   "mass_fractions": {
+    "8": 0.470095,
+    "16": 0.235497,
+    "20": 0.294408
+   }
+  },
+  {
+   "estar_id": 133,
+   "name": "CALCIUM_TUNGSTATE",
+   "density_g_cm3": 6.062,
+   "mean_excitation_energy_eV": 395.0,
+   "mass_fractions": {
+    "8": 0.22227,
+    "20": 0.139202,
+    "74": 0.638529
+   }
+  },
+  {
+   "estar_id": 134,
+   "name": "CARBON_DIOXIDE",
+   "density_g_cm3": 0.00184212,
+   "mean_excitation_energy_eV": 85.0,
+   "mass_fractions": {
+    "6": 0.272916,
+    "8": 0.727084
+   }
+  },
+  {
+   "estar_id": 135,
+   "name": "CARBON_TETRACHLORIDE",
+   "density_g_cm3": 1.594,
+   "mean_excitation_energy_eV": 166.3,
+   "mass_fractions": {
+    "6": 0.078083,
+    "17": 0.921917
+   }
+  },
+  {
+   "estar_id": 136,
+   "name": "CELLULOSE_ACETATE,_CELLOPHANE",
+   "density_g_cm3": 1.42,
+   "mean_excitation_energy_eV": 77.6,
+   "mass_fractions": {
+    "1": 0.062162,
+    "6": 0.444462,
+    "8": 0.493376
+   }
+  },
+  {
+   "estar_id": 137,
+   "name": "CELLULOSE_ACETATE_BUTYRATE",
+   "density_g_cm3": 1.2,
+   "mean_excitation_energy_eV": 74.6,
+   "mass_fractions": {
+    "1": 0.067125,
+    "6": 0.545403,
+    "8": 0.387472
+   }
+  },
+  {
+   "estar_id": 138,
+   "name": "CELLULOSE_NITRATE",
+   "density_g_cm3": 1.49,
+   "mean_excitation_energy_eV": 87.0,
+   "mass_fractions": {
+    "1": 0.029216,
+    "6": 0.271296,
+    "7": 0.121276,
+    "8": 0.578212
+   }
+  },
+  {
+   "estar_id": 139,
+   "name": "CERIC_SULFATE_DOSIMETER_SOLUTION",
+   "density_g_cm3": 1.03,
+   "mean_excitation_energy_eV": 76.7,
+   "mass_fractions": {
+    "1": 0.107596,
+    "7": 0.0008,
+    "8": 0.874976,
+    "16": 0.014627,
+    "58": 0.002001
+   }
+  },
+  {
+   "estar_id": 140,
+   "name": "CESIUM_FLUORIDE",
+   "density_g_cm3": 4.115,
+   "mean_excitation_energy_eV": 440.7,
+   "mass_fractions": {
+    "9": 0.125069,
+    "55": 0.874931
+   }
+  },
+  {
+   "estar_id": 141,
+   "name": "CESIUM_IODIDE",
+   "density_g_cm3": 4.51,
+   "mean_excitation_energy_eV": 553.1,
+   "mass_fractions": {
+    "53": 0.488451,
+    "55": 0.511549
+   }
+  },
+  {
+   "estar_id": 142,
+   "name": "CHLOROBENZENE",
+   "density_g_cm3": 1.1058,
+   "mean_excitation_energy_eV": 89.1,
+   "mass_fractions": {
+    "1": 0.044772,
+    "6": 0.640254,
+    "17": 0.314974
+   }
+  },
+  {
+   "estar_id": 143,
+   "name": "CHLOROFORM",
+   "density_g_cm3": 1.4832,
+   "mean_excitation_energy_eV": 156.0,
+   "mass_fractions": {
+    "1": 0.008443,
+    "6": 0.100613,
+    "17": 0.890944
+   }
+  },
+  {
+   "estar_id": 144,
+   "name": "CONCRETE,_PORTLAND",
+   "density_g_cm3": 2.3,
+   "mean_excitation_energy_eV": 135.2,
+   "mass_fractions": {
+    "1": 0.01,
+    "6": 0.001,
+    "8": 0.529107,
+    "11": 0.016,
+    "12": 0.002,
+    "13": 0.033872,
+    "14": 0.337021,
+    "19": 0.013,
+    "20": 0.044,
+    "26": 0.014
+   }
+  },
+  {
+   "estar_id": 145,
+   "name": "CYCLOHEXANE",
+   "density_g_cm3": 0.779,
+   "mean_excitation_energy_eV": 56.4,
+   "mass_fractions": {
+    "1": 0.143711,
+    "6": 0.856289
+   }
+  },
+  {
+   "estar_id": 146,
+   "name": "1,2-DICHLOROBENZENE",
+   "density_g_cm3": 1.3048,
+   "mean_excitation_energy_eV": 106.5,
+   "mass_fractions": {
+    "1": 0.027425,
+    "6": 0.490233,
+    "17": 0.482342
+   }
+  },
+  {
+   "estar_id": 147,
+   "name": "DICHLORODIETHYL_ETHER",
+   "density_g_cm3": 1.2199,
+   "mean_excitation_energy_eV": 103.3,
+   "mass_fractions": {
+    "1": 0.056381,
+    "6": 0.335942,
+    "8": 0.111874,
+    "17": 0.495802
+   }
+  },
+  {
+   "estar_id": 148,
+   "name": "1,2-DICHLOROETHANE",
+   "density_g_cm3": 1.2351,
+   "mean_excitation_energy_eV": 111.9,
+   "mass_fractions": {
+    "1": 0.04074,
+    "6": 0.242746,
+    "17": 0.716515
+   }
+  },
+  {
+   "estar_id": 149,
+   "name": "DIETHYL_ETHER",
+   "density_g_cm3": 0.71378,
+   "mean_excitation_energy_eV": 60.0,
+   "mass_fractions": {
+    "1": 0.135978,
+    "6": 0.648171,
+    "8": 0.215851
+   }
+  },
+  {
+   "estar_id": 150,
+   "name": "N,N-DIMETHYL_FORMAMIDE",
+   "density_g_cm3": 0.9487,
+   "mean_excitation_energy_eV": 66.6,
+   "mass_fractions": {
+    "1": 0.096523,
+    "6": 0.492965,
+    "7": 0.191625,
+    "8": 0.218887
+   }
+  },
+  {
+   "estar_id": 151,
+   "name": "DIMETHYL_SULFOXIDE",
+   "density_g_cm3": 1.1014,
+   "mean_excitation_energy_eV": 98.6,
+   "mass_fractions": {
+    "1": 0.077403,
+    "6": 0.307467,
+    "8": 0.204782,
+    "16": 0.410348
+   }
+  },
+  {
+   "estar_id": 152,
+   "name": "ETHANE",
+   "density_g_cm3": 0.00125324,
+   "mean_excitation_energy_eV": 45.4,
+   "mass_fractions": {
+    "1": 0.201115,
+    "6": 0.798885
+   }
+  },
+  {
+   "estar_id": 153,
+   "name": "ETHYL_ALCOHOL",
+   "density_g_cm3": 0.7893,
+   "mean_excitation_energy_eV": 62.9,
+   "mass_fractions": {
+    "1": 0.131269,
+    "6": 0.521438,
+    "8": 0.347294
+   }
+  },
+  {
+   "estar_id": 154,
+   "name": "ETHYL_CELLULOSE",
+   "density_g_cm3": 1.13,
+   "mean_excitation_energy_eV": 69.3,
+   "mass_fractions": {
+    "1": 0.090027,
+    "6": 0.585182,
+    "8": 0.324791
+   }
+  },
+  {
+   "estar_id": 155,
+   "name": "ETHYLENE",
+   "density_g_cm3": 0.00117497,
+   "mean_excitation_energy_eV": 50.7,
+   "mass_fractions": {
+    "1": 0.143711,
+    "6": 0.856289
+   }
+  },
+  {
+   "estar_id": 156,
+   "name": "EYE_LENS_(ICRP)",
+   "density_g_cm3": 1.1,
+   "mean_excitation_energy_eV": 73.3,
+   "mass_fractions": {
+    "1": 0.099269,
+    "6": 0.19371,
+    "7": 0.05327,
+    "8": 0.653751
+   }
+  },
+  {
+   "estar_id": 157,
+   "name": "FERRIC_OXIDE",
+   "density_g_cm3": 5.2,
+   "mean_excitation_energy_eV": 227.3,
+   "mass_fractions": {
+    "8": 0.300567,
+    "26": 0.699433
+   }
+  },
+  {
+   "estar_id": 158,
+   "name": "FERROBORIDE",
+   "density_g_cm3": 7.15,
+   "mean_excitation_energy_eV": 261.0,
+   "mass_fractions": {
+    "5": 0.162174,
+    "26": 0.837826
+   }
+  },
+  {
+   "estar_id": 159,
+   "name": "FERROUS_OXIDE",
+   "density_g_cm3": 5.7,
+   "mean_excitation_energy_eV": 248.6,
+   "mass_fractions": {
+    "8": 0.222689,
+    "26": 0.777311
+   }
+  },
+  {
+   "estar_id": 160,
+   "name": "FERROUS_SULFATE_DOSIMETER_SOLUTION",
+   "density_g_cm3": 1.024,
+   "mean_excitation_energy_eV": 76.4,
+   "mass_fractions": {
+    "1": 0.108259,
+    "7": 2.7e-05,
+    "8": 0.878636,
+    "11": 2.2e-05,
+    "16": 0.012968,
+    "17": 3.4e-05,
+    "26": 5.4e-05
+   }
+  },
+  {
+   "estar_id": 161,
+   "name": "FREON-12",
+   "density_g_cm3": 1.12,
+   "mean_excitation_energy_eV": 143.0,
+   "mass_fractions": {
+    "6": 0.099335,
+    "9": 0.314247,
+    "17": 0.586418
+   }
+  },
+  {
+   "estar_id": 162,
+   "name": "FREON-12B2",
+   "density_g_cm3": 1.8,
+   "mean_excitation_energy_eV": 284.9,
+   "mass_fractions": {
+    "6": 0.057245,
+    "9": 0.181096,
+    "35": 0.761659
+   }
+  },
+  {
+   "estar_id": 163,
+   "name": "FREON-13",
+   "density_g_cm3": 0.95,
+   "mean_excitation_energy_eV": 126.6,
+   "mass_fractions": {
+    "6": 0.114983,
+    "9": 0.545622,
+    "17": 0.339396
+   }
+  },
+  {
+   "estar_id": 164,
+   "name": "FREON-13B1",
+   "density_g_cm3": 1.5,
+   "mean_excitation_energy_eV": 210.5,
+   "mass_fractions": {
+    "6": 0.080659,
+    "9": 0.382749,
+    "35": 0.536592
+   }
+  },
+  {
+   "estar_id": 165,
+   "name": "FREON-13I1",
+   "density_g_cm3": 1.8,
+   "mean_excitation_energy_eV": 293.5,
+   "mass_fractions": {
+    "6": 0.061309,
+    "9": 0.290924,
+    "53": 0.647767
+   }
+  },
+  {
+   "estar_id": 166,
+   "name": "GADOLINIUM_OXYSULFIDE",
+   "density_g_cm3": 7.44,
+   "mean_excitation_energy_eV": 493.3,
+   "mass_fractions": {
+    "8": 0.084528,
+    "16": 0.08469,
+    "64": 0.830782
+   }
+  },
+  {
+   "estar_id": 167,
+   "name": "GALLIUM_ARSENIDE",
+   "density_g_cm3": 5.31,
+   "mean_excitation_energy_eV": 384.9,
+   "mass_fractions": {
+    "31": 0.482019,
+    "33": 0.517981
+   }
+  },
+  {
+   "estar_id": 168,
+   "name": "GEL_IN_PHOTOGRAPHIC_EMULSION",
+   "density_g_cm3": 1.2914,
+   "mean_excitation_energy_eV": 74.8,
+   "mass_fractions": {
+    "1": 0.08118,
+    "6": 0.41606,
+    "7": 0.11124,
+    "8": 0.38064,
+    "16": 0.01088
+   }
+  },
+  {
+   "estar_id": 169,
+   "name": "Pyrex_Glass",
+   "density_g_cm3": 2.23,
+   "mean_excitation_energy_eV": 134.0,
+   "mass_fractions": {
+    "5": 0.040064,
+    "8": 0.539562,
+    "11": 0.028191,
+    "13": 0.011644,
+    "14": 0.37722,
+    "19": 0.003321
+   }
+  },
+  {
+   "estar_id": 170,
+   "name": "GLASS,_LEAD",
+   "density_g_cm3": 6.22,
+   "mean_excitation_energy_eV": 526.4,
+   "mass_fractions": {
+    "8": 0.156453,
+    "14": 0.080866,
+    "22": 0.008092,
+    "33": 0.002651,
+    "82": 0.751938
+   }
+  },
+  {
+   "estar_id": 171,
+   "name": "GLASS,_PLATE",
+   "density_g_cm3": 2.4,
+   "mean_excitation_energy_eV": 145.4,
+   "mass_fractions": {
+    "8": 0.4598,
+    "11": 0.096441,
+    "14": 0.336553,
+    "20": 0.107205
+   }
+  },
+  {
+   "estar_id": 172,
+   "name": "GLUCOSE",
+   "density_g_cm3": 1.54,
+   "mean_excitation_energy_eV": 77.2,
+   "mass_fractions": {
+    "1": 0.071204,
+    "6": 0.363652,
+    "8": 0.565144
+   }
+  },
+  {
+   "estar_id": 173,
+   "name": "GLUTAMINE",
+   "density_g_cm3": 1.46,
+   "mean_excitation_energy_eV": 73.3,
+   "mass_fractions": {
+    "1": 0.068965,
+    "6": 0.410926,
+    "7": 0.191681,
+    "8": 0.328427
+   }
+  },
+  {
+   "estar_id": 174,
+   "name": "GLYCEROL",
+   "density_g_cm3": 1.2613,
+   "mean_excitation_energy_eV": 72.6,
+   "mass_fractions": {
+    "1": 0.087554,
+    "6": 0.391262,
+    "8": 0.521185
+   }
+  },
+  {
+   "estar_id": 175,
+   "name": "GUANINE",
+   "density_g_cm3": 1.58,
+   "mean_excitation_energy_eV": 75.0,
+   "mass_fractions": {
+    "1": 0.033346,
+    "6": 0.39738,
+    "7": 0.463407,
+    "8": 0.105867
+   }
+  },
+  {
+   "estar_id": 176,
+   "name": "GYPSUM,_PLASTER_OF_PARIS",
+   "density_g_cm3": 2.32,
+   "mean_excitation_energy_eV": 129.7,
+   "mass_fractions": {
+    "1": 0.023416,
+    "8": 0.557572,
+    "16": 0.186215,
+    "20": 0.232797
+   }
+  },
+  {
+   "estar_id": 177,
+   "name": "N-HEPTANE",
+   "density_g_cm3": 0.68376,
+   "mean_excitation_energy_eV": 54.4,
+   "mass_fractions": {
+    "1": 0.160937,
+    "6": 0.839063
+   }
+  },
+  {
+   "estar_id": 178,
+   "name": "N-HEXANE",
+   "density_g_cm3": 0.6603,
+   "mean_excitation_energy_eV": 54.0,
+   "mass_fractions": {
+    "1": 0.163741,
+    "6": 0.836259
+   }
+  },
+  {
+   "estar_id": 179,
+   "name": "KAPTON_POLYIMIDE_FILM",
+   "density_g_cm3": 1.42,
+   "mean_excitation_energy_eV": 79.6,
+   "mass_fractions": {
+    "1": 0.026362,
+    "6": 0.691133,
+    "7": 0.07327,
+    "8": 0.209235
+   }
+  },
+  {
+   "estar_id": 180,
+   "name": "LANTHANUM_OXYBROMIDE",
+   "density_g_cm3": 6.28,
+   "mean_excitation_energy_eV": 439.7,
+   "mass_fractions": {
+    "8": 0.068138,
+    "35": 0.340294,
+    "57": 0.591568
+   }
+  },
+  {
+   "estar_id": 181,
+   "name": "LANTHANUM_OXYSULFIDE",
+   "density_g_cm3": 5.86,
+   "mean_excitation_energy_eV": 421.2,
+   "mass_fractions": {
+    "8": 0.0936,
+    "16": 0.093778,
+    "57": 0.812622
+   }
+  },
+  {
+   "estar_id": 182,
+   "name": "LEAD_OXIDE",
+   "density_g_cm3": 9.53,
+   "mean_excitation_energy_eV": 766.7,
+   "mass_fractions": {
+    "8": 0.071682,
+    "82": 0.928318
+   }
+  },
+  {
+   "estar_id": 183,
+   "name": "LITHIUM_AMIDE",
+   "density_g_cm3": 1.178,
+   "mean_excitation_energy_eV": 55.5,
+   "mass_fractions": {
+    "1": 0.087783,
+    "3": 0.302262,
+    "7": 0.609955
+   }
+  },
+  {
+   "estar_id": 184,
+   "name": "LITHIUM_CARBONATE",
+   "density_g_cm3": 2.11,
+   "mean_excitation_energy_eV": 87.9,
+   "mass_fractions": {
+    "3": 0.187871,
+    "6": 0.16255,
+    "8": 0.649579
+   }
+  },
+  {
+   "estar_id": 185,
+   "name": "LITHIUM_FLUORIDE",
+   "density_g_cm3": 2.635,
+   "mean_excitation_energy_eV": 94.0,
+   "mass_fractions": {
+    "3": 0.267585,
+    "9": 0.732415
+   }
+  },
+  {
+   "estar_id": 186,
+   "name": "LITHIUM_HYDRIDE",
+   "density_g_cm3": 0.82,
+   "mean_excitation_energy_eV": 36.5,
+   "mass_fractions": {
+    "1": 0.126797,
+    "3": 0.873203
+   }
+  },
+  {
+   "estar_id": 187,
+   "name": "LITHIUM_IODIDE",
+   "density_g_cm3": 3.494,
+   "mean_excitation_energy_eV": 485.1,
+   "mass_fractions": {
+    "3": 0.051858,
+    "53": 0.948142
+   }
+  },
+  {
+   "estar_id": 188,
+   "name": "LITHIUM_OXIDE",
+   "density_g_cm3": 2.013,
+   "mean_excitation_energy_eV": 73.6,
+   "mass_fractions": {
+    "3": 0.46457,
+    "8": 0.53543
+   }
+  },
+  {
+   "estar_id": 189,
+   "name": "LITHIUM_TETRABORATE",
+   "density_g_cm3": 2.44,
+   "mean_excitation_energy_eV": 94.6,
+   "mass_fractions": {
+    "3": 0.082085,
+    "5": 0.25568,
+    "8": 0.662235
+   }
+  },
+  {
+   "estar_id": 190,
+   "name": "LUNG_(ICRP)",
+   "density_g_cm3": 1.05,
+   "mean_excitation_energy_eV": 75.3,
+   "mass_fractions": {
+    "1": 0.101278,
+    "6": 0.10231,
+    "7": 0.02865,
+    "8": 0.757072,
+    "11": 0.00184,
+    "12": 0.00073,
+    "15": 0.0008,
+    "16": 0.00225,
+    "17": 0.00266,
+    "19": 0.00194,
+    "20": 9e-05,
+    "26": 0.00037,
+    "30": 1e-05
+   }
+  },
+  {
+   "estar_id": 191,
+   "name": "M3_WAX",
+   "density_g_cm3": 1.05,
+   "mean_excitation_energy_eV": 67.9,
+   "mass_fractions": {
+    "1": 0.114318,
+    "6": 0.655823,
+    "8": 0.092183,
+    "12": 0.134792,
+    "20": 0.002883
+   }
+  },
+  {
+   "estar_id": 192,
+   "name": "MAGNESIUM_CARBONATE",
+   "density_g_cm3": 2.958,
+   "mean_excitation_energy_eV": 118.0,
+   "mass_fractions": {
+    "6": 0.142455,
+    "8": 0.569278,
+    "12": 0.288267
+   }
+  },
+  {
+   "estar_id": 193,
+   "name": "MAGNESIUM_FLUORIDE",
+   "density_g_cm3": 3.0,
+   "mean_excitation_energy_eV": 134.3,
+   "mass_fractions": {
+    "9": 0.609883,
+    "12": 0.390117
+   }
+  },
+  {
+   "estar_id": 194,
+   "name": "MAGNESIUM_OXIDE",
+   "density_g_cm3": 3.58,
+   "mean_excitation_energy_eV": 143.8,
+   "mass_fractions": {
+    "8": 0.396964,
+    "12": 0.603036
+   }
+  },
+  {
+   "estar_id": 195,
+   "name": "MAGNESIUM_TETRABORATE",
+   "density_g_cm3": 2.53,
+   "mean_excitation_energy_eV": 108.3,
+   "mass_fractions": {
+    "5": 0.240837,
+    "8": 0.62379,
+    "12": 0.135373
+   }
+  },
+  {
+   "estar_id": 196,
+   "name": "MERCURIC_IODIDE",
+   "density_g_cm3": 6.36,
+   "mean_excitation_energy_eV": 684.5,
+   "mass_fractions": {
+    "53": 0.55856,
+    "80": 0.44144
+   }
+  },
+  {
+   "estar_id": 197,
+   "name": "METHANE",
+   "density_g_cm3": 0.000667151,
+   "mean_excitation_energy_eV": 41.7,
+   "mass_fractions": {
+    "1": 0.251306,
+    "6": 0.748694
+   }
+  },
+  {
+   "estar_id": 198,
+   "name": "METHANOL",
+   "density_g_cm3": 0.7914,
+   "mean_excitation_energy_eV": 67.6,
+   "mass_fractions": {
+    "1": 0.125822,
+    "6": 0.374852,
+    "8": 0.499326
+   }
+  },
+  {
+   "estar_id": 199,
+   "name": "MIX_D_WAX",
+   "density_g_cm3": 0.99,
+   "mean_excitation_energy_eV": 60.9,
+   "mass_fractions": {
+    "1": 0.13404,
+    "6": 0.77796,
+    "8": 0.03502,
+    "12": 0.038594,
+    "22": 0.014386
+   }
+  },
+  {
+   "estar_id": 200,
+   "name": "MS20_TISSUE_SUBSTITUTE",
+   "density_g_cm3": 1.0,
+   "mean_excitation_energy_eV": 75.1,
+   "mass_fractions": {
+    "1": 0.081192,
+    "6": 0.583442,
+    "7": 0.017798,
+    "8": 0.186381,
+    "12": 0.130287,
+    "17": 0.0009
+   }
+  },
+  {
+   "estar_id": 201,
+   "name": "MUSCLE,_SKELETAL_(ICRP)",
+   "density_g_cm3": 1.04,
+   "mean_excitation_energy_eV": 75.3,
+   "mass_fractions": {
+    "1": 0.100637,
+    "6": 0.10783,
+    "7": 0.02768,
+    "8": 0.754773,
+    "11": 0.00075,
+    "12": 0.00019,
+    "15": 0.0018,
+    "16": 0.00241,
+    "17": 0.00079,
+    "19": 0.00302,
+    "20": 3e-05,
+    "26": 4e-05,
+    "30": 5e-05
+   }
+  },
+  {
+   "estar_id": 202,
+   "name": "MUSCLE,_STRIATED_(ICRU)",
+   "density_g_cm3": 1.04,
+   "mean_excitation_energy_eV": 74.7,
+   "mass_fractions": {
+    "1": 0.101997,
+    "6": 0.123,
+    "7": 0.035,
+    "8": 0.729003,
+    "11": 0.0008,
+    "12": 0.0002,
+    "15": 0.002,
+    "16": 0.005,
+    "19": 0.003
+   }
+  },
+  {
+   "estar_id": 203,
+   "name": "MUSCLE-EQUIVALENT_LIQUID,_WITH_SUCROSE",
+   "density_g_cm3": 1.11,
+   "mean_excitation_energy_eV": 74.3,
+   "mass_fractions": {
+    "1": 0.098234,
+    "6": 0.156214,
+    "7": 0.035451,
+    "8": 0.7101
+   }
+  },
+  {
+   "estar_id": 204,
+   "name": "MUSCLE-EQUIVALENT_LIQUID,_WITHOUT_SUCROSE",
+   "density_g_cm3": 1.07,
+   "mean_excitation_energy_eV": 74.2,
+   "mass_fractions": {
+    "1": 0.101969,
+    "6": 0.120058,
+    "7": 0.035451,
+    "8": 0.742522
+   }
+  },
+  {
+   "estar_id": 205,
+   "name": "NAPHTHALENE",
+   "density_g_cm3": 1.145,
+   "mean_excitation_energy_eV": 68.4,
+   "mass_fractions": {
+    "1": 0.062909,
+    "6": 0.937091
+   }
+  },
+  {
+   "estar_id": 206,
+   "name": "NITROBENZENE",
+   "density_g_cm3": 1.19867,
+   "mean_excitation_energy_eV": 75.8,
+   "mass_fractions": {
+    "1": 0.040935,
+    "6": 0.585374,
+    "7": 0.113773,
+    "8": 0.259918
+   }
+  },
+  {
+   "estar_id": 207,
+   "name": "NITROUS_OXIDE",
+   "density_g_cm3": 0.00183094,
+   "mean_excitation_energy_eV": 84.9,
+   "mass_fractions": {
+    "7": 0.636483,
+    "8": 0.363517
+   }
+  },
+  {
+   "estar_id": 208,
+   "name": "NYLON,_DU_PONT_ELVAMIDE_8062",
+   "density_g_cm3": 1.08,
+   "mean_excitation_energy_eV": 64.3,
+   "mass_fractions": {
+    "1": 0.103509,
+    "6": 0.648415,
+    "7": 0.099536,
+    "8": 0.148539
+   }
+  },
+  {
+   "estar_id": 209,
+   "name": "NYLON,_TYPE_6_AND_TYPE_6/6",
+   "density_g_cm3": 1.14,
+   "mean_excitation_energy_eV": 63.9,
+   "mass_fractions": {
+    "1": 0.097976,
+    "6": 0.636856,
+    "7": 0.123779,
+    "8": 0.141389
+   }
+  },
+  {
+   "estar_id": 210,
+   "name": "NYLON,_TYPE_6/10",
+   "density_g_cm3": 1.14,
+   "mean_excitation_energy_eV": 63.2,
+   "mass_fractions": {
+    "1": 0.107062,
+    "6": 0.680449,
+    "7": 0.099189,
+    "8": 0.1133
+   }
+  },
+  {
+   "estar_id": 211,
+   "name": "NYLON,_TYPE_11_(RILSAN)",
+   "density_g_cm3": 1.425,
+   "mean_excitation_energy_eV": 61.6,
+   "mass_fractions": {
+    "1": 0.115476,
+    "6": 0.720819,
+    "7": 0.076417,
+    "8": 0.087289
+   }
+  },
+  {
+   "estar_id": 212,
+   "name": "OCTANE,_LIQUID",
+   "density_g_cm3": 0.7026,
+   "mean_excitation_energy_eV": 54.7,
+   "mass_fractions": {
+    "1": 0.158821,
+    "6": 0.841179
+   }
+  },
+  {
+   "estar_id": 213,
+   "name": "PARAFFIN_WAX",
+   "density_g_cm3": 0.93,
+   "mean_excitation_energy_eV": 55.9,
+   "mass_fractions": {
+    "1": 0.148605,
+    "6": 0.851395
+   }
+  },
+  {
+   "estar_id": 214,
+   "name": "N-PENTANE",
+   "density_g_cm3": 0.6262,
+   "mean_excitation_energy_eV": 53.6,
+   "mass_fractions": {
+    "1": 0.167635,
+    "6": 0.832365
+   }
+  },
+  {
+   "estar_id": 215,
+   "name": "PHOTOGRAPHIC_EMULSION",
+   "density_g_cm3": 3.815,
+   "mean_excitation_energy_eV": 331.0,
+   "mass_fractions": {
+    "1": 0.0141,
+    "6": 0.072261,
+    "7": 0.01932,
+    "8": 0.066101,
+    "16": 0.00189,
+    "35": 0.349103,
+    "47": 0.474105,
+    "53": 0.00312
+   }
+  },
+  {
+   "estar_id": 216,
+   "name": "PLASTIC_SCINTILLATOR_(VINYLTOLUENE_BASED)",
+   "density_g_cm3": 1.032,
+   "mean_excitation_energy_eV": 64.7,
+   "mass_fractions": {
+    "1": 0.085,
+    "6": 0.915
+   }
+  },
+  {
+   "estar_id": 217,
+   "name": "PLUTONIUM_DIOXIDE",
+   "density_g_cm3": 11.46,
+   "mean_excitation_energy_eV": 746.5,
+   "mass_fractions": {
+    "8": 0.118055,
+    "94": 0.881945
+   }
+  },
+  {
+   "estar_id": 218,
+   "name": "POLYACRYLONITRILE",
+   "density_g_cm3": 1.17,
+   "mean_excitation_energy_eV": 69.6,
+   "mass_fractions": {
+    "1": 0.056983,
+    "6": 0.679056,
+    "7": 0.263962
+   }
+  },
+  {
+   "estar_id": 219,
+   "name": "POLYCARBONATE_(MAKROLON,_LEXAN)",
+   "density_g_cm3": 1.2,
+   "mean_excitation_energy_eV": 73.1,
+   "mass_fractions": {
+    "1": 0.055491,
+    "6": 0.755751,
+    "8": 0.188758
+   }
+  },
+  {
+   "estar_id": 220,
+   "name": "POLYCHLOROSTYRENE",
+   "density_g_cm3": 1.3,
+   "mean_excitation_energy_eV": 81.7,
+   "mass_fractions": {
+    "1": 0.061869,
+    "6": 0.696325,
+    "17": 0.241806
+   }
+  },
+  {
+   "estar_id": 221,
+   "name": "POLYETHYLENE",
+   "density_g_cm3": 0.94,
+   "mean_excitation_energy_eV": 57.4,
+   "mass_fractions": {
+    "1": 0.143711,
+    "6": 0.856289
+   }
+  },
+  {
+   "estar_id": 222,
+   "name": "POLYETHYLENE_TEREPHTHALATE_(MYLAR)",
+   "density_g_cm3": 1.4,
+   "mean_excitation_energy_eV": 78.7,
+   "mass_fractions": {
+    "1": 0.041959,
+    "6": 0.625017,
+    "8": 0.333025
+   }
+  },
+  {
+   "estar_id": 223,
+   "name": "POLYMETHYL_METHACRALATE_(LUCITE,_PERSPEX,_PLEXIGLASS)",
+   "density_g_cm3": 1.19,
+   "mean_excitation_energy_eV": 74.0,
+   "mass_fractions": {
+    "1": 0.080538,
+    "6": 0.599848,
+    "8": 0.319614
+   }
+  },
+  {
+   "estar_id": 224,
+   "name": "POLYOXYMETHYLENE",
+   "density_g_cm3": 1.425,
+   "mean_excitation_energy_eV": 77.4,
+   "mass_fractions": {
+    "1": 0.067135,
+    "6": 0.400017,
+    "8": 0.532848
+   }
+  },
+  {
+   "estar_id": 225,
+   "name": "POLYPROPYLENE",
+   "density_g_cm3": 0.9,
+   "mean_excitation_energy_eV": 56.5,
+   "mass_fractions": {
+    "1": 0.143711,
+    "6": 0.856289
+   }
+  },
+  {
+   "estar_id": 226,
+   "name": "POLYSTYRENE",
+   "density_g_cm3": 1.06,
+   "mean_excitation_energy_eV": 68.7,
+   "mass_fractions": {
+    "1": 0.077418,
+    "6": 0.922582
+   }
+  },
+  {
+   "estar_id": 227,
+   "name": "POLYTETRAFLUOROETHYLENE_(TEFLON)",
+   "density_g_cm3": 2.2,
+   "mean_excitation_energy_eV": 99.1,
+   "mass_fractions": {
+    "6": 0.240183,
+    "9": 0.759817
+   }
+  },
+  {
+   "estar_id": 228,
+   "name": "POLYTRIFLUOROCHLOROETHYLENE",
+   "density_g_cm3": 2.1,
+   "mean_excitation_energy_eV": 120.7,
+   "mass_fractions": {
+    "6": 0.20625,
+    "9": 0.489354,
+    "17": 0.304395
+   }
+  },
+  {
+   "estar_id": 229,
+   "name": "POLYVINYL_ACETATE",
+   "density_g_cm3": 1.19,
+   "mean_excitation_energy_eV": 73.7,
+   "mass_fractions": {
+    "1": 0.070245,
+    "6": 0.558066,
+    "8": 0.371689
+   }
+  },
+  {
+   "estar_id": 230,
+   "name": "POLYVINYL_ALCOHOL",
+   "density_g_cm3": 1.3,
+   "mean_excitation_energy_eV": 69.7,
+   "mass_fractions": {
+    "1": 0.091517,
+    "6": 0.545298,
+    "8": 0.363185
+   }
+  },
+  {
+   "estar_id": 231,
+   "name": "POLYVINYL_BUTYRAL",
+   "density_g_cm3": 1.12,
+   "mean_excitation_energy_eV": 67.2,
+   "mass_fractions": {
+    "1": 0.092802,
+    "6": 0.680561,
+    "8": 0.226637
+   }
+  },
+  {
+   "estar_id": 232,
+   "name": "POLYVINYL_CHLORIDE",
+   "density_g_cm3": 1.3,
+   "mean_excitation_energy_eV": 108.2,
+   "mass_fractions": {
+    "1": 0.04838,
+    "6": 0.38436,
+    "17": 0.56726
+   }
+  },
+  {
+   "estar_id": 233,
+   "name": "POLYVINYLIDENE_CHLORIDE,_SARAN",
+   "density_g_cm3": 1.7,
+   "mean_excitation_energy_eV": 134.3,
+   "mass_fractions": {
+    "1": 0.020793,
+    "6": 0.247793,
+    "17": 0.731413
+   }
+  },
+  {
+   "estar_id": 234,
+   "name": "POLYVINYLIDENE_FLUORIDE",
+   "density_g_cm3": 1.76,
+   "mean_excitation_energy_eV": 88.8,
+   "mass_fractions": {
+    "1": 0.03148,
+    "6": 0.375141,
+    "9": 0.593379
+   }
+  },
+  {
+   "estar_id": 235,
+   "name": "POLYVINYL_PYRROLIDONE",
+   "density_g_cm3": 1.25,
+   "mean_excitation_energy_eV": 67.7,
+   "mass_fractions": {
+    "1": 0.081616,
+    "6": 0.648407,
+    "7": 0.126024,
+    "8": 0.143953
+   }
+  },
+  {
+   "estar_id": 236,
+   "name": "POTASSIUM_IODIDE",
+   "density_g_cm3": 3.13,
+   "mean_excitation_energy_eV": 431.9,
+   "mass_fractions": {
+    "19": 0.235528,
+    "53": 0.764472
+   }
+  },
+  {
+   "estar_id": 237,
+   "name": "POTASSIUM_OXIDE",
+   "density_g_cm3": 2.32,
+   "mean_excitation_energy_eV": 189.9,
+   "mass_fractions": {
+    "8": 0.169852,
+    "19": 0.830148
+   }
+  },
+  {
+   "estar_id": 238,
+   "name": "PROPANE",
+   "density_g_cm3": 0.00187939,
+   "mean_excitation_energy_eV": 47.1,
+   "mass_fractions": {
+    "1": 0.182855,
+    "6": 0.817145
+   }
+  },
+  {
+   "estar_id": 239,
+   "name": "PROPANE,_LIQUID",
+   "density_g_cm3": 0.43,
+   "mean_excitation_energy_eV": 52.0,
+   "mass_fractions": {
+    "1": 0.182855,
+    "6": 0.817145
+   }
+  },
+  {
+   "estar_id": 240,
+   "name": "N-PROPYL_ALCOHOL",
+   "density_g_cm3": 0.8035,
+   "mean_excitation_energy_eV": 61.1,
+   "mass_fractions": {
+    "1": 0.134173,
+    "6": 0.599595,
+    "8": 0.266232
+   }
+  },
+  {
+   "estar_id": 241,
+   "name": "PYRIDINE",
+   "density_g_cm3": 0.9819,
+   "mean_excitation_energy_eV": 66.2,
+   "mass_fractions": {
+    "1": 0.06371,
+    "6": 0.759217,
+    "7": 0.177073
+   }
+  },
+  {
+   "estar_id": 242,
+   "name": "RUBBER,_BUTYL",
+   "density_g_cm3": 0.92,
+   "mean_excitation_energy_eV": 56.5,
+   "mass_fractions": {
+    "1": 0.143711,
+    "6": 0.856289
+   }
+  },
+  {
+   "estar_id": 243,
+   "name": "RUBBER,_NATURAL",
+   "density_g_cm3": 0.92,
+   "mean_excitation_energy_eV": 59.8,
+   "mass_fractions": {
+    "1": 0.118371,
+    "6": 0.881629
+   }
+  },
+  {
+   "estar_id": 244,
+   "name": "RUBBER,_NEOPRENE",
+   "density_g_cm3": 1.23,
+   "mean_excitation_energy_eV": 93.0,
+   "mass_fractions": {
+    "1": 0.05692,
+    "6": 0.542646,
+    "17": 0.400434
+   }
+  },
+  {
+   "estar_id": 245,
+   "name": "SILICON_DIOXIDE",
+   "density_g_cm3": 2.32,
+   "mean_excitation_energy_eV": 139.2,
+   "mass_fractions": {
+    "8": 0.532565,
+    "14": 0.467435
+   }
+  },
+  {
+   "estar_id": 246,
+   "name": "SILVER_BROMIDE",
+   "density_g_cm3": 6.473,
+   "mean_excitation_energy_eV": 486.6,
+   "mass_fractions": {
+    "35": 0.425537,
+    "47": 0.574463
+   }
+  },
+  {
+   "estar_id": 247,
+   "name": "SILVER_CHLORIDE",
+   "density_g_cm3": 5.56,
+   "mean_excitation_energy_eV": 398.4,
+   "mass_fractions": {
+    "17": 0.247368,
+    "47": 0.752632
+   }
+  },
+  {
+   "estar_id": 248,
+   "name": "SILVER_HALIDES_IN_PHOTOGRAPHIC_EMULSION",
+   "density_g_cm3": 6.47,
+   "mean_excitation_energy_eV": 487.1,
+   "mass_fractions": {
+    "35": 0.422895,
+    "47": 0.573748,
+    "53": 0.003357
+   }
+  },
+  {
+   "estar_id": 249,
+   "name": "SILVER_IODIDE",
+   "density_g_cm3": 6.01,
+   "mean_excitation_energy_eV": 543.5,
+   "mass_fractions": {
+    "47": 0.459458,
+    "53": 0.540542
+   }
+  },
+  {
+   "estar_id": 250,
+   "name": "SKIN_(ICRP)",
+   "density_g_cm3": 1.1,
+   "mean_excitation_energy_eV": 72.7,
+   "mass_fractions": {
+    "1": 0.100588,
+    "6": 0.22825,
+    "7": 0.04642,
+    "8": 0.619002,
+    "11": 7e-05,
+    "12": 6e-05,
+    "15": 0.00033,
+    "16": 0.00159,
+    "17": 0.00267,
+    "19": 0.00085,
+    "20": 0.00015,
+    "26": 1e-05,
+    "30": 1e-05
+   }
+  },
+  {
+   "estar_id": 251,
+   "name": "SODIUM_CARBONATE",
+   "density_g_cm3": 2.532,
+   "mean_excitation_energy_eV": 125.0,
+   "mass_fractions": {
+    "6": 0.113323,
+    "8": 0.452861,
+    "11": 0.433815
+   }
+  },
+  {
+   "estar_id": 252,
+   "name": "SODIUM_IODIDE",
+   "density_g_cm3": 3.667,
+   "mean_excitation_energy_eV": 452.0,
+   "mass_fractions": {
+    "11": 0.153373,
+    "53": 0.846627
+   }
+  },
+  {
+   "estar_id": 253,
+   "name": "SODIUM_MONOXIDE",
+   "density_g_cm3": 2.27,
+   "mean_excitation_energy_eV": 148.8,
+   "mass_fractions": {
+    "8": 0.258143,
+    "11": 0.741857
+   }
+  },
+  {
+   "estar_id": 254,
+   "name": "SODIUM_NITRATE",
+   "density_g_cm3": 2.261,
+   "mean_excitation_energy_eV": 114.6,
+   "mass_fractions": {
+    "7": 0.164795,
+    "8": 0.56472,
+    "11": 0.270485
+   }
+  },
+  {
+   "estar_id": 255,
+   "name": "STILBENE",
+   "density_g_cm3": 0.9707,
+   "mean_excitation_energy_eV": 67.7,
+   "mass_fractions": {
+    "1": 0.067101,
+    "6": 0.932899
+   }
+  },
+  {
+   "estar_id": 256,
+   "name": "SUCROSE",
+   "density_g_cm3": 1.5805,
+   "mean_excitation_energy_eV": 77.5,
+   "mass_fractions": {
+    "1": 0.064779,
+    "6": 0.42107,
+    "8": 0.514151
+   }
+  },
+  {
+   "estar_id": 257,
+   "name": "TERPHENYL",
+   "density_g_cm3": 1.234,
+   "mean_excitation_energy_eV": 71.7,
+   "mass_fractions": {
+    "1": 0.044543,
+    "6": 0.955457
+   }
+  },
+  {
+   "estar_id": 258,
+   "name": "TESTES_(ICRP)",
+   "density_g_cm3": 1.04,
+   "mean_excitation_energy_eV": 75.0,
+   "mass_fractions": {
+    "1": 0.104166,
+    "6": 0.09227,
+    "7": 0.01994,
+    "8": 0.773884,
+    "11": 0.00226,
+    "12": 0.00011,
+    "15": 0.00125,
+    "16": 0.00146,
+    "17": 0.00244,
+    "19": 0.00208,
+    "20": 0.0001,
+    "26": 2e-05,
+    "30": 2e-05
+   }
+  },
+  {
+   "estar_id": 259,
+   "name": "TETRACHLOROETHYLENE",
+   "density_g_cm3": 1.625,
+   "mean_excitation_energy_eV": 159.2,
+   "mass_fractions": {
+    "6": 0.144856,
+    "17": 0.855144
+   }
+  },
+  {
+   "estar_id": 260,
+   "name": "THALLIUM_CHLORIDE",
+   "density_g_cm3": 7.004,
+   "mean_excitation_energy_eV": 690.3,
+   "mass_fractions": {
+    "17": 0.147822,
+    "81": 0.852178
+   }
+  },
+  {
+   "estar_id": 261,
+   "name": "TISSUE,_SOFT_(ICRP)",
+   "density_g_cm3": 1.0,
+   "mean_excitation_energy_eV": 72.3,
+   "mass_fractions": {
+    "1": 0.104472,
+    "6": 0.23219,
+    "7": 0.02488,
+    "8": 0.630238,
+    "11": 0.00113,
+    "12": 0.00013,
+    "15": 0.00133,
+    "16": 0.00199,
+    "17": 0.00134,
+    "19": 0.00199,
+    "20": 0.00023,
+    "26": 5e-05,
+    "30": 3e-05
+   }
+  },
+  {
+   "estar_id": 262,
+   "name": "TISSUE,_SOFT_(ICRU_FOUR-COMPONENT)",
+   "density_g_cm3": 1.0,
+   "mean_excitation_energy_eV": 74.9,
+   "mass_fractions": {
+    "1": 0.101172,
+    "6": 0.111,
+    "7": 0.026,
+    "8": 0.761828
+   }
+  },
+  {
+   "estar_id": 263,
+   "name": "TISSUE-EQUIVALENT_GAS_(METHANE_BASED)",
+   "density_g_cm3": 0.00106409,
+   "mean_excitation_energy_eV": 61.2,
+   "mass_fractions": {
+    "1": 0.101869,
+    "6": 0.456179,
+    "7": 0.035172,
+    "8": 0.40678
+   }
+  },
+  {
+   "estar_id": 264,
+   "name": "TISSUE-EQUIVALENT_GAS_(PROPANE_BASED)",
+   "density_g_cm3": 0.00182628,
+   "mean_excitation_energy_eV": 59.5,
+   "mass_fractions": {
+    "1": 0.102672,
+    "6": 0.56894,
+    "7": 0.035022,
+    "8": 0.293366
+   }
+  },
+  {
+   "estar_id": 265,
+   "name": "TITANIUM_DIOXIDE",
+   "density_g_cm3": 4.26,
+   "mean_excitation_energy_eV": 179.5,
+   "mass_fractions": {
+    "8": 0.400592,
+    "22": 0.599408
+   }
+  },
+  {
+   "estar_id": 266,
+   "name": "TOLUENE",
+   "density_g_cm3": 0.8669,
+   "mean_excitation_energy_eV": 62.5,
+   "mass_fractions": {
+    "1": 0.08751,
+    "6": 0.91249
+   }
+  },
+  {
+   "estar_id": 267,
+   "name": "TRICHLOROETHYLENE",
+   "density_g_cm3": 1.46,
+   "mean_excitation_energy_eV": 148.1,
+   "mass_fractions": {
+    "1": 0.007671,
+    "6": 0.182831,
+    "17": 0.809498
+   }
+  },
+  {
+   "estar_id": 268,
+   "name": "TRIETHYL_PHOSPHATE",
+   "density_g_cm3": 1.07,
+   "mean_excitation_energy_eV": 81.2,
+   "mass_fractions": {
+    "1": 0.082998,
+    "6": 0.395628,
+    "8": 0.351334,
+    "15": 0.17004
+   }
+  },
+  {
+   "estar_id": 269,
+   "name": "TUNGSTEN_HEXAFLUORIDE",
+   "density_g_cm3": 2.4,
+   "mean_excitation_energy_eV": 354.4,
+   "mass_fractions": {
+    "9": 0.382723,
+    "74": 0.617277
+   }
+  },
+  {
+   "estar_id": 270,
+   "name": "URANIUM_DICARBIDE",
+   "density_g_cm3": 11.28,
+   "mean_excitation_energy_eV": 752.0,
+   "mass_fractions": {
+    "6": 0.091669,
+    "92": 0.908331
+   }
+  },
+  {
+   "estar_id": 271,
+   "name": "URANIUM_MONOCARBIDE",
+   "density_g_cm3": 13.63,
+   "mean_excitation_energy_eV": 862.0,
+   "mass_fractions": {
+    "6": 0.048036,
+    "92": 0.951964
+   }
+  },
+  {
+   "estar_id": 272,
+   "name": "URANIUM_OXIDE",
+   "density_g_cm3": 10.96,
+   "mean_excitation_energy_eV": 720.6,
+   "mass_fractions": {
+    "8": 0.118502,
+    "92": 0.881498
+   }
+  },
+  {
+   "estar_id": 273,
+   "name": "UREA",
+   "density_g_cm3": 1.323,
+   "mean_excitation_energy_eV": 72.8,
+   "mass_fractions": {
+    "1": 0.067131,
+    "6": 0.199999,
+    "7": 0.466459,
+    "8": 0.266411
+   }
+  },
+  {
+   "estar_id": 274,
+   "name": "VALINE",
+   "density_g_cm3": 1.23,
+   "mean_excitation_energy_eV": 67.7,
+   "mass_fractions": {
+    "1": 0.094641,
+    "6": 0.512645,
+    "7": 0.119565,
+    "8": 0.27315
+   }
+  },
+  {
+   "estar_id": 275,
+   "name": "VITON_FLUOROELASTOMER",
+   "density_g_cm3": 1.8,
+   "mean_excitation_energy_eV": 98.6,
+   "mass_fractions": {
+    "1": 0.009417,
+    "6": 0.280555,
+    "9": 0.710028
+   }
+  },
+  {
+   "estar_id": 276,
+   "name": "WATER,_LIQUID",
+   "density_g_cm3": 1.0,
+   "mean_excitation_energy_eV": 75.0,
+   "mass_fractions": {
+    "1": 0.111894,
+    "8": 0.888106
+   }
+  },
+  {
+   "estar_id": 277,
+   "name": "WATER_VAPOR",
+   "density_g_cm3": 0.000756182,
+   "mean_excitation_energy_eV": 71.6,
+   "mass_fractions": {
+    "1": 0.111894,
+    "8": 0.888106
+   }
+  },
+  {
+   "estar_id": 278,
+   "name": "XYLENE",
+   "density_g_cm3": 0.87,
+   "mean_excitation_energy_eV": 61.8,
+   "mass_fractions": {
+    "1": 0.094935,
+    "6": 0.905065
+   }
+  },
+  {
+   "estar_id": 279,
+   "name": "CARBON_(GRAPHITE)",
+   "density_g_cm3": 1.7,
+   "mean_excitation_energy_eV": 78.0,
+   "mass_fractions": {
+    "6": 1.0
+   }
+  }
+ ]
+}

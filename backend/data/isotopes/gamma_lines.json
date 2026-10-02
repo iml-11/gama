@@ -1,0 +1,505 @@
+{
+ "source": "UKAEA DECAY2012 radioactive decay data library",
+ "reference": "UKAEA DECAY2012 decay data library (the decay library distributed with FISPACT-II); line data as distributed in lines_decay_2012.min.json of actigamma 0.1.5 (UKAEA, Apache-2.0, https://github.com/fispact/actigamma).",
+ "source_sha256": "2eac3b146f36208468341ff1e7c56c676a05d3a08db86365c0a95e074c17df75",
+ "notes": [
+  "intensity_percent is the absolute emission probability per decay of the emitting nuclide (relative intensity x normalisation, x100).",
+  "Daughter lines (e.g. Ba-137m for Cs-137) are per decay of the daughter; multiply by the parent->daughter branching fraction for per-parent-decay values.",
+  "Only lines with intensity >= 1.0% are included. X-rays and annihilation photons are not included.",
+  "Energies are as tabulated in DECAY2012; ENSDF/DDEP evaluations may quote more digits (e.g. Co-60 1173.228 keV vs 1173.23 keV here)."
+ ],
+ "built": "2026-09-25",
+ "isotopes": [
+  {
+   "id": "Cs-137",
+   "emitters": [
+    "Cs137",
+    "Ba137m"
+   ],
+   "half_life_s": 947990000.0,
+   "lines": [
+    {
+     "emitter": "Ba137m",
+     "energy_keV": 661.657,
+     "energy_unc_keV": 0.003,
+     "intensity_percent": 90.07
+    }
+   ]
+  },
+  {
+   "id": "Co-60",
+   "emitters": [
+    "Co60"
+   ],
+   "half_life_s": 166337000.0,
+   "lines": [
+    {
+     "emitter": "Co60",
+     "energy_keV": 1332.49,
+     "energy_unc_keV": 0.004,
+     "intensity_percent": 99.9826
+    },
+    {
+     "emitter": "Co60",
+     "energy_keV": 1173.23,
+     "energy_unc_keV": 0.003,
+     "intensity_percent": 99.85
+    }
+   ]
+  },
+  {
+   "id": "Na-22",
+   "emitters": [
+    "Na22"
+   ],
+   "half_life_s": 82133200.0,
+   "lines": [
+    {
+     "emitter": "Na22",
+     "energy_keV": 1274.54,
+     "energy_unc_keV": 0.007,
+     "intensity_percent": 99.94
+    }
+   ]
+  },
+  {
+   "id": "Am-241",
+   "emitters": [
+    "Am241"
+   ],
+   "half_life_s": 13658100000.0,
+   "lines": [
+    {
+     "emitter": "Am241",
+     "energy_keV": 59.5412,
+     "energy_unc_keV": 0.0001,
+     "intensity_percent": 36.0
+    },
+    {
+     "emitter": "Am241",
+     "energy_keV": 26.3448,
+     "energy_unc_keV": 0.0002,
+     "intensity_percent": 2.43
+    }
+   ]
+  },
+  {
+   "id": "Ba-133",
+   "emitters": [
+    "Ba133"
+   ],
+   "half_life_s": 332610000.0,
+   "lines": [
+    {
+     "emitter": "Ba133",
+     "energy_keV": 356.013,
+     "energy_unc_keV": 0.0007,
+     "intensity_percent": 62.05
+    },
+    {
+     "emitter": "Ba133",
+     "energy_keV": 80.9979,
+     "energy_unc_keV": 0.0011,
+     "intensity_percent": 32.9
+    },
+    {
+     "emitter": "Ba133",
+     "energy_keV": 302.851,
+     "energy_unc_keV": 0.0005,
+     "intensity_percent": 18.34
+    },
+    {
+     "emitter": "Ba133",
+     "energy_keV": 383.849,
+     "energy_unc_keV": 0.0012,
+     "intensity_percent": 8.94
+    },
+    {
+     "emitter": "Ba133",
+     "energy_keV": 276.399,
+     "energy_unc_keV": 0.0012,
+     "intensity_percent": 7.16
+    },
+    {
+     "emitter": "Ba133",
+     "energy_keV": 79.6142,
+     "energy_unc_keV": 0.0012,
+     "intensity_percent": 2.65
+    },
+    {
+     "emitter": "Ba133",
+     "energy_keV": 53.1622,
+     "energy_unc_keV": 0.0006,
+     "intensity_percent": 2.14
+    }
+   ]
+  },
+  {
+   "id": "Co-57",
+   "emitters": [
+    "Co57"
+   ],
+   "half_life_s": 23483500.0,
+   "lines": [
+    {
+     "emitter": "Co57",
+     "energy_keV": 122.061,
+     "energy_unc_keV": 0.00012,
+     "intensity_percent": 85.51
+    },
+    {
+     "emitter": "Co57",
+     "energy_keV": 136.474,
+     "energy_unc_keV": 0.00029,
+     "intensity_percent": 10.71
+    },
+    {
+     "emitter": "Co57",
+     "energy_keV": 14.413,
+     "energy_unc_keV": 0.00031,
+     "intensity_percent": 9.15
+    }
+   ]
+  },
+  {
+   "id": "Eu-152",
+   "emitters": [
+    "Eu152"
+   ],
+   "half_life_s": 426807000.0,
+   "lines": [
+    {
+     "emitter": "Eu152",
+     "energy_keV": 121.782,
+     "energy_unc_keV": 0.0003,
+     "intensity_percent": 28.4108
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 344.279,
+     "energy_unc_keV": 0.0012,
+     "intensity_percent": 26.5783
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 1408.01,
+     "energy_unc_keV": 0.003,
+     "intensity_percent": 20.8406
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 964.079,
+     "energy_unc_keV": 0.018,
+     "intensity_percent": 14.4904
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 1112.08,
+     "energy_unc_keV": 0.003,
+     "intensity_percent": 13.4004
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 778.905,
+     "energy_unc_keV": 0.0024,
+     "intensity_percent": 12.9592
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 1085.84,
+     "energy_unc_keV": 0.01,
+     "intensity_percent": 10.1303
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 244.697,
+     "energy_unc_keV": 0.0008,
+     "intensity_percent": 7.5502
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 867.38,
+     "energy_unc_keV": 0.003,
+     "intensity_percent": 4.24111
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 443.965,
+     "energy_unc_keV": 0.003,
+     "intensity_percent": 2.80008
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 411.117,
+     "energy_unc_keV": 0.0012,
+     "intensity_percent": 2.23686
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 1089.74,
+     "energy_unc_keV": 0.005,
+     "intensity_percent": 1.72989
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 1299.14,
+     "energy_unc_keV": 0.008,
+     "intensity_percent": 1.6319
+    },
+    {
+     "emitter": "Eu152",
+     "energy_keV": 1212.95,
+     "energy_unc_keV": 0.011,
+     "intensity_percent": 1.41504
+    }
+   ]
+  },
+  {
+   "id": "Mn-54",
+   "emitters": [
+    "Mn54"
+   ],
+   "half_life_s": 26968000.0,
+   "lines": [
+    {
+     "emitter": "Mn54",
+     "energy_keV": 834.838,
+     "energy_unc_keV": 0.005,
+     "intensity_percent": 99.9746
+    }
+   ]
+  },
+  {
+   "id": "Zn-65",
+   "emitters": [
+    "Zn65"
+   ],
+   "half_life_s": 21094600.0,
+   "lines": [
+    {
+     "emitter": "Zn65",
+     "energy_keV": 1115.54,
+     "energy_unc_keV": 0.002,
+     "intensity_percent": 50.6
+    }
+   ]
+  },
+  {
+   "id": "K-40",
+   "emitters": [
+    "K40"
+   ],
+   "half_life_s": 3.99195e+16,
+   "lines": [
+    {
+     "emitter": "K40",
+     "energy_keV": 1460.82,
+     "energy_unc_keV": 0.006,
+     "intensity_percent": 10.6599
+    }
+   ]
+  },
+  {
+   "id": "I-131",
+   "emitters": [
+    "I131"
+   ],
+   "half_life_s": 693213.0,
+   "lines": [
+    {
+     "emitter": "I131",
+     "energy_keV": 364.489,
+     "energy_unc_keV": 0.005,
+     "intensity_percent": 81.2
+    },
+    {
+     "emitter": "I131",
+     "energy_keV": 636.989,
+     "energy_unc_keV": 0.004,
+     "intensity_percent": 7.26
+    },
+    {
+     "emitter": "I131",
+     "energy_keV": 284.305,
+     "energy_unc_keV": 0.005,
+     "intensity_percent": 6.06
+    },
+    {
+     "emitter": "I131",
+     "energy_keV": 80.185,
+     "energy_unc_keV": 0.0019,
+     "intensity_percent": 2.607
+    },
+    {
+     "emitter": "I131",
+     "energy_keV": 722.911,
+     "energy_unc_keV": 0.005,
+     "intensity_percent": 1.796
+    }
+   ]
+  },
+  {
+   "id": "Ir-192",
+   "emitters": [
+    "Ir192"
+   ],
+   "half_life_s": 6378220.0,
+   "lines": [
+    {
+     "emitter": "Ir192",
+     "energy_keV": 316.506,
+     "energy_unc_keV": 0.00017,
+     "intensity_percent": 82.75
+    },
+    {
+     "emitter": "Ir192",
+     "energy_keV": 468.069,
+     "energy_unc_keV": 0.00026,
+     "intensity_percent": 47.809971
+    },
+    {
+     "emitter": "Ir192",
+     "energy_keV": 308.455,
+     "energy_unc_keV": 0.00017,
+     "intensity_percent": 29.680025
+    },
+    {
+     "emitter": "Ir192",
+     "energy_keV": 295.956,
+     "energy_unc_keV": 0.00015,
+     "intensity_percent": 28.71996
+    },
+    {
+     "emitter": "Ir192",
+     "energy_keV": 604.411,
+     "energy_unc_keV": 0.00025,
+     "intensity_percent": 8.200004
+    },
+    {
+     "emitter": "Ir192",
+     "energy_keV": 612.462,
+     "energy_unc_keV": 0.00026,
+     "intensity_percent": 5.339998
+    },
+    {
+     "emitter": "Ir192",
+     "energy_keV": 588.581,
+     "energy_unc_keV": 0.0007,
+     "intensity_percent": 4.517
+    },
+    {
+     "emitter": "Ir192",
+     "energy_keV": 205.794,
+     "energy_unc_keV": 9e-05,
+     "intensity_percent": 3.339997
+    },
+    {
+     "emitter": "Ir192",
+     "energy_keV": 484.575,
+     "energy_unc_keV": 0.0004,
+     "intensity_percent": 3.189003
+    }
+   ]
+  },
+  {
+   "id": "Se-75",
+   "emitters": [
+    "Se75"
+   ],
+   "half_life_s": 10336900.0,
+   "lines": [
+    {
+     "emitter": "Se75",
+     "energy_keV": 264.658,
+     "energy_unc_keV": 0.0017,
+     "intensity_percent": 59.0
+    },
+    {
+     "emitter": "Se75",
+     "energy_keV": 136.001,
+     "energy_unc_keV": 0.0006,
+     "intensity_percent": 58.823
+    },
+    {
+     "emitter": "Se75",
+     "energy_keV": 279.543,
+     "energy_unc_keV": 0.0022,
+     "intensity_percent": 25.0042
+    },
+    {
+     "emitter": "Se75",
+     "energy_keV": 121.117,
+     "energy_unc_keV": 0.0014,
+     "intensity_percent": 17.1454
+    },
+    {
+     "emitter": "Se75",
+     "energy_keV": 400.659,
+     "energy_unc_keV": 0.0013,
+     "intensity_percent": 11.4991
+    },
+    {
+     "emitter": "Se75",
+     "energy_keV": 96.7344,
+     "energy_unc_keV": 0.001,
+     "intensity_percent": 3.4102
+    },
+    {
+     "emitter": "Se75",
+     "energy_keV": 198.605,
+     "energy_unc_keV": 0.0032,
+     "intensity_percent": 1.4927
+    },
+    {
+     "emitter": "Se75",
+     "energy_keV": 303.925,
+     "energy_unc_keV": 0.0015,
+     "intensity_percent": 1.31216
+    },
+    {
+     "emitter": "Se75",
+     "energy_keV": 66.0523,
+     "energy_unc_keV": 0.0009,
+     "intensity_percent": 1.1033
+    }
+   ]
+  },
+  {
+   "id": "Cd-109",
+   "emitters": [
+    "Cd109",
+    "Ag109m"
+   ],
+   "half_life_s": 39968600.0,
+   "lines": [
+    {
+     "emitter": "Ag109m",
+     "energy_keV": 88.034,
+     "energy_unc_keV": 0.001,
+     "intensity_percent": 3.66
+    }
+   ]
+  },
+  {
+   "id": "Y-88",
+   "emitters": [
+    "Y88"
+   ],
+   "half_life_s": 9212750.0,
+   "lines": [
+    {
+     "emitter": "Y88",
+     "energy_keV": 1836.05,
+     "energy_unc_keV": 0.013,
+     "intensity_percent": 99.32
+    },
+    {
+     "emitter": "Y88",
+     "energy_keV": 898.036,
+     "energy_unc_keV": 0.004,
+     "intensity_percent": 93.9
+    }
+   ]
+  }
+ ]
+}
