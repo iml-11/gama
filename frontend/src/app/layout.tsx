@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { EngineStatus } from "@/components/engine-status";
+import { Heartbeat } from "@/components/heartbeat";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="min-h-screen font-sans">
         <ThemeProvider>
           <TooltipProvider delayDuration={200}>
+            <Heartbeat />
             <SiteHeader />
             <EngineStatus />
             <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-10">{children}</main>

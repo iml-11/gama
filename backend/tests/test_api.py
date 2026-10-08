@@ -120,3 +120,9 @@ def test_table_custom_energies():
     r = c.post("/api/table", json={"material": {"input": "H2O", "online": False},
                                    "energies": [{"value": 1, "unit": "MeV"}, {"value": 661.657, "unit": "keV"}]})
     assert r.status_code == 200 and len(r.json()["rows"]) == 2
+
+
+def test_heartbeat():
+    assert c.get("/api/heartbeat").json()["ok"] is True
+    age = c.get("/api/heartbeat/age").json()["age"]
+    assert age is not None and age < 5

@@ -176,6 +176,27 @@ def _xcom_guard(fn, *a, **kw):
 
 
 # --------------------------------------------------------------------------- routes
+_last_seen: dict[str, float] = {}
+
+
+@app.get("/api/heartbeat")
+def heartbeat():
+    """Called periodically by an open app window (used by the macOS launcher)."""
+    import time
+
+    _last_seen["t"] = time.monotonic()
+    return {"ok": True}
+
+
+@app.get("/api/heartbeat/age")
+def heartbeat_age():
+    """Seconds since an app window last reported in (null if never)."""
+    import time
+
+    t = _last_seen.get("t")
+    return {"age": None if t is None else time.monotonic() - t}
+
+
 @app.get("/api/health")
 def health():
     return {"status": "ok", "engine_configured": _engine_ready(), "online_lookup": online_enabled()}

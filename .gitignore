@@ -3,6 +3,7 @@ __pycache__/
 .pytest_cache/
 node_modules/
 .next/
+.next-app/
 frontend/out/
 backend/data/user/
 backend/data/cache/*.json
