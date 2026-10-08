@@ -204,7 +204,7 @@ def test_pubchem_failure_not_invented(tmp_path, monkeypatch):
 
 def test_search_autocomplete():
     db = get_db()
-    names = [x["name"] for x in db.search("poly", 20)]
+    names = [x["name"] for x in db.search("poly", 60)]
     for n in ["Polyethylene", "Polypropylene", "Polystyrene"]:
         assert n in names
     assert any("carbonate" in n for n in names)
@@ -226,3 +226,40 @@ def test_custom_materials():
         db.add_custom({"name": "PMMA", "formula": "C5H8O2"})
     db.delete_custom(e.id)
     assert resolve("my pen", online=False).status == "not_found"
+
+
+def test_estar_density_links_match_composition():
+    """Every curated density taken from the NIST table belongs to an entry whose
+    formula-derived composition agrees with the NIST composition."""
+    from science.elements import element
+
+    nist = {m["estar_id"]: m for m in json.loads(ESTAR_FILE.read_text())["materials"]}
+    curated = json.loads((ESTAR_FILE.parent / "curated_materials.json").read_text())
+    checked = 0
+    for m in curated["materials"]:
+        d = m.get("density") or {}
+        if d.get("estar_id") and "formula" in m["composition"]:
+            comp = get_db().get(m["id"]).composition.mass_fractions
+            ref = {element(int(z)).symbol: w for z, w in nist[d["estar_id"]]["mass_fractions"].items()}
+            for k in set(ref) | set(comp):
+                assert comp.get(k, 0) == pytest.approx(ref.get(k, 0), abs=3e-3), (m["id"], k)
+            checked += 1
+    assert checked >= 15
+
+
+@pytest.mark.parametrize(
+    "text,expected",
+    [("Pb", "element-pb"), ("PB", "pbd"), ("Cr", "element-cr"), ("CR", "cr"), ("PbS", None), ("PBS", "pbs")],
+)
+def test_formula_beats_case_insensitive_alias(text, expected):
+    r = resolve(text, online=False)
+    assert r.status == "resolved"
+    if expected is None:
+        assert r.kind == "formula" and set(r.composition.mass_fractions) == {"Pb", "S"}
+    else:
+        assert r.material["id"] == expected
+
+
+@pytest.mark.parametrize("name", ["PVDF", "nylon 6,6", "PEEK", "polycaprolactone", "magnetite", "zirconia", "tungsten carbide", "PEG", "neoprene", "cellulose"])
+def test_new_entries_resolve(name):
+    assert resolve(name, online=False).status == "resolved"

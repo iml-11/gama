@@ -29,7 +29,8 @@
    },
    "notes": "NIST lists 1.19 g/cm3 (Lucite/Perspex/Plexiglas). Commercial grades vary slightly.",
    "confidence": "high",
-   "estar_id": 223
+   "estar_id": 223,
+   "common": true
   },
   {
    "id": "pe",
@@ -53,7 +54,8 @@
    },
    "notes": "Generic polyethylene. Density depends strongly on crystallinity (LDPE < HDPE); the NIST value is a generic one.",
    "confidence": "high",
-   "estar_id": 221
+   "estar_id": 221,
+   "common": true
   },
   {
    "id": "hdpe",
@@ -71,7 +73,8 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "Same elemental composition as PE. Density depends on grade; enter the value from your datasheet. (NIST's generic polyethylene value, 0.94 g/cm3, is not specific to HDPE.)",
-   "confidence": "high"
+   "confidence": "high",
+   "common": true
   },
   {
    "id": "ldpe",
@@ -89,7 +92,8 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "Same elemental composition as PE. Density depends on grade; enter the value from your datasheet. (NIST's generic polyethylene value, 0.94 g/cm3, is not specific to LDPE.)",
-   "confidence": "high"
+   "confidence": "high",
+   "common": true
   },
   {
    "id": "pet",
@@ -114,7 +118,8 @@
    },
    "notes": "NIST value is for Mylar film. Amorphous and crystalline PET differ in density.",
    "confidence": "high",
-   "estar_id": 222
+   "estar_id": 222,
+   "common": true
   },
   {
    "id": "pva",
@@ -138,7 +143,8 @@
    },
    "notes": "Fully hydrolysed PVA. Commercial PVA contains residual acetate groups and absorbed water.",
    "confidence": "high",
-   "estar_id": 230
+   "estar_id": 230,
+   "common": true
   },
   {
    "id": "pvc",
@@ -162,7 +168,8 @@
    },
    "notes": "Unplasticised PVC. Plasticisers and fillers change both composition and density.",
    "confidence": "high",
-   "estar_id": 232
+   "estar_id": 232,
+   "common": true
   },
   {
    "id": "peek",
@@ -181,7 +188,8 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your material datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "common": true
   },
   {
    "id": "pla",
@@ -200,7 +208,8 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your material datasheet (depends on crystallinity).",
-   "confidence": "high"
+   "confidence": "high",
+   "common": true
   },
   {
    "id": "ps",
@@ -223,7 +232,8 @@
    },
    "notes": "Solid polystyrene (not foam).",
    "confidence": "high",
-   "estar_id": 226
+   "estar_id": 226,
+   "common": true
   },
   {
    "id": "pc",
@@ -247,7 +257,8 @@
    },
    "notes": "Bisphenol-A polycarbonate.",
    "confidence": "high",
-   "estar_id": 219
+   "estar_id": 219,
+   "common": true
   },
   {
    "id": "pp",
@@ -270,7 +281,8 @@
    },
    "notes": "",
    "confidence": "high",
-   "estar_id": 225
+   "estar_id": 225,
+   "common": true
   },
   {
    "id": "ptfe",
@@ -293,7 +305,8 @@
    },
    "notes": "",
    "confidence": "high",
-   "estar_id": 227
+   "estar_id": 227,
+   "common": true
   },
   {
    "id": "pom",
@@ -317,7 +330,8 @@
    },
    "notes": "",
    "confidence": "high",
-   "estar_id": 224
+   "estar_id": 224,
+   "common": true
   },
   {
    "id": "nylon6",
@@ -343,7 +357,8 @@
    },
    "notes": "NIST entry covers type 6 and 6/6 (identical elemental composition).",
    "confidence": "high",
-   "estar_id": 209
+   "estar_id": 209,
+   "common": true
   },
   {
    "id": "kapton",
@@ -366,7 +381,8 @@
    },
    "notes": "Pyromellitic dianhydride / oxydianiline polyimide.",
    "confidence": "high",
-   "estar_id": 179
+   "estar_id": 179,
+   "common": true
   },
   {
    "id": "pvac",
@@ -412,7 +428,8 @@
    },
    "notes": "Liquid water.",
    "confidence": "high",
-   "estar_id": 276
+   "estar_id": 276,
+   "common": true
   },
   {
    "id": "bi2o3",
@@ -431,7 +448,8 @@
    "composition_source": "Stoichiometric formula of the named compound",
    "density": null,
    "notes": "No sourced density in the local database.",
-   "confidence": "high"
+   "confidence": "high",
+   "common": true
   },
   {
    "id": "bi2wo6",
@@ -449,7 +467,8 @@
    "composition_source": "Stoichiometric formula of the named compound",
    "density": null,
    "notes": "No sourced density in the local database.",
-   "confidence": "high"
+   "confidence": "high",
+   "common": true
   },
   {
    "id": "wo3",
@@ -468,7 +487,8 @@
    "composition_source": "Stoichiometric formula of the named compound",
    "density": null,
    "notes": "No sourced density in the local database. 'Tungsten oxide' may also mean WO2; WO3 is listed here.",
-   "confidence": "high"
+   "confidence": "high",
+   "common": true
   },
   {
    "id": "pbwo4",
@@ -486,7 +506,8 @@
    "composition_source": "Stoichiometric formula of the named compound",
    "density": null,
    "notes": "No sourced density in the local database.",
-   "confidence": "high"
+   "confidence": "high",
+   "common": true
   },
   {
    "id": "gd2o3",
@@ -504,7 +525,8 @@
    "composition_source": "Stoichiometric formula of the named compound",
    "density": null,
    "notes": "No sourced density in the local database.",
-   "confidence": "high"
+   "confidence": "high",
+   "common": true
   },
   {
    "id": "ta2o5",
@@ -517,6 +539,2010 @@
    ],
    "composition": {
     "formula": "Ta2O5",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "peg",
+   "name": "Poly(ethylene glycol) / poly(ethylene oxide)",
+   "category": "polymer",
+   "aliases": [
+    "PEG",
+    "PEO",
+    "polyethylene glycol",
+    "polyethylene oxide",
+    "poly(ethylene oxide)",
+    "poly(ethylene glycol)"
+   ],
+   "composition": {
+    "formula": "C2H4O",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "End groups neglected (high molecular weight).",
+   "confidence": "high"
+  },
+  {
+   "id": "pan",
+   "name": "Polyacrylonitrile",
+   "category": "polymer",
+   "aliases": [
+    "PAN",
+    "polyacrylonitrile"
+   ],
+   "composition": {
+    "formula": "C3H3N",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": {
+    "value": null,
+    "source": "NIST ESTAR material composition table (ICRU Report 37)",
+    "estar_id": 218
+   },
+   "notes": "",
+   "confidence": "high",
+   "estar_id": 218
+  },
+  {
+   "id": "pvdf",
+   "name": "Poly(vinylidene fluoride)",
+   "category": "polymer",
+   "aliases": [
+    "PVDF",
+    "polyvinylidene fluoride",
+    "poly(vinylidene fluoride)",
+    "kynar"
+   ],
+   "composition": {
+    "formula": "C2H2F2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": {
+    "value": null,
+    "source": "NIST ESTAR material composition table (ICRU Report 37)",
+    "estar_id": 234
+   },
+   "notes": "",
+   "confidence": "high",
+   "estar_id": 234
+  },
+  {
+   "id": "pvdc",
+   "name": "Poly(vinylidene chloride)",
+   "category": "polymer",
+   "aliases": [
+    "PVDC",
+    "polyvinylidene chloride",
+    "saran"
+   ],
+   "composition": {
+    "formula": "C2H2Cl2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": {
+    "value": null,
+    "source": "NIST ESTAR material composition table (ICRU Report 37)",
+    "estar_id": 233
+   },
+   "notes": "",
+   "confidence": "high",
+   "estar_id": 233
+  },
+  {
+   "id": "pctfe",
+   "name": "Polychlorotrifluoroethylene",
+   "category": "polymer",
+   "aliases": [
+    "PCTFE",
+    "polychlorotrifluoroethylene",
+    "kel-f"
+   ],
+   "composition": {
+    "formula": "C2ClF3",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": {
+    "value": null,
+    "source": "NIST ESTAR material composition table (ICRU Report 37)",
+    "estar_id": 228
+   },
+   "notes": "",
+   "confidence": "high",
+   "estar_id": 228
+  },
+  {
+   "id": "pvf",
+   "name": "Poly(vinyl fluoride)",
+   "category": "polymer",
+   "aliases": [
+    "PVF",
+    "polyvinyl fluoride",
+    "tedlar"
+   ],
+   "composition": {
+    "formula": "C2H3F",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "etfe",
+   "name": "Ethylene tetrafluoroethylene (ETFE)",
+   "category": "polymer",
+   "aliases": [
+    "ETFE",
+    "ethylene tetrafluoroethylene"
+   ],
+   "composition": {
+    "formula": "C4H4F4",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "Ideal alternating copolymer.",
+   "confidence": "high"
+  },
+  {
+   "id": "pvp",
+   "name": "Polyvinylpyrrolidone",
+   "category": "polymer",
+   "aliases": [
+    "PVP",
+    "polyvinylpyrrolidone",
+    "povidone"
+   ],
+   "composition": {
+    "formula": "C6H9NO",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": {
+    "value": null,
+    "source": "NIST ESTAR material composition table (ICRU Report 37)",
+    "estar_id": 235
+   },
+   "notes": "",
+   "confidence": "high",
+   "estar_id": 235
+  },
+  {
+   "id": "nylon66",
+   "name": "Nylon 6,6",
+   "category": "polymer",
+   "aliases": [
+    "nylon 66",
+    "nylon 6,6",
+    "nylon 6/6",
+    "PA66",
+    "PA 66",
+    "polyamide 66"
+   ],
+   "composition": {
+    "formula": "C12H22N2O2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": {
+    "value": null,
+    "source": "NIST ESTAR material composition table (ICRU Report 37)",
+    "estar_id": 209
+   },
+   "notes": "",
+   "confidence": "high",
+   "estar_id": 209
+  },
+  {
+   "id": "nylon610",
+   "name": "Nylon 6,10",
+   "category": "polymer",
+   "aliases": [
+    "nylon 610",
+    "nylon 6,10",
+    "nylon 6/10",
+    "PA610",
+    "polyamide 610"
+   ],
+   "composition": {
+    "formula": "C16H30N2O2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": {
+    "value": null,
+    "source": "NIST ESTAR material composition table (ICRU Report 37)",
+    "estar_id": 210
+   },
+   "notes": "",
+   "confidence": "high",
+   "estar_id": 210
+  },
+  {
+   "id": "nylon11",
+   "name": "Nylon 11",
+   "category": "polymer",
+   "aliases": [
+    "nylon 11",
+    "PA11",
+    "polyamide 11",
+    "rilsan"
+   ],
+   "composition": {
+    "formula": "C11H21NO",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": {
+    "value": null,
+    "source": "NIST ESTAR material composition table (ICRU Report 37)",
+    "estar_id": 211
+   },
+   "notes": "",
+   "confidence": "high",
+   "estar_id": 211
+  },
+  {
+   "id": "nylon12",
+   "name": "Nylon 12",
+   "category": "polymer",
+   "aliases": [
+    "nylon 12",
+    "PA12",
+    "polyamide 12"
+   ],
+   "composition": {
+    "formula": "C12H23NO",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pbt",
+   "name": "Poly(butylene terephthalate)",
+   "category": "polymer",
+   "aliases": [
+    "PBT",
+    "polybutylene terephthalate",
+    "poly(butylene terephthalate)"
+   ],
+   "composition": {
+    "formula": "C12H12O4",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pen",
+   "name": "Poly(ethylene naphthalate)",
+   "category": "polymer",
+   "aliases": [
+    "PEN",
+    "polyethylene naphthalate",
+    "poly(ethylene naphthalate)"
+   ],
+   "composition": {
+    "formula": "C14H10O4",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "ptt",
+   "name": "Poly(trimethylene terephthalate)",
+   "category": "polymer",
+   "aliases": [
+    "PTT",
+    "polytrimethylene terephthalate"
+   ],
+   "composition": {
+    "formula": "C11H10O4",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pei",
+   "name": "Polyetherimide",
+   "category": "polymer",
+   "aliases": [
+    "PEI",
+    "polyetherimide",
+    "ultem"
+   ],
+   "composition": {
+    "formula": "C37H24N2O6",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "Bisphenol-A dianhydride / m-phenylenediamine polyetherimide.",
+   "confidence": "high"
+  },
+  {
+   "id": "psu",
+   "name": "Polysulfone",
+   "category": "polymer",
+   "aliases": [
+    "PSU",
+    "PSF",
+    "polysulfone",
+    "udel"
+   ],
+   "composition": {
+    "formula": "C27H22O4S",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "Bisphenol-A polysulfone.",
+   "confidence": "high"
+  },
+  {
+   "id": "pes",
+   "name": "Poly(ether sulfone)",
+   "category": "polymer",
+   "aliases": [
+    "PES",
+    "PESU",
+    "polyethersulfone",
+    "poly(ether sulfone)"
+   ],
+   "composition": {
+    "formula": "C12H8O3S",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "ppsu",
+   "name": "Poly(phenylene sulfone)",
+   "category": "polymer",
+   "aliases": [
+    "PPSU",
+    "polyphenylsulfone",
+    "radel"
+   ],
+   "composition": {
+    "formula": "C24H16O4S",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pps",
+   "name": "Poly(phenylene sulfide)",
+   "category": "polymer",
+   "aliases": [
+    "PPS",
+    "polyphenylene sulfide",
+    "poly(phenylene sulfide)"
+   ],
+   "composition": {
+    "formula": "C6H4S",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "ppo",
+   "name": "Poly(phenylene oxide)",
+   "category": "polymer",
+   "aliases": [
+    "PPO",
+    "PPE",
+    "polyphenylene oxide",
+    "polyphenylene ether",
+    "poly(2,6-dimethyl-1,4-phenylene oxide)"
+   ],
+   "composition": {
+    "formula": "C8H8O",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "Poly(2,6-dimethyl-1,4-phenylene oxide).",
+   "confidence": "high"
+  },
+  {
+   "id": "pekk",
+   "name": "Poly(ether ketone ketone)",
+   "category": "polymer",
+   "aliases": [
+    "PEKK",
+    "polyetherketoneketone"
+   ],
+   "composition": {
+    "formula": "C20H12O3",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pek",
+   "name": "Poly(ether ketone)",
+   "category": "polymer",
+   "aliases": [
+    "PEK",
+    "polyetherketone"
+   ],
+   "composition": {
+    "formula": "C13H8O2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pcl",
+   "name": "Polycaprolactone",
+   "category": "polymer",
+   "aliases": [
+    "PCL",
+    "polycaprolactone"
+   ],
+   "composition": {
+    "formula": "C6H10O2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pga",
+   "name": "Poly(glycolic acid)",
+   "category": "polymer",
+   "aliases": [
+    "PGA",
+    "polyglycolide",
+    "polyglycolic acid"
+   ],
+   "composition": {
+    "formula": "C2H2O2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "phb",
+   "name": "Poly(3-hydroxybutyrate)",
+   "category": "polymer",
+   "aliases": [
+    "PHB",
+    "polyhydroxybutyrate"
+   ],
+   "composition": {
+    "formula": "C4H6O2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pbs",
+   "name": "Poly(butylene succinate)",
+   "category": "polymer",
+   "aliases": [
+    "PBS",
+    "polybutylene succinate"
+   ],
+   "composition": {
+    "formula": "C8H12O4",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pma",
+   "name": "Poly(methyl acrylate)",
+   "category": "polymer",
+   "aliases": [
+    "PMA",
+    "polymethyl acrylate"
+   ],
+   "composition": {
+    "formula": "C4H6O2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pea",
+   "name": "Poly(ethyl acrylate)",
+   "category": "polymer",
+   "aliases": [
+    "polyethyl acrylate",
+    "poly(ethyl acrylate)"
+   ],
+   "composition": {
+    "formula": "C5H8O2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pba",
+   "name": "Poly(butyl acrylate)",
+   "category": "polymer",
+   "aliases": [
+    "PBA",
+    "polybutyl acrylate"
+   ],
+   "composition": {
+    "formula": "C7H12O2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pema",
+   "name": "Poly(ethyl methacrylate)",
+   "category": "polymer",
+   "aliases": [
+    "PEMA",
+    "polyethyl methacrylate"
+   ],
+   "composition": {
+    "formula": "C6H10O2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "paa",
+   "name": "Poly(acrylic acid)",
+   "category": "polymer",
+   "aliases": [
+    "PAA",
+    "polyacrylic acid"
+   ],
+   "composition": {
+    "formula": "C3H4O2",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pam",
+   "name": "Polyacrylamide",
+   "category": "polymer",
+   "aliases": [
+    "PAM",
+    "PAAm",
+    "polyacrylamide"
+   ],
+   "composition": {
+    "formula": "C3H5NO",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pbd",
+   "name": "Polybutadiene",
+   "category": "polymer",
+   "aliases": [
+    "PB",
+    "PBD",
+    "polybutadiene",
+    "butadiene rubber"
+   ],
+   "composition": {
+    "formula": "C4H6",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pib",
+   "name": "Polyisobutylene / butyl rubber",
+   "category": "polymer",
+   "aliases": [
+    "PIB",
+    "polyisobutylene",
+    "butyl rubber",
+    "IIR"
+   ],
+   "composition": {
+    "formula": "C4H8",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": {
+    "value": null,
+    "source": "NIST ESTAR material composition table (ICRU Report 37)",
+    "estar_id": 242
+   },
+   "notes": "Commercial butyl rubber contains ~1-2 % isoprene units.",
+   "confidence": "high",
+   "estar_id": 242
+  },
+  {
+   "id": "nr",
+   "name": "Natural rubber (cis-polyisoprene)",
+   "category": "polymer",
+   "aliases": [
+    "natural rubber",
+    "NR",
+    "polyisoprene",
+    "cis-polyisoprene"
+   ],
+   "composition": {
+    "formula": "C5H8",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": {
+    "value": null,
+    "source": "NIST ESTAR material composition table (ICRU Report 37)",
+    "estar_id": 243
+   },
+   "notes": "Unvulcanised; sulfur and fillers in compounds change the composition.",
+   "confidence": "high",
+   "estar_id": 243
+  },
+  {
+   "id": "cr",
+   "name": "Polychloroprene (neoprene)",
+   "category": "polymer",
+   "aliases": [
+    "neoprene",
+    "polychloroprene",
+    "CR",
+    "chloroprene rubber"
+   ],
+   "composition": {
+    "formula": "C4H5Cl",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": {
+    "value": null,
+    "source": "NIST ESTAR material composition table (ICRU Report 37)",
+    "estar_id": 244
+   },
+   "notes": "",
+   "confidence": "high",
+   "estar_id": 244
+  },
+  {
+   "id": "pmp",
+   "name": "Poly(4-methyl-1-pentene)",
+   "category": "polymer",
+   "aliases": [
+    "PMP",
+    "TPX",
+    "polymethylpentene"
+   ],
+   "composition": {
+    "formula": "C6H12",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pams",
+   "name": "Poly(alpha-methylstyrene)",
+   "category": "polymer",
+   "aliases": [
+    "PAMS",
+    "poly(alpha-methylstyrene)",
+    "poly-alpha-methylstyrene"
+   ],
+   "composition": {
+    "formula": "C9H10",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "parylene-n",
+   "name": "Parylene N",
+   "category": "polymer",
+   "aliases": [
+    "parylene N",
+    "poly(p-xylylene)",
+    "parylene"
+   ],
+   "composition": {
+    "formula": "C8H8",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "parylene-c",
+   "name": "Parylene C",
+   "category": "polymer",
+   "aliases": [
+    "parylene C"
+   ],
+   "composition": {
+    "formula": "C8H7Cl",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "uhmwpe",
+   "name": "Ultra-high-molecular-weight polyethylene",
+   "category": "polymer",
+   "aliases": [
+    "UHMWPE",
+    "UHMW-PE",
+    "UHMW",
+    "ultra high molecular weight polyethylene"
+   ],
+   "composition": {
+    "formula": "C2H4",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "Same elemental composition as PE; enter the density from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pvk",
+   "name": "Poly(N-vinylcarbazole)",
+   "category": "polymer",
+   "aliases": [
+    "PVK",
+    "polyvinylcarbazole"
+   ],
+   "composition": {
+    "formula": "C14H11N",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pthiophene",
+   "name": "Polythiophene",
+   "category": "polymer",
+   "aliases": [
+    "polythiophene"
+   ],
+   "composition": {
+    "formula": "C4H2S",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "pedot",
+   "name": "PEDOT",
+   "category": "polymer",
+   "aliases": [
+    "PEDOT",
+    "poly(3,4-ethylenedioxythiophene)"
+   ],
+   "composition": {
+    "formula": "C6H4O2S",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "Without PSS counter-ion.",
+   "confidence": "high"
+  },
+  {
+   "id": "cellulose",
+   "name": "Cellulose",
+   "category": "polymer",
+   "aliases": [
+    "cellulose"
+   ],
+   "composition": {
+    "formula": "C6H10O5",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "Dry cellulose; absorbed moisture is not included.",
+   "confidence": "high"
+  },
+  {
+   "id": "starch",
+   "name": "Starch (amylose)",
+   "category": "polymer",
+   "aliases": [
+    "starch",
+    "amylose"
+   ],
+   "composition": {
+    "formula": "C6H10O5",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "Dry; absorbed moisture is not included.",
+   "confidence": "high"
+  },
+  {
+   "id": "chitosan",
+   "name": "Chitosan (fully deacetylated)",
+   "category": "polymer",
+   "aliases": [
+    "chitosan"
+   ],
+   "composition": {
+    "formula": "C6H11NO4",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "Real chitosan has a degree of deacetylation below 100 %.",
+   "confidence": "high"
+  },
+  {
+   "id": "chitin",
+   "name": "Chitin",
+   "category": "polymer",
+   "aliases": [
+    "chitin"
+   ],
+   "composition": {
+    "formula": "C8H13NO5",
+    "repeat_unit": true
+   },
+   "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
+   "density": null,
+   "notes": "No sourced density in the local database; enter the value from your datasheet.",
+   "confidence": "high"
+  },
+  {
+   "id": "wo2",
+   "name": "Tungsten(IV) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "tungsten dioxide",
+    "tungsten(IV) oxide"
+   ],
+   "composition": {
+    "formula": "WO2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "wc",
+   "name": "Tungsten carbide",
+   "category": "inorganic",
+   "aliases": [
+    "tungsten carbide"
+   ],
+   "composition": {
+    "formula": "WC",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "w2c",
+   "name": "Ditungsten carbide",
+   "category": "inorganic",
+   "aliases": [
+    "ditungsten carbide"
+   ],
+   "composition": {
+    "formula": "W2C",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "ws2",
+   "name": "Tungsten disulfide",
+   "category": "inorganic",
+   "aliases": [
+    "tungsten disulfide",
+    "tungsten(IV) sulfide"
+   ],
+   "composition": {
+    "formula": "WS2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "znwo4",
+   "name": "Zinc tungstate",
+   "category": "inorganic",
+   "aliases": [
+    "zinc tungstate",
+    "zinc wolframate"
+   ],
+   "composition": {
+    "formula": "ZnWO4",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "pbo2",
+   "name": "Lead(IV) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "lead dioxide",
+    "lead(IV) oxide"
+   ],
+   "composition": {
+    "formula": "PbO2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "pb3o4",
+   "name": "Lead(II,IV) oxide (red lead)",
+   "category": "inorganic",
+   "aliases": [
+    "red lead",
+    "minium",
+    "lead tetroxide",
+    "trilead tetroxide"
+   ],
+   "composition": {
+    "formula": "Pb3O4",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "lead-sulfide",
+   "name": "Lead(II) sulfide",
+   "category": "inorganic",
+   "aliases": [
+    "lead sulfide",
+    "lead(II) sulfide",
+    "galena"
+   ],
+   "composition": {
+    "formula": "PbS",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "pbf2",
+   "name": "Lead(II) fluoride",
+   "category": "inorganic",
+   "aliases": [
+    "lead fluoride",
+    "lead(II) fluoride"
+   ],
+   "composition": {
+    "formula": "PbF2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "pbcl2",
+   "name": "Lead(II) chloride",
+   "category": "inorganic",
+   "aliases": [
+    "lead chloride",
+    "lead(II) chloride"
+   ],
+   "composition": {
+    "formula": "PbCl2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "pbi2",
+   "name": "Lead(II) iodide",
+   "category": "inorganic",
+   "aliases": [
+    "lead iodide",
+    "lead(II) iodide"
+   ],
+   "composition": {
+    "formula": "PbI2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "pbco3",
+   "name": "Lead(II) carbonate",
+   "category": "inorganic",
+   "aliases": [
+    "lead carbonate",
+    "cerussite"
+   ],
+   "composition": {
+    "formula": "PbCO3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "cspbbr3",
+   "name": "Caesium lead bromide",
+   "category": "inorganic",
+   "aliases": [
+    "cesium lead bromide",
+    "caesium lead bromide"
+   ],
+   "composition": {
+    "formula": "CsPbBr3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "mapbi3",
+   "name": "Methylammonium lead iodide",
+   "category": "inorganic",
+   "aliases": [
+    "methylammonium lead iodide",
+    "MAPbI3"
+   ],
+   "composition": {
+    "formula": "CH3NH3PbI3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "biocl",
+   "name": "Bismuth oxychloride",
+   "category": "inorganic",
+   "aliases": [
+    "bismuth oxychloride"
+   ],
+   "composition": {
+    "formula": "BiOCl",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "bi2s3",
+   "name": "Bismuth(III) sulfide",
+   "category": "inorganic",
+   "aliases": [
+    "bismuth sulfide",
+    "bismuthinite"
+   ],
+   "composition": {
+    "formula": "Bi2S3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "bivo4",
+   "name": "Bismuth vanadate",
+   "category": "inorganic",
+   "aliases": [
+    "bismuth vanadate"
+   ],
+   "composition": {
+    "formula": "BiVO4",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "bi4ti3o12",
+   "name": "Bismuth titanate",
+   "category": "inorganic",
+   "aliases": [
+    "bismuth titanate"
+   ],
+   "composition": {
+    "formula": "Bi4Ti3O12",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "bi2moo6",
+   "name": "Bismuth molybdate",
+   "category": "inorganic",
+   "aliases": [
+    "bismuth molybdate"
+   ],
+   "composition": {
+    "formula": "Bi2MoO6",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "bifeo3",
+   "name": "Bismuth ferrite",
+   "category": "inorganic",
+   "aliases": [
+    "bismuth ferrite"
+   ],
+   "composition": {
+    "formula": "BiFeO3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "bi-subcarbonate",
+   "name": "Bismuth subcarbonate",
+   "category": "inorganic",
+   "aliases": [
+    "bismuth subcarbonate",
+    "bismuth oxycarbonate"
+   ],
+   "composition": {
+    "formula": "Bi2O2CO3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "batio3",
+   "name": "Barium titanate",
+   "category": "inorganic",
+   "aliases": [
+    "barium titanate"
+   ],
+   "composition": {
+    "formula": "BaTiO3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "baco3",
+   "name": "Barium carbonate",
+   "category": "inorganic",
+   "aliases": [
+    "barium carbonate",
+    "witherite"
+   ],
+   "composition": {
+    "formula": "BaCO3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "bao",
+   "name": "Barium oxide",
+   "category": "inorganic",
+   "aliases": [
+    "barium oxide"
+   ],
+   "composition": {
+    "formula": "BaO",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "srtio3",
+   "name": "Strontium titanate",
+   "category": "inorganic",
+   "aliases": [
+    "strontium titanate"
+   ],
+   "composition": {
+    "formula": "SrTiO3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "sm2o3",
+   "name": "Samarium(III) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "samarium oxide",
+    "samarium(III) oxide",
+    "samaria"
+   ],
+   "composition": {
+    "formula": "Sm2O3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "eu2o3",
+   "name": "Europium(III) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "europium oxide",
+    "europium(III) oxide"
+   ],
+   "composition": {
+    "formula": "Eu2O3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "er2o3",
+   "name": "Erbium(III) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "erbium oxide",
+    "erbium(III) oxide",
+    "erbia"
+   ],
+   "composition": {
+    "formula": "Er2O3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "yb2o3",
+   "name": "Ytterbium(III) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "ytterbium oxide",
+    "ytterbium(III) oxide"
+   ],
+   "composition": {
+    "formula": "Yb2O3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "lu2o3",
+   "name": "Lutetium(III) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "lutetium oxide",
+    "lutetium(III) oxide"
+   ],
+   "composition": {
+    "formula": "Lu2O3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "dy2o3",
+   "name": "Dysprosium(III) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "dysprosium oxide",
+    "dysprosium(III) oxide"
+   ],
+   "composition": {
+    "formula": "Dy2O3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "nd2o3",
+   "name": "Neodymium(III) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "neodymium oxide",
+    "neodymium(III) oxide"
+   ],
+   "composition": {
+    "formula": "Nd2O3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "la2o3",
+   "name": "Lanthanum(III) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "lanthanum oxide",
+    "lanthanum(III) oxide",
+    "lanthana"
+   ],
+   "composition": {
+    "formula": "La2O3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "ceo2",
+   "name": "Cerium(IV) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "ceria",
+    "cerium dioxide",
+    "cerium(IV) oxide"
+   ],
+   "composition": {
+    "formula": "CeO2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "y2o3",
+   "name": "Yttrium(III) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "yttrium oxide",
+    "yttria"
+   ],
+   "composition": {
+    "formula": "Y2O3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "hfo2",
+   "name": "Hafnium(IV) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "hafnium oxide",
+    "hafnia",
+    "hafnium dioxide"
+   ],
+   "composition": {
+    "formula": "HfO2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "zro2",
+   "name": "Zirconium(IV) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "zirconium oxide",
+    "zirconia",
+    "zirconium dioxide"
+   ],
+   "composition": {
+    "formula": "ZrO2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "zno",
+   "name": "Zinc oxide",
+   "category": "inorganic",
+   "aliases": [
+    "zinc oxide"
+   ],
+   "composition": {
+    "formula": "ZnO",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "zns",
+   "name": "Zinc sulfide",
+   "category": "inorganic",
+   "aliases": [
+    "zinc sulfide",
+    "sphalerite"
+   ],
+   "composition": {
+    "formula": "ZnS",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "fe3o4",
+   "name": "Iron(II,III) oxide (magnetite)",
+   "category": "inorganic",
+   "aliases": [
+    "magnetite",
+    "iron(II,III) oxide",
+    "triiron tetroxide"
+   ],
+   "composition": {
+    "formula": "Fe3O4",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "cuo",
+   "name": "Copper(II) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "cupric oxide",
+    "copper(II) oxide"
+   ],
+   "composition": {
+    "formula": "CuO",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "cu2o",
+   "name": "Copper(I) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "cuprous oxide",
+    "copper(I) oxide"
+   ],
+   "composition": {
+    "formula": "Cu2O",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "nio",
+   "name": "Nickel(II) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "nickel oxide",
+    "nickel(II) oxide"
+   ],
+   "composition": {
+    "formula": "NiO",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "co3o4",
+   "name": "Cobalt(II,III) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "cobalt(II,III) oxide",
+    "tricobalt tetroxide"
+   ],
+   "composition": {
+    "formula": "Co3O4",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "cr2o3",
+   "name": "Chromium(III) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "chromium oxide",
+    "chromium(III) oxide",
+    "chromia"
+   ],
+   "composition": {
+    "formula": "Cr2O3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "mno2",
+   "name": "Manganese dioxide",
+   "category": "inorganic",
+   "aliases": [
+    "manganese dioxide",
+    "manganese(IV) oxide"
+   ],
+   "composition": {
+    "formula": "MnO2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "sno2",
+   "name": "Tin(IV) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "tin dioxide",
+    "tin(IV) oxide",
+    "stannic oxide"
+   ],
+   "composition": {
+    "formula": "SnO2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "sb2o3",
+   "name": "Antimony(III) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "antimony trioxide",
+    "antimony(III) oxide"
+   ],
+   "composition": {
+    "formula": "Sb2O3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "moo3",
+   "name": "Molybdenum trioxide",
+   "category": "inorganic",
+   "aliases": [
+    "molybdenum trioxide",
+    "molybdenum(VI) oxide"
+   ],
+   "composition": {
+    "formula": "MoO3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "mos2",
+   "name": "Molybdenum disulfide",
+   "category": "inorganic",
+   "aliases": [
+    "molybdenum disulfide",
+    "molybdenite"
+   ],
+   "composition": {
+    "formula": "MoS2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "nb2o5",
+   "name": "Niobium(V) oxide",
+   "category": "inorganic",
+   "aliases": [
+    "niobium pentoxide",
+    "niobium(V) oxide"
+   ],
+   "composition": {
+    "formula": "Nb2O5",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "sic",
+   "name": "Silicon carbide",
+   "category": "inorganic",
+   "aliases": [
+    "silicon carbide",
+    "carborundum"
+   ],
+   "composition": {
+    "formula": "SiC",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "si3n4",
+   "name": "Silicon nitride",
+   "category": "inorganic",
+   "aliases": [
+    "silicon nitride"
+   ],
+   "composition": {
+    "formula": "Si3N4",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "bn",
+   "name": "Boron nitride",
+   "category": "inorganic",
+   "aliases": [
+    "boron nitride",
+    "hBN",
+    "h-BN"
+   ],
+   "composition": {
+    "formula": "BN",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "aln",
+   "name": "Aluminium nitride",
+   "category": "inorganic",
+   "aliases": [
+    "aluminum nitride",
+    "aluminium nitride"
+   ],
+   "composition": {
+    "formula": "AlN",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "h3bo3",
+   "name": "Boric acid",
+   "category": "inorganic",
+   "aliases": [
+    "boric acid"
+   ],
+   "composition": {
+    "formula": "H3BO3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "borax",
+   "name": "Borax (sodium tetraborate decahydrate)",
+   "category": "inorganic",
+   "aliases": [
+    "borax",
+    "sodium tetraborate decahydrate"
+   ],
+   "composition": {
+    "formula": "Na2B4O7\u00b710H2O",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "mgal2o4",
+   "name": "Magnesium aluminate spinel",
+   "category": "inorganic",
+   "aliases": [
+    "spinel",
+    "magnesium aluminate"
+   ],
+   "composition": {
+    "formula": "MgAl2O4",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "lso",
+   "name": "Lutetium oxyorthosilicate (LSO)",
+   "category": "inorganic",
+   "aliases": [
+    "LSO",
+    "lutetium oxyorthosilicate"
+   ],
+   "composition": {
+    "formula": "Lu2SiO5",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "yag",
+   "name": "Yttrium aluminium garnet (YAG)",
+   "category": "inorganic",
+   "aliases": [
+    "YAG",
+    "yttrium aluminium garnet",
+    "yttrium aluminum garnet"
+   ],
+   "composition": {
+    "formula": "Y3Al5O12",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "hydroxyapatite",
+   "name": "Hydroxyapatite",
+   "category": "inorganic",
+   "aliases": [
+    "hydroxyapatite",
+    "HAp"
+   ],
+   "composition": {
+    "formula": "Ca10(PO4)6(OH)2",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "al-oh3",
+   "name": "Aluminium hydroxide",
+   "category": "inorganic",
+   "aliases": [
+    "aluminum hydroxide",
+    "aluminium hydroxide",
+    "ATH",
+    "gibbsite"
+   ],
+   "composition": {
+    "formula": "Al(OH)3",
+    "repeat_unit": false
+   },
+   "composition_source": "Stoichiometric formula of the named compound",
+   "density": null,
+   "notes": "No sourced density in the local database.",
+   "confidence": "high"
+  },
+  {
+   "id": "mg-oh2",
+   "name": "Magnesium hydroxide",
+   "category": "inorganic",
+   "aliases": [
+    "magnesium hydroxide",
+    "brucite"
+   ],
+   "composition": {
+    "formula": "Mg(OH)2",
     "repeat_unit": false
    },
    "composition_source": "Stoichiometric formula of the named compound",

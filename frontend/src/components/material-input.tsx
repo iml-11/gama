@@ -17,7 +17,7 @@ export function MaterialInput({
   value,
   onChange,
   size = "lg",
-  placeholder = "Material, formula or composite — e.g. Bi2WO6, PMMA, 60 wt% Bi2WO6 + 40 wt% epoxy",
+  placeholder = "Material name, chemical formula or polymer",
   loading,
   autoFocus,
   inputRef,

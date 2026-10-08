@@ -20,7 +20,6 @@ import { api, ApiError } from "@/lib/api";
 import { energyToMeV } from "@/lib/units";
 import type { CalculateResponse, LengthUnit, MaterialInputState } from "@/lib/types";
 
-const EXAMPLES = ["Bi2WO6", "PbWO4", "PMMA", "polyethylene", "water", "epoxy", "concrete"];
 
 export default function CalculatorPage() {
   const [material, setMaterial] = useState<MaterialInputState>({ input: "", choices: {}, composition: null });
@@ -123,18 +122,7 @@ export default function CalculatorPage() {
           <MixtureBuilder key={builderKey} initial={material.input} onChange={setInput} />
         )}
         <div className="flex min-h-6 flex-wrap items-center gap-x-2 gap-y-1">
-          {material.input.trim() ? (
-            <RecognitionStatus resolution={resolution} loading={loading} error={error} />
-          ) : (
-            <>
-              <span className="text-xs text-muted-foreground">{mode === "single" ? "Examples:" : ""}</span>
-              {mode === "single" && EXAMPLES.map((x) => (
-                <button key={x} type="button" onClick={() => setInput(x)} className="rounded-md border px-2 py-0.5 text-xs text-muted-foreground hover:bg-accent hover:text-foreground">
-                  {x}
-                </button>
-              ))}
-            </>
-          )}
+          {material.input.trim() && <RecognitionStatus resolution={resolution} loading={loading} error={error} />}
         </div>
       </section>
 

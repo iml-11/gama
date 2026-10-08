@@ -187,7 +187,7 @@ export function MixtureBuilder({ initial, onChange, compact }: { initial: string
       <section className="space-y-3">
         <div>
           <div className="text-sm font-medium">1 · Add components</div>
-          <div className="text-xs text-muted-foreground">One at a time: a filler (e.g. Bi2WO6, W, lead oxide), then the matrix (e.g. epoxy, PMMA, silicone)…</div>
+          <div className="text-xs text-muted-foreground">One at a time — for example the filler first, then the matrix.</div>
         </div>
         <div className="flex gap-2">
           <div className="min-w-0 flex-1">

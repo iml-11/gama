@@ -240,7 +240,7 @@ function CustomCreator({ initialName, onCreated }: { initialName: string; onCrea
       <CardContent className="space-y-3">
         <div className="space-y-1.5">
           <Label htmlFor="cm-name">Name</Label>
-          <Input id="cm-name" value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. My epoxy formulation" />
+          <Input id="cm-name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name of your material" />
         </div>
         <Tabs value={mode} onValueChange={(v) => setMode(v as "formula" | "elements")}>
           <TabsList>

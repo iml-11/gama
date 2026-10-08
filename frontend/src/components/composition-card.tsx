@@ -290,7 +290,7 @@ export function CompositionCard({
           <div className="grid gap-2 text-sm sm:grid-cols-3">
             <div className="rounded-lg border p-3">
               <div className="font-medium">Enter a chemical formula</div>
-              <div className="text-xs text-muted-foreground">e.g. Bi2WO6, (C5H8O2)n, CuSO4·5H2O</div>
+              <div className="text-xs text-muted-foreground">Element symbols with counts; polymers as a repeat unit, e.g. (C2H4)n</div>
             </div>
             <Link href="/materials" className="rounded-lg border p-3 hover:bg-accent/40">
               <div className="font-medium">Search material database</div>

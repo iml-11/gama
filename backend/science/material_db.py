@@ -50,6 +50,7 @@ class MaterialEntry:
     family: str | None = None
     reference: str | None = None
     created: str | None = None
+    common: bool = False  # widely used material: ranked first in search
 
     def summary(self) -> dict:
         return {
@@ -197,6 +198,7 @@ class MaterialDB:
             formula=formula,
             repeat_unit=repeat,
             family=raw.get("family"),
+            common=bool(raw.get("common")),
         )
 
     def _load_curated(self) -> None:
@@ -413,6 +415,8 @@ class MaterialDB:
                 continue
             if e.category == "gas":
                 s -= 3
+            if e.common:
+                s += 3
             scored.append(
                 (
                     s + kind_bonus.get(e.source_kind, 0) - len(e.name) / 100.0,

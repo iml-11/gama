@@ -107,7 +107,7 @@ def _term(text: str, warnings: list[str]) -> ComponentSpec:
         pct = float(m.group(1) if m.re is _TERM_LEAD else m.group(2))
         return ComponentSpec(text=m.group("name").strip(), percent=pct, basis=_basis(m.group("u"), warnings, t))
     if re.search(r"\d\s*%|%", t):
-        raise CompositeError(f"Could not read the fraction in '{t}'. Use e.g. '60 wt% Bi2WO6'.")
+        raise CompositeError(f"Could not read the fraction in '{t}'. Write it as e.g. '60 wt% A + 40 wt% B'.")
     return ComponentSpec(text=t, percent=None)
 
 
@@ -161,7 +161,7 @@ def parse_composite(text: str) -> CompositeSpec:
         if c.percent is not None and c.percent < 100:
             raise CompositeError(
                 f"Only one component given ({c.percent:g}% {c.text}). Add the other component(s), "
-                f"e.g. '{c.percent:g} wt% {c.text} + {100 - c.percent:g} wt% epoxy'."
+                f"e.g. '{c.percent:g} wt% {c.text} + {100 - c.percent:g} wt% <second material>'."
             )
         raise CompositeError("A composite needs at least two components.")
     bases = {c.basis for c in comps if c.percent is not None}

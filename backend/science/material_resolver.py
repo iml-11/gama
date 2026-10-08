@@ -203,6 +203,12 @@ def _from_pubchem(text: str, rec: dict, db: MaterialDB) -> Resolution:
     return r
 
 
+def _exact_case(obj, text: str) -> bool:
+    """True if ``text`` equals the name or an alias of ``obj`` including letter case."""
+    names = [obj.name] + list(obj.aliases)
+    return any(n.strip() == text.strip() for n in names)
+
+
 def _not_found(text: str, db: MaterialDB, reason: str | None = None) -> Resolution:
     r = Resolution(input=text, status="not_found")
     r.errors.append("Material could not be resolved automatically." if not reason else reason)
@@ -246,6 +252,13 @@ def resolve_single(text: str, choices: dict[str, str] | None = None, online: boo
             formula_err = str(exc)
 
     hit = db.lookup_exact(t)
+    if hit and formula_res is not None and not _exact_case(hit[1], t):
+        # "Pb" is lead, not the polymer acronym "PB"; "PbS" is lead sulfide, not
+        # "PBS". A valid formula wins over an alias that only matches when
+        # letter case is ignored; the material is offered as an alternative.
+        kind, obj = hit
+        formula_res.alternatives.append({"label": obj.name, "input": obj.id, "kind": "material"})
+        return formula_res
     if hit:
         kind, obj = hit
         if kind == "family":
