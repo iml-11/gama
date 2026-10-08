@@ -32,6 +32,8 @@ npm install
 npm run dev                 # or: npm run build && npm start
 ```
 
+One-click start: double-click `start.bat` (Windows) or `start.command` (macOS). The first run installs the dependencies; Python 3.10+ and Node.js must be installed.
+
 Set `GAMMA_OFFLINE=1` to disable PubChem look-ups on the server. The Online/Offline switch in the header does the same for one browser.
 
 ## What it does
