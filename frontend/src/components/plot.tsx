@@ -1,5 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import type { Config, Data, Layout } from "plotly.js";
 
@@ -26,9 +27,16 @@ export function seriesStyle(i: number, dark: boolean): { color: string; dash: "s
   return { color: p[i % p.length], dash: "solid", width: 2 };
 }
 
+/**
+ * True when the dark theme is active. Returns false during the first render so
+ * the client markup matches the server-rendered HTML (no hydration mismatch);
+ * the real theme is applied right after mounting.
+ */
 export function useDark() {
   const { resolvedTheme } = useTheme();
-  return resolvedTheme === "dark";
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  return mounted && resolvedTheme === "dark";
 }
 
 /** Plotly wrapper with theme-aware defaults. */
