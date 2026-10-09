@@ -9,8 +9,8 @@ import { Heartbeat } from "@/components/heartbeat";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 export const metadata: Metadata = {
-  title: "Gamma Attenuation",
-  description: "Gamma-ray attenuation and shielding calculations from NIST XCOM data with automatic material composition.",
+  title: `gama ${process.env.NEXT_PUBLIC_APP_VERSION ?? ""}`.trim(),
+  description: "gama — gamma-ray attenuation and shielding calculations from NIST XCOM data with automatic material composition.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -126,3 +126,11 @@ def test_heartbeat():
     assert c.get("/api/heartbeat").json()["ok"] is True
     age = c.get("/api/heartbeat/age").json()["age"]
     assert age is not None and age < 5
+
+
+def test_version_from_file():
+    from pathlib import Path
+
+    v = (Path(__file__).resolve().parents[2] / "VERSION").read_text().strip()
+    assert c.get("/api/meta").json()["version"] == v
+    assert len(v.split(".")) == 3

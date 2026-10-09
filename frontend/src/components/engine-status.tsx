@@ -35,7 +35,7 @@ export function EngineStatus() {
         <AlertDescription>
           {state === "unconfigured"
             ? "The NIST XCOM data files are missing on the server. No attenuation values will be shown."
-            : "Waiting for the calculation engine… If this does not disappear, check the \"Gamma - engine\" window for an error (or start it with: uvicorn api.main:app --port 8000 in the backend folder)."}
+            : "Waiting for the calculation engine… If this does not disappear, check the \"gama - engine\" window for an error (or start it with: uvicorn api.main:app --port 8000 in the backend folder)."}
         </AlertDescription>
       </Alert>
     </div>

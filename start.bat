@@ -20,8 +20,8 @@ if not exist frontend\node_modules (
     popd
 )
 
-start "Gamma - engine" /D "%~dp0backend" cmd /k %PY% -m uvicorn api.main:app --port 8000
-start "Gamma - website" /D "%~dp0frontend" cmd /k npm.cmd run dev
+start "gama - engine" /D "%~dp0backend" cmd /k %PY% -m uvicorn api.main:app --port 8000
+start "gama - website" /D "%~dp0frontend" cmd /k npm.cmd run dev
 
 echo Starting... the browser will open in a few seconds.
 timeout /t 10 /nobreak >nul

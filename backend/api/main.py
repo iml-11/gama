@@ -20,7 +20,14 @@ from science.units import UnitError, energy_to_mev, length_to_cm
 
 from .references import REFERENCES
 
-app = FastAPI(title="Gamma Attenuation API", version="1.0.0")
+from pathlib import Path
+
+try:
+    APP_VERSION = (Path(__file__).resolve().parents[2] / "VERSION").read_text().strip()
+except OSError:
+    APP_VERSION = "0.0.0"
+
+app = FastAPI(title="gama API", version=APP_VERSION)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -205,6 +212,7 @@ def health():
 @app.get("/api/meta")
 def meta():
     return {
+        "version": APP_VERSION,
         "engine_configured": _engine_ready(),
         "xcom": xe.dataset_info() if _engine_ready() else None,
         "isotopes": isotopes.dataset_info(),

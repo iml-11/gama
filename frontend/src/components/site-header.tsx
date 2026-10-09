@@ -44,7 +44,10 @@ export function SiteHeader() {
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
           <span className="grid size-6 place-items-center rounded-[5px] bg-foreground font-mono text-[13px] leading-none text-background">γ</span>
-          <span className="hidden sm:inline">Gamma Attenuation</span>
+          <span className="flex items-baseline gap-1.5">
+            gama
+            <span className="font-mono text-[11px] font-normal text-muted-foreground">{process.env.NEXT_PUBLIC_APP_VERSION}</span>
+          </span>
         </Link>
         <nav className="flex flex-1 items-center gap-1 overflow-x-auto text-sm">
           {NAV.map((n) => (

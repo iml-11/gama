@@ -41,7 +41,7 @@ class PubChemClient:
     def __init__(self, cache_file=CACHE_FILE, transport: httpx.BaseTransport | None = None, timeout: float = 8.0):
         self.cache_file = cache_file
         self._lock = threading.Lock()
-        self._client = httpx.Client(timeout=timeout, transport=transport, headers={"User-Agent": "gamma-attenuation-app/1.0"})
+        self._client = httpx.Client(timeout=timeout, transport=transport, headers={"User-Agent": "gama (local research tool)"})
         self._cache = self._read_cache()
         self._negative: set[str] = set()
 

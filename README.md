@@ -1,4 +1,4 @@
-# Gamma Attenuation
+# gama
 
 A web application for gamma-ray attenuation and shielding calculations based on
 the NIST XCOM photon cross-section database. You type a material name, formula,
@@ -34,7 +34,7 @@ npm run dev                 # or: npm run build && npm start
 
 One-click start: double-click `start.bat` (Windows) or `start.command` (macOS). The first run installs the dependencies; Python 3.10+ and Node.js must be installed.
 
-**macOS app:** double-click `Create Mac App.command` once. It creates *Gamma Attenuation* in Applications (drag it to the Dock if you like). Clicking it starts the engine and website in the background — no Terminal — and opens them in their own window (Chrome, Edge or Brave in app mode; otherwise the default browser). The first start, and the first start after an update, installs and builds for a few minutes. Quitting the window (Cmd+Q) stops everything; closing it with the red button stops everything about two minutes later. Log: `~/Library/Logs/Gamma Attenuation.log`.
+**macOS app:** double-click `Create Mac App.command` once. It creates *gama* in Applications (drag it to the Dock if you like). Clicking it starts the engine and website in the background — no Terminal — and opens them in their own window (Chrome, Edge or Brave in app mode; otherwise the default browser). The first start, and the first start after an update, installs and builds for a few minutes. Quitting the window (Cmd+Q) stops everything; closing it with the red button stops everything about two minutes later. Log: `~/Library/Logs/gama.log`.
 
 Set `GAMMA_OFFLINE=1` to disable PubChem look-ups on the server. The Online/Offline switch in the header does the same for one browser.
 
@@ -101,3 +101,13 @@ Set `GAMMA_OFFLINE=1` to disable PubChem look-ups on the server. The Online/Offl
 * **Z = 87–100 K edge:** the HDF5 conversion dropped the photoelectric value just above the K edge for these elements. The engine refuses to return photoelectric or total values between that edge and the next grid energy (e.g. U: 115.6–150 keV) instead of guessing. Rebuilding from the original MDATX3 files (`build_xcom_data.py --mdatx3 DIR`) fixes this.
 * **Isotope energies** come from DECAY2012 with its tabulated precision (for example Co-60 1173.23 and 1332.49 keV; ENSDF quotes 1173.228 and 1332.492 keV). Daughter lines (e.g. Ba-137m for Cs-137) are given per decay of the daughter. Annihilation photons and X-rays are not listed.
 * **Densities:** where no sourced density exists (PEEK, PLA, HDPE, LDPE, epoxy presets, most inorganic fillers) the field stays blank and the user must supply a value. Composite densities are only offered as an explicitly labelled ideal-mixture estimate.
+
+## Versioning
+
+The version lives in the `VERSION` file (currently shown in the app header as *gama x.y.z*) and is read by the website, the engine and the macOS app. Format `MAJOR.MINOR.PATCH`:
+
+* **PATCH** (1.0.**1**): small updates and bug fixes.
+* **MINOR** (1.**1**.0): larger updates and new features; PATCH goes back to 0.
+* **MAJOR** (**2**.0.0): fundamental changes; MINOR and PATCH go back to 0.
+
+Each release is tagged in git as `vX.Y.Z`.

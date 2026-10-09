@@ -1,17 +1,20 @@
 #!/bin/bash
-# Double-click once to create "Gamma Attenuation.app" in your Applications folder.
+# Double-click once to create "gama.app" in your Applications folder.
 # The app starts the calculation engine and the website in the background (no
 # Terminal window) and opens them in their own window. Closing the window stops
 # everything. Run this again after moving this folder.
 
 REPO="$(cd "$(dirname "$0")" && pwd)"
-APP_NAME="Gamma Attenuation"
+APP_NAME="gama"
+VERSION="$(cat "$REPO/VERSION" 2>/dev/null || echo 1.0.0)"
 
 if [ -w /Applications ]; then DEST_DIR=/Applications; else DEST_DIR="$HOME/Applications"; mkdir -p "$DEST_DIR"; fi
 APP="$DEST_DIR/$APP_NAME.app"
 
-echo "Creating $APP ..."
+echo "Creating $APP (version $VERSION) ..."
 rm -rf "$APP"
+# Remove the app from before it was renamed to gama.
+rm -rf "/Applications/Gamma Attenuation.app" "$HOME/Applications/Gamma Attenuation.app"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 
 # --- Icon (icon.png -> AppIcon.icns) --------------------------------------
@@ -31,8 +34,9 @@ cat > "$APP/Contents/Info.plist" <<PLIST
 <dict>
   <key>CFBundleName</key><string>$APP_NAME</string>
   <key>CFBundleDisplayName</key><string>$APP_NAME</string>
-  <key>CFBundleIdentifier</key><string>io.github.iml-11.gamma-attenuation</string>
-  <key>CFBundleVersion</key><string>1.0</string>
+  <key>CFBundleIdentifier</key><string>io.github.iml-11.gama</string>
+  <key>CFBundleVersion</key><string>$VERSION</string>
+  <key>CFBundleShortVersionString</key><string>$VERSION</string>
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>CFBundleExecutable</key><string>launcher</string>
   <key>CFBundleIconFile</key><string>AppIcon</string>
@@ -53,18 +57,18 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PAT
 FRONT_PORT=38170
 BACK_PORT=38171
 URL="http://127.0.0.1:$FRONT_PORT"
-SUPPORT="$HOME/Library/Application Support/Gamma Attenuation"
-LOG="$HOME/Library/Logs/Gamma Attenuation.log"
+SUPPORT="$HOME/Library/Application Support/gama"
+LOG="$HOME/Library/Logs/gama.log"
 mkdir -p "$SUPPORT"
 exec >>"$LOG" 2>&1
 echo "==== $(date) ===="
 
 say_error() {
-  osascript -e "display alert \"Gamma Attenuation\" message \"$1\" as critical" >/dev/null 2>&1
+  osascript -e "display alert \"gama\" message \"$1\" as critical" >/dev/null 2>&1
   exit 1
 }
 notify() {
-  osascript -e "display notification \"$1\" with title \"Gamma Attenuation\"" >/dev/null 2>&1
+  osascript -e "display notification \"$1\" with title \"gama\"" >/dev/null 2>&1
 }
 
 [ -d "$REPO/backend" ] || say_error "The program folder was not found:\n$REPO\n\nIf you moved it, double-click 'Create Mac App.command' in the new location."
@@ -144,7 +148,7 @@ done
 # No Chrome/Edge/Brave: open the default browser and keep the engine running
 # until the user clicks Quit in this small dialog.
 open "$URL"
-osascript -e 'display dialog "Gamma Attenuation is running in your web browser.\n\nClick Quit when you are done." with title "Gamma Attenuation" buttons {"Quit"} default button "Quit"' >/dev/null 2>&1
+osascript -e 'display dialog "gama is running in your web browser.\n\nClick Quit when you are done." with title "gama" buttons {"Quit"} default button "Quit"' >/dev/null 2>&1
 exit 0
 LAUNCHER
 chmod +x "$APP/Contents/MacOS/launcher"
