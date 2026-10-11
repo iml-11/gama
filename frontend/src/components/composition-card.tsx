@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Formula, MaybeFormula } from "@/components/formula";
 import { fmt } from "@/lib/format";
 import type { ChainSpec, CompositionData, Family, MaterialSummary, Resolution } from "@/lib/types";
@@ -258,15 +259,32 @@ export function FamilyChooser({
   );
 }
 
-/** Optional finite-chain input for polymers: Mn and end groups. */
+type EndGroupOption = { key: string; label: string; alpha: string; omega: string };
+
+/** Optional finite-chain input for polymers: Mn and a choice of end groups. */
 function ChainEditor({ chain, onChain, resolution }: { chain: ChainSpec | null; onChain: (c: ChainSpec | null) => void; resolution: Resolution }) {
+  const typical: EndGroupOption[] = (resolution.material?.end_groups ?? []).map((g, i) => ({ key: `typ-${i}`, ...g }));
+  const generic: EndGroupOption[] = [
+    { key: "gen-hh", label: "H / H", alpha: "H", omega: "H" },
+    { key: "gen-hoh", label: "H / OH", alpha: "H", omega: "OH" },
+  ];
+  const all = [...typical, ...generic];
+  const initialKey = (() => {
+    if (!chain || (!chain.end_alpha && !chain.end_omega)) return "none";
+    const hit = all.find((o) => o.alpha === chain.end_alpha && o.omega === chain.end_omega);
+    return hit ? hit.key : "custom";
+  })();
   const [open, setOpen] = useState(!!chain);
   const [mn, setMn] = useState(chain ? String(chain.mn) : "");
+  const [choice, setChoice] = useState(initialKey);
   const [a, setA] = useState(chain?.end_alpha ?? "");
   const [w, setW] = useState(chain?.end_omega ?? "");
   const mnVal = parseFloat(mn);
-  const valid = Number.isFinite(mnVal) && mnVal > 0;
+  const picked = all.find((o) => o.key === choice);
+  const ends = choice === "custom" ? { alpha: a.trim(), omega: w.trim() } : picked ? { alpha: picked.alpha, omega: picked.omega } : { alpha: "", omega: "" };
+  const valid = Number.isFinite(mnVal) && mnVal > 0 && (choice !== "custom" || !!(ends.alpha || ends.omega));
   const info = resolution.chain;
+
   if (!open)
     return (
       <button type="button" className="text-xs link" onClick={() => setOpen(true)}>
@@ -274,7 +292,7 @@ function ChainEditor({ chain, onChain, resolution }: { chain: ChainSpec | null; 
       </button>
     );
   return (
-    <div className="space-y-2 rounded-lg border bg-subtle p-3">
+    <div className="space-y-2.5 rounded-lg border bg-subtle p-3">
       <div className="flex items-center justify-between">
         <div className="text-xs font-medium">Chain length (optional)</div>
         <button
@@ -283,30 +301,67 @@ function ChainEditor({ chain, onChain, resolution }: { chain: ChainSpec | null; 
           onClick={() => {
             setOpen(false);
             setMn("");
-            setA("");
-            setW("");
+            setChoice("none");
             onChain(null);
           }}
         >
           Remove
         </button>
       </div>
-      <div className="grid grid-cols-[1.2fr_1fr_1fr] gap-2">
+      <div className="grid gap-2 sm:grid-cols-[8rem_1fr]">
         <label className="space-y-1 text-[11px] text-muted-foreground">
           Mn (g/mol)
-          <Input className="h-8 mono-num" inputMode="decimal" placeholder="e.g. 400" value={mn} onChange={(e) => setMn(e.target.value)} />
+          <Input className="h-8 mono-num" inputMode="decimal" placeholder="e.g. 10000" value={mn} onChange={(e) => setMn(e.target.value)} />
         </label>
-        <label className="space-y-1 text-[11px] text-muted-foreground">
-          End group α
-          <Input className="h-8 mono-num" placeholder="e.g. H" value={a} onChange={(e) => setA(e.target.value)} />
-        </label>
-        <label className="space-y-1 text-[11px] text-muted-foreground">
-          End group ω
-          <Input className="h-8 mono-num" placeholder="e.g. OH" value={w} onChange={(e) => setW(e.target.value)} />
-        </label>
+        <div className="space-y-1 text-[11px] text-muted-foreground">
+          End groups
+          <Select value={choice} onValueChange={setChoice}>
+            <SelectTrigger className="h-8 text-xs" aria-label="End groups">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="none" className="text-xs">
+                None — ideal repeat unit (Mn has no effect)
+              </SelectItem>
+              {typical.length > 0 && (
+                <SelectGroup>
+                  <SelectLabel className="text-[11px]">Typical for this polymer</SelectLabel>
+                  {typical.map((o) => (
+                    <SelectItem key={o.key} value={o.key} className="text-xs">
+                      {o.label}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              )}
+              <SelectGroup>
+                <SelectLabel className="text-[11px]">General</SelectLabel>
+                {generic.map((o) => (
+                  <SelectItem key={o.key} value={o.key} className="text-xs">
+                    {o.label}
+                  </SelectItem>
+                ))}
+                <SelectItem value="custom" className="text-xs">
+                  Custom (enter formulas)
+                </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
+      {choice === "custom" && (
+        <div className="grid grid-cols-2 gap-2">
+          <label className="space-y-1 text-[11px] text-muted-foreground">
+            End group α (formula)
+            <Input className="h-8 mono-num" placeholder="e.g. C4H9" value={a} onChange={(e) => setA(e.target.value)} />
+          </label>
+          <label className="space-y-1 text-[11px] text-muted-foreground">
+            End group ω (formula)
+            <Input className="h-8 mono-num" placeholder="e.g. H" value={w} onChange={(e) => setW(e.target.value)} />
+          </label>
+        </div>
+      )}
       <div className="flex flex-wrap items-center gap-2">
-        <Button size="sm" disabled={!valid} onClick={() => onChain({ mn: mnVal, end_alpha: a.trim(), end_omega: w.trim() })}>
+        <Button size="sm" disabled={!valid} onClick={() => onChain({ mn: mnVal, end_alpha: ends.alpha, end_omega: ends.omega })}>
           Apply
         </Button>
         {info && (
@@ -316,8 +371,8 @@ function ChainEditor({ chain, onChain, resolution }: { chain: ChainSpec | null; 
         )}
       </div>
       <p className="text-[11px] text-muted-foreground">
-        n = (Mn − M<sub>end groups</sub>) / M<sub>repeat unit</sub>. Without end groups the composition does not depend on Mn. The effect is only
-        noticeable for short chains (oligomers, below a few thousand g/mol).
+        End groups depend on how the polymer was made; if you do not know them, leave “None”. Their effect is only noticeable for short chains
+        (below a few thousand g/mol). n = (Mn − M<sub>end groups</sub>) / M<sub>repeat unit</sub>.
       </p>
     </div>
   );

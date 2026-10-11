@@ -43,6 +43,7 @@ export interface MaterialSummary {
   confidence: string;
   family: string | null;
   reference: string | null;
+  end_groups?: { label: string; alpha: string; omega: string }[];
   composition?: CompositionData | null;
 }
 

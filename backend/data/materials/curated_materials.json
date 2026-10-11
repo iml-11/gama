@@ -30,7 +30,19 @@
    "notes": "NIST lists 1.19 g/cm3 (Lucite/Perspex/Plexiglas). Commercial grades vary slightly.",
    "confidence": "high",
    "estar_id": 223,
-   "common": true
+   "common": true,
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "pe",
@@ -55,7 +67,14 @@
    "notes": "Generic polyethylene. Density depends strongly on crystallinity (LDPE < HDPE); the NIST value is a generic one.",
    "confidence": "high",
    "estar_id": 221,
-   "common": true
+   "common": true,
+   "end_groups": [
+    {
+     "label": "Saturated chain ends (H / H, alkane-like)",
+     "alpha": "H",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "hdpe",
@@ -74,7 +93,14 @@
    "density": null,
    "notes": "Same elemental composition as PE. Density depends on grade; enter the value from your datasheet. (NIST's generic polyethylene value, 0.94 g/cm3, is not specific to HDPE.)",
    "confidence": "high",
-   "common": true
+   "common": true,
+   "end_groups": [
+    {
+     "label": "Saturated chain ends (H / H, alkane-like)",
+     "alpha": "H",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "ldpe",
@@ -93,7 +119,14 @@
    "density": null,
    "notes": "Same elemental composition as PE. Density depends on grade; enter the value from your datasheet. (NIST's generic polyethylene value, 0.94 g/cm3, is not specific to LDPE.)",
    "confidence": "high",
-   "common": true
+   "common": true,
+   "end_groups": [
+    {
+     "label": "Saturated chain ends (H / H, alkane-like)",
+     "alpha": "H",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "pet",
@@ -119,7 +152,14 @@
    "notes": "NIST value is for Mylar film. Amorphous and crystalline PET differ in density.",
    "confidence": "high",
    "estar_id": 222,
-   "common": true
+   "common": true,
+   "end_groups": [
+    {
+     "label": "Hydroxyl and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "pva",
@@ -169,7 +209,19 @@
    "notes": "Unplasticised PVC. Plasticisers and fillers change both composition and density.",
    "confidence": "high",
    "estar_id": 232,
-   "common": true
+   "common": true,
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "peek",
@@ -209,7 +261,14 @@
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your material datasheet (depends on crystallinity).",
    "confidence": "high",
-   "common": true
+   "common": true,
+   "end_groups": [
+    {
+     "label": "Hydroxyl and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "ps",
@@ -233,7 +292,24 @@
    "notes": "Solid polystyrene (not foam).",
    "confidence": "high",
    "estar_id": 226,
-   "common": true
+   "common": true,
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    },
+    {
+     "label": "Anionic polymerisation, sec-butyllithium, proton-terminated (sec-butyl / H)",
+     "alpha": "C4H9",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "pc",
@@ -282,7 +358,14 @@
    "notes": "",
    "confidence": "high",
    "estar_id": 225,
-   "common": true
+   "common": true,
+   "end_groups": [
+    {
+     "label": "Saturated chain ends (H / H, alkane-like)",
+     "alpha": "H",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "ptfe",
@@ -358,7 +441,14 @@
    "notes": "NIST entry covers type 6 and 6/6 (identical elemental composition).",
    "confidence": "high",
    "estar_id": 209,
-   "common": true
+   "common": true,
+   "end_groups": [
+    {
+     "label": "Amine and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "kapton",
@@ -405,7 +495,19 @@
    },
    "notes": "",
    "confidence": "high",
-   "estar_id": 229
+   "estar_id": 229,
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "water",
@@ -565,7 +667,24 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "End groups neglected (high molecular weight).",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Hydroxyl-terminated PEG, HO\u2013(CH2CH2O)n\u2013H (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    },
+    {
+     "label": "Methoxy-PEG (mPEG), CH3O\u2013(CH2CH2O)n\u2013H (CH3 / OH)",
+     "alpha": "CH3",
+     "omega": "OH"
+    },
+    {
+     "label": "PEG dimethyl ether, CH3O\u2013(CH2CH2O)n\u2013CH3 (CH3 / OCH3)",
+     "alpha": "CH3",
+     "omega": "OCH3"
+    }
+   ]
   },
   {
    "id": "pan",
@@ -587,7 +706,19 @@
    },
    "notes": "",
    "confidence": "high",
-   "estar_id": 218
+   "estar_id": 218,
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "pvdf",
@@ -634,7 +765,19 @@
    },
    "notes": "",
    "confidence": "high",
-   "estar_id": 233
+   "estar_id": 233,
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "pctfe",
@@ -675,7 +818,19 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "etfe",
@@ -715,7 +870,19 @@
    },
    "notes": "",
    "confidence": "high",
-   "estar_id": 235
+   "estar_id": 235,
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "nylon66",
@@ -741,7 +908,14 @@
    },
    "notes": "",
    "confidence": "high",
-   "estar_id": 209
+   "estar_id": 209,
+   "end_groups": [
+    {
+     "label": "Amine and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "nylon610",
@@ -766,7 +940,14 @@
    },
    "notes": "",
    "confidence": "high",
-   "estar_id": 210
+   "estar_id": 210,
+   "end_groups": [
+    {
+     "label": "Amine and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "nylon11",
@@ -790,7 +971,14 @@
    },
    "notes": "",
    "confidence": "high",
-   "estar_id": 211
+   "estar_id": 211,
+   "end_groups": [
+    {
+     "label": "Amine and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "nylon12",
@@ -808,7 +996,14 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Amine and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "pbt",
@@ -826,7 +1021,14 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Hydroxyl and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "pen",
@@ -844,7 +1046,14 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Hydroxyl and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "ptt",
@@ -861,7 +1070,14 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Hydroxyl and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "pei",
@@ -1024,7 +1240,14 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Hydroxyl and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "pga",
@@ -1042,7 +1265,14 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Hydroxyl and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "phb",
@@ -1059,7 +1289,14 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Hydroxyl and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "pbs",
@@ -1076,7 +1313,14 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Hydroxyl and carboxylic-acid ends (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "pma",
@@ -1093,7 +1337,19 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "pea",
@@ -1110,7 +1366,19 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "pba",
@@ -1127,7 +1395,19 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "pema",
@@ -1144,7 +1424,19 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "paa",
@@ -1161,7 +1453,19 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "pam",
@@ -1179,7 +1483,19 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Radical polymerisation, AIBN initiator (2-cyano-2-propyl / H)",
+     "alpha": "C4H6N",
+     "omega": "H"
+    },
+    {
+     "label": "Radical polymerisation, benzoyl peroxide initiator (benzoyloxy / H)",
+     "alpha": "C7H5O2",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "pbd",
@@ -1222,7 +1538,14 @@
    },
    "notes": "Commercial butyl rubber contains ~1-2 % isoprene units.",
    "confidence": "high",
-   "estar_id": 242
+   "estar_id": 242,
+   "end_groups": [
+    {
+     "label": "Saturated chain ends (H / H, alkane-like)",
+     "alpha": "H",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "nr",
@@ -1288,7 +1611,14 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Saturated chain ends (H / H, alkane-like)",
+     "alpha": "H",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "pams",
@@ -1306,7 +1636,14 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "No sourced density in the local database; enter the value from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Anionic polymerisation, sec-butyllithium, proton-terminated (sec-butyl / H)",
+     "alpha": "C4H9",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "parylene-n",
@@ -1359,7 +1696,14 @@
    "composition_source": "Ideal repeat-unit formula (IUPAC structure-based nomenclature); elemental fractions derived automatically",
    "density": null,
    "notes": "Same elemental composition as PE; enter the density from your datasheet.",
-   "confidence": "high"
+   "confidence": "high",
+   "end_groups": [
+    {
+     "label": "Saturated chain ends (H / H, alkane-like)",
+     "alpha": "H",
+     "omega": "H"
+    }
+   ]
   },
   {
    "id": "pvk",
@@ -2624,7 +2968,19 @@
    "composition_source": "Repeat unit of poly(dimethylsiloxane), -[Si(CH3)2O]-",
    "density": null,
    "confidence": "medium",
-   "notes": "Unfilled PDMS. Commercial silicone rubbers usually contain silica or other fillers, which change the composition substantially."
+   "notes": "Unfilled PDMS. Commercial silicone rubbers usually contain silica or other fillers, which change the composition substantially.",
+   "end_groups": [
+    {
+     "label": "Trimethylsilyl-terminated (Si(CH3)3 / OSi(CH3)3)",
+     "alpha": "Si(CH3)3",
+     "omega": "OSi(CH3)3"
+    },
+    {
+     "label": "Silanol (hydroxyl)-terminated (H / OH)",
+     "alpha": "H",
+     "omega": "OH"
+    }
+   ]
   },
   {
    "id": "concrete-portland",
@@ -2799,5 +3155,6 @@
    ],
    "warning": "Boron content (and whether boron is added as B, B4C or boric oxide) depends on the product. Enter it as a composite, e.g. 'x wt% B4C + (100-x) wt% polyethylene', with the manufacturer's value."
   }
- ]
+ ],
+ "end_groups_note": "end_groups lists typical chain ends for common synthesis routes (organic-chemistry structure of the initiator/terminator fragments). Actual end groups depend on how a sample was made; the default is none."
 }

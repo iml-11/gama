@@ -307,3 +307,17 @@ def test_chain_not_for_non_polymer():
 
     r = apply_chain(resolve("water", online=False), 1000, "H", "H")
     assert r.status == "error"
+
+
+
+def test_typical_end_group_options():
+    from science.material_resolver import apply_chain
+
+    pmma = resolve("PMMA", online=False)
+    opts = pmma.material["end_groups"]
+    assert any(o["alpha"] == "C4H6N" for o in opts)  # AIBN fragment
+    for o in opts:
+        r = apply_chain(resolve("PMMA", online=False), 5000, o["alpha"], o["omega"])
+        assert r.status == "resolved" and r.chain["n"] > 40
+    assert resolve("PEG", online=False).material["end_groups"][0]["omega"] == "OH"
+    assert resolve("water", online=False).material["end_groups"] == []

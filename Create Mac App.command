@@ -76,7 +76,20 @@ notify() {
 # Already running? Just show the window.
 # (--noproxy: always talk to this Mac directly; -f: only real answers count)
 lcurl() { curl -sf --noproxy '*' --max-time 3 "$@"; }
-if lcurl -o /dev/null "$URL/api/health"; then RUNNING=1; fi
+stop_running() {
+  for p in "$FRONT_PORT" "$BACK_PORT"; do lsof -ti "tcp:$p" -sTCP:LISTEN 2>/dev/null | xargs kill 2>/dev/null; done
+  sleep 1
+}
+if lcurl -o /dev/null "$URL/api/health"; then
+  RUNNING=1
+  # A copy from before an update is still running: stop it and start the new one.
+  RUN_VERSION="$(lcurl "$URL/api/meta" | sed -n 's/.*"version":"\([^"]*\)".*/\1/p')"
+  if [ "$RUN_VERSION" != "$(cat "$REPO/VERSION" 2>/dev/null)" ]; then
+    echo "Running version '$RUN_VERSION' differs from $(cat "$REPO/VERSION"); restarting."
+    stop_running
+    RUNNING=""
+  fi
+fi
 
 if [ -z "$RUNNING" ]; then
   PY=""
@@ -88,12 +101,14 @@ if [ -z "$RUNNING" ]; then
 
   cd "$REPO" || exit 1
   # First run / after an update: install and build (takes a few minutes once).
+  # (npm ci installs exactly what package-lock.json lists and never edits
+  # tracked files, so later updates are not blocked by local changes.)
   STAMP="$(git -C "$REPO" rev-parse HEAD 2>/dev/null || echo nogit)"
   if [ ! -x backend/.venv/bin/python ] || [ ! -d frontend/node_modules ] || [ "$(cat frontend/.next-app/BUILD_STAMP 2>/dev/null)" != "$STAMP" ]; then
     notify "Preparing the app (first start or update). This can take a few minutes..."
     [ -x backend/.venv/bin/python ] || "$PY" -m venv backend/.venv || say_error "Could not create the Python environment. See the log: $LOG"
     backend/.venv/bin/python -m pip install -q -r backend/requirements.txt || say_error "Installing Python packages failed. See the log: $LOG"
-    (cd frontend && npm install --no-audit --no-fund) || say_error "Installing website packages failed. See the log: $LOG"
+    (cd frontend && npm ci --no-audit --no-fund) || say_error "Installing website packages failed. See the log: $LOG"
     (cd frontend && NEXT_DIST_DIR=.next-app BACKEND_URL="http://127.0.0.1:$BACK_PORT" npx next build) || say_error "Building the app failed. See the log: $LOG"
     echo "$STAMP" > frontend/.next-app/BUILD_STAMP
   fi
@@ -157,6 +172,9 @@ touch "$APP"
 echo
 echo "Done: $APP"
 echo "Open it from Launchpad / Applications, or drag it to the Dock."
-open -R "$APP"
-echo
-read -n 1 -s -r -p "Press any key to close..."
+# GAMA_QUIET=1 (used by "Update gama.command"): no Finder window, no pause.
+if [ -z "$GAMA_QUIET" ]; then
+  open -R "$APP"
+  echo
+  read -n 1 -s -r -p "Press any key to close..."
+fi

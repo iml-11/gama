@@ -51,6 +51,7 @@ class MaterialEntry:
     reference: str | None = None
     created: str | None = None
     common: bool = False  # widely used material: ranked first in search
+    end_groups: list[dict] = field(default_factory=list)  # typical chain ends (polymers)
 
     def summary(self) -> dict:
         return {
@@ -67,6 +68,7 @@ class MaterialEntry:
             "confidence": self.confidence,
             "family": self.family,
             "reference": self.reference,
+            "end_groups": self.end_groups,
         }
 
     def to_dict(self) -> dict:
@@ -199,6 +201,7 @@ class MaterialDB:
             repeat_unit=repeat,
             family=raw.get("family"),
             common=bool(raw.get("common")),
+            end_groups=raw.get("end_groups", []),
         )
 
     def _load_curated(self) -> None:
