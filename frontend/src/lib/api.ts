@@ -58,7 +58,7 @@ export const getOnline = () => {
 };
 
 function materialBody(m: MaterialInputState) {
-  return { input: m.input, choices: m.choices, composition: m.composition ?? null, online: getOnline() };
+  return { input: m.input, choices: m.choices, composition: m.composition ?? null, chain: m.chain ?? null, online: getOnline() };
 }
 
 export const api = {

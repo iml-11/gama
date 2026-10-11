@@ -65,6 +65,7 @@ class Resolution:
     errors: list[str] = field(default_factory=list)
     steps: list[str] = field(default_factory=list)
     category: str | None = None
+    chain: dict | None = None  # finite-chain (Mn + end groups) information, if applied
 
     def to_dict(self) -> dict:
         return {
@@ -88,6 +89,7 @@ class Resolution:
             "warnings": self.warnings,
             "errors": self.errors,
             "steps": self.steps,
+            "chain": self.chain,
         }
 
 
@@ -207,6 +209,83 @@ def _exact_case(obj, text: str) -> bool:
     """True if ``text`` equals the name or an alias of ``obj`` including letter case."""
     names = [obj.name] + list(obj.aliases)
     return any(n.strip() == text.strip() for n in names)
+
+
+def apply_chain(r: Resolution, mn: float, end_alpha: str = "", end_omega: str = "") -> Resolution:
+    """Turn an ideal repeat-unit composition into that of a finite chain.
+
+    For number-average molar mass Mn and end groups α, ω (formulas, may be
+    empty), the average number of repeat units is
+
+        n = (Mn - M(α) - M(ω)) / M(repeat unit)
+
+    and the composition is n·(repeat unit) + α + ω. Without end groups the
+    composition does not depend on Mn. Changes ``r`` in place and returns it.
+    """
+    if r.status != "resolved" or r.composition is None:
+        return r
+    if not r.repeat_unit:
+        r.status, r.errors = "error", ["Chain length (Mn) only applies to a polymer given as a repeat unit."]
+        return r
+    rep = r.composition
+    if not rep.counts or not rep.molar_mass:
+        r.status, r.errors = "error", [
+            "This polymer's composition comes from a mass-fraction table, not a repeat-unit formula, "
+            "so Mn cannot be applied. Enter the repeat unit as a formula, e.g. (C2H4)n."
+        ]
+        return r
+    if not (mn > 0):
+        r.status, r.errors = "error", ["Mn must be a positive number (g/mol)."]
+        return r
+    ends: dict[str, float] = {}
+    labels = []
+    for g in (end_alpha, end_omega):
+        g = (g or "").strip()
+        if not g:
+            continue
+        try:
+            for k, v in parse_formula(g).counts.items():
+                ends[k] = ends.get(k, 0.0) + v
+        except FormulaError as exc:
+            r.status, r.errors = "error", [f"End group '{g}' is not a valid formula: {exc}"]
+            return r
+        labels.append(g)
+    m_end = Composition.from_counts(ends).molar_mass if ends else 0.0
+    n = (mn - m_end) / rep.molar_mass
+    if n < 1:
+        r.status, r.errors = "error", [
+            f"Mn = {mn:g} g/mol is smaller than one repeat unit ({rep.molar_mass:.2f} g/mol) plus end groups ({m_end:.2f} g/mol)."
+        ]
+        return r
+    counts = {k: v * n for k, v in rep.counts.items()}
+    for k, v in ends.items():
+        counts[k] = counts.get(k, 0.0) + v
+    new = Composition.from_counts(counts, formula=rep.formula)
+    shift = max(abs(new.mass_fractions.get(k, 0) - rep.mass_fractions.get(k, 0)) for k in set(new.mass_fractions) | set(rep.mass_fractions))
+    r.composition = new
+    r.chain = {
+        "mn": mn,
+        "n": n,
+        "end_alpha": (end_alpha or "").strip(),
+        "end_omega": (end_omega or "").strip(),
+        "repeat_unit_molar_mass": rep.molar_mass,
+        "end_groups_molar_mass": m_end,
+        "max_mass_fraction_change": shift,
+    }
+    if ends:
+        r.steps.append(
+            f"Finite chain: Mn = {mn:g} g/mol, end groups {' / '.join(labels)} → n = {n:.2f} repeat units"
+        )
+        r.provenance.append(
+            {"item": "Chain length", "source": f"User-supplied Mn = {mn:g} g/mol with end groups {' / '.join(labels)} (n = (Mn − M_ends)/M_repeat)"}
+        )
+        if n < 50 and r.density and r.density.get("kind") == "database":
+            r.warnings.append(
+                "Low molar mass: the database density refers to the high polymer and may not apply to this oligomer."
+            )
+    else:
+        r.steps.append("Mn given without end groups: composition is that of the repeat unit (independent of Mn)")
+    return r
 
 
 def _not_found(text: str, db: MaterialDB, reason: str | None = None) -> Resolution:

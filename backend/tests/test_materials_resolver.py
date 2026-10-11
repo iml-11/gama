@@ -263,3 +263,47 @@ def test_formula_beats_case_insensitive_alias(text, expected):
 @pytest.mark.parametrize("name", ["PVDF", "nylon 6,6", "PEEK", "polycaprolactone", "magnetite", "zirconia", "tungsten carbide", "PEG", "neoprene", "cellulose"])
 def test_new_entries_resolve(name):
     assert resolve(name, online=False).status == "resolved"
+
+
+
+# ---------------------------------------------------------------- polymer chain length (Mn)
+def test_chain_peg400_matches_explicit_formula():
+    from science.material_resolver import apply_chain
+
+    r = apply_chain(resolve("PEG", online=False), 414.5, "H", "OH")
+    assert r.status == "resolved"
+    assert r.chain["n"] == pytest.approx(9.0, abs=0.01)
+    ref = resolve("H(C2H4O)9OH", online=False)
+    for k in ref.composition.mass_fractions:
+        assert r.composition.mass_fractions[k] == pytest.approx(ref.composition.mass_fractions[k], abs=2e-4)
+
+
+def test_chain_without_end_groups_changes_nothing():
+    from science.material_resolver import apply_chain
+
+    base = resolve("PMMA", online=False).composition.mass_fractions
+    r = apply_chain(resolve("PMMA", online=False), 1e5)
+    for k in base:
+        assert r.composition.mass_fractions[k] == pytest.approx(base[k], rel=1e-12)
+
+
+def test_chain_high_mn_converges_to_repeat_unit():
+    from science.material_resolver import apply_chain
+
+    r = apply_chain(resolve("PEG", online=False), 1e6, "H", "OH")
+    assert r.chain["max_mass_fraction_change"] < 1e-5
+
+
+@pytest.mark.parametrize("args,msg", [((20.0, "H", "OH"), "smaller than one repeat unit"), ((400.0, "Xx", ""), "not a valid formula")])
+def test_chain_errors(args, msg):
+    from science.material_resolver import apply_chain
+
+    r = apply_chain(resolve("PEG", online=False), *args)
+    assert r.status == "error" and msg in r.errors[0]
+
+
+def test_chain_not_for_non_polymer():
+    from science.material_resolver import apply_chain
+
+    r = apply_chain(resolve("water", online=False), 1000, "H", "H")
+    assert r.status == "error"

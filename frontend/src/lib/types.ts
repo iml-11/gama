@@ -94,6 +94,15 @@ export interface Resolution {
   warnings: string[];
   errors: string[];
   steps: string[];
+  chain: {
+    mn: number;
+    n: number;
+    end_alpha: string;
+    end_omega: string;
+    repeat_unit_molar_mass: number;
+    end_groups_molar_mass: number;
+    max_mass_fraction_change: number;
+  } | null;
 }
 
 export interface SearchResult {
@@ -186,8 +195,15 @@ export interface Isotope {
   lines: GammaLine[];
 }
 
+export interface ChainSpec {
+  mn: number; // number-average molar mass, g/mol
+  end_alpha: string; // end-group formula, may be empty
+  end_omega: string;
+}
+
 export interface MaterialInputState {
   input: string;
   choices: Record<string, string>;
   composition?: Record<string, number> | null;
+  chain?: ChainSpec | null;
 }

@@ -134,3 +134,16 @@ def test_version_from_file():
     v = (Path(__file__).resolve().parents[2] / "VERSION").read_text().strip()
     assert c.get("/api/meta").json()["version"] == v
     assert len(v.split(".")) == 3
+
+
+
+def test_chain_through_api():
+    body = {"material": {"input": "PEG", "online": False, "chain": {"mn": 414.5, "end_alpha": "H", "end_omega": "OH"}},
+            "energies": [{"value": 59.5, "unit": "keV"}]}
+    with_chain = c.post("/api/calculate", json=body).json()
+    body["material"].pop("chain")
+    plain = c.post("/api/calculate", json=body).json()
+    a = with_chain["results"][0]["mass_attenuation"]["total_with_coherent"]
+    b = plain["results"][0]["mass_attenuation"]["total_with_coherent"]
+    assert with_chain["material"]["chain"]["n"] == pytest.approx(9.0, abs=0.01)
+    assert a / b - 1 == pytest.approx(0.0025, abs=0.0008)  # +0.25 % at 59.5 keV for PEG 400

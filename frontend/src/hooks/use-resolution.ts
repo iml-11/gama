@@ -10,7 +10,7 @@ export function useResolution(state: MaterialInputState, delay = 350) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const seq = useRef(0);
-  const key = JSON.stringify([state.input.trim(), state.choices, state.composition ?? null]);
+  const key = JSON.stringify([state.input.trim(), state.choices, state.composition ?? null, state.chain ?? null]);
 
   useEffect(() => {
     const text = state.input.trim();

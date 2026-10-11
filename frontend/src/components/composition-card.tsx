@@ -18,7 +18,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Formula, MaybeFormula } from "@/components/formula";
 import { fmt } from "@/lib/format";
-import type { CompositionData, Family, MaterialSummary, Resolution } from "@/lib/types";
+import type { ChainSpec, CompositionData, Family, MaterialSummary, Resolution } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 const SOURCE_LABEL: Record<string, string> = {
@@ -258,18 +258,87 @@ export function FamilyChooser({
   );
 }
 
+/** Optional finite-chain input for polymers: Mn and end groups. */
+function ChainEditor({ chain, onChain, resolution }: { chain: ChainSpec | null; onChain: (c: ChainSpec | null) => void; resolution: Resolution }) {
+  const [open, setOpen] = useState(!!chain);
+  const [mn, setMn] = useState(chain ? String(chain.mn) : "");
+  const [a, setA] = useState(chain?.end_alpha ?? "");
+  const [w, setW] = useState(chain?.end_omega ?? "");
+  const mnVal = parseFloat(mn);
+  const valid = Number.isFinite(mnVal) && mnVal > 0;
+  const info = resolution.chain;
+  if (!open)
+    return (
+      <button type="button" className="text-xs link" onClick={() => setOpen(true)}>
+        Set chain length (Mn) and end groups — optional
+      </button>
+    );
+  return (
+    <div className="space-y-2 rounded-lg border bg-subtle p-3">
+      <div className="flex items-center justify-between">
+        <div className="text-xs font-medium">Chain length (optional)</div>
+        <button
+          type="button"
+          className="text-xs text-muted-foreground hover:text-foreground"
+          onClick={() => {
+            setOpen(false);
+            setMn("");
+            setA("");
+            setW("");
+            onChain(null);
+          }}
+        >
+          Remove
+        </button>
+      </div>
+      <div className="grid grid-cols-[1.2fr_1fr_1fr] gap-2">
+        <label className="space-y-1 text-[11px] text-muted-foreground">
+          Mn (g/mol)
+          <Input className="h-8 mono-num" inputMode="decimal" placeholder="e.g. 400" value={mn} onChange={(e) => setMn(e.target.value)} />
+        </label>
+        <label className="space-y-1 text-[11px] text-muted-foreground">
+          End group α
+          <Input className="h-8 mono-num" placeholder="e.g. H" value={a} onChange={(e) => setA(e.target.value)} />
+        </label>
+        <label className="space-y-1 text-[11px] text-muted-foreground">
+          End group ω
+          <Input className="h-8 mono-num" placeholder="e.g. OH" value={w} onChange={(e) => setW(e.target.value)} />
+        </label>
+      </div>
+      <div className="flex flex-wrap items-center gap-2">
+        <Button size="sm" disabled={!valid} onClick={() => onChain({ mn: mnVal, end_alpha: a.trim(), end_omega: w.trim() })}>
+          Apply
+        </Button>
+        {info && (
+          <span className="text-xs text-muted-foreground mono-num">
+            n = {info.n.toFixed(2)} repeat units · composition change {(info.max_mass_fraction_change * 100).toFixed(3)} wt%
+          </span>
+        )}
+      </div>
+      <p className="text-[11px] text-muted-foreground">
+        n = (Mn − M<sub>end groups</sub>) / M<sub>repeat unit</sub>. Without end groups the composition does not depend on Mn. The effect is only
+        noticeable for short chains (oligomers, below a few thousand g/mol).
+      </p>
+    </div>
+  );
+}
+
 export function CompositionCard({
   resolution,
   onChoice,
   onManualComposition,
   onReplaceInput,
   manual,
+  chain = null,
+  onChain,
 }: {
   resolution: Resolution;
   onChoice: (key: string, presetId: string) => void;
   onManualComposition: (c: Record<string, number> | null) => void;
   onReplaceInput: (text: string) => void;
   manual: boolean;
+  chain?: ChainSpec | null;
+  onChain?: (c: ChainSpec | null) => void;
 }) {
   const [editing, setEditing] = useState(false);
   const [showProv, setShowProv] = useState(false);
@@ -328,6 +397,11 @@ export function CompositionCard({
               {e}
             </p>
           ))}
+          {chain && onChain && (
+            <Button variant="outline" size="sm" onClick={() => onChain(null)}>
+              Remove chain length
+            </Button>
+          )}
         </CardContent>
       </Card>
     );
@@ -409,13 +483,23 @@ export function CompositionCard({
         </div>
 
         {comp.molar_mass && !isComposite && (
-          <div className="flex gap-6 text-sm">
+          <div className="flex flex-wrap gap-6 text-sm">
             <div>
               <div className="text-xs text-muted-foreground">{r.repeat_unit ? "Repeat-unit molar mass" : "Molar mass"}</div>
-              <div className="font-medium mono-num">{comp.molar_mass.toFixed(2)} g/mol</div>
+              <div className="font-medium mono-num">{(r.chain ? r.chain.repeat_unit_molar_mass : comp.molar_mass).toFixed(2)} g/mol</div>
             </div>
+            {r.chain && (r.chain.end_alpha || r.chain.end_omega) && (
+              <div>
+                <div className="text-xs text-muted-foreground">Chain (Mn, end groups)</div>
+                <div className="font-medium mono-num">
+                  {r.chain.mn} g/mol · {[r.chain.end_alpha, r.chain.end_omega].filter(Boolean).join(" / ")} · n = {r.chain.n.toFixed(2)}
+                </div>
+              </div>
+            )}
           </div>
         )}
+
+        {r.repeat_unit && !isComposite && !manual && onChain && <ChainEditor chain={chain} onChain={onChain} resolution={r} />}
 
         {isComposite && <ComponentsList r={r} />}
 

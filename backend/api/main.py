@@ -14,7 +14,7 @@ from science import calculator, isotopes
 from science import xcom_engine as xe
 from science.composition import Composition, CompositionError
 from science.material_db import get_db
-from science.material_resolver import Resolution, resolve
+from science.material_resolver import Resolution, apply_chain, resolve
 from science.pubchem import get_client, online_enabled
 from science.units import UnitError, energy_to_mev, length_to_cm
 
@@ -48,7 +48,14 @@ class LengthIn(BaseModel):
     unit: Literal["um", "mm", "cm", "m"] = "cm"
 
 
+class ChainIn(BaseModel):
+    mn: float = Field(gt=0, description="Number-average molar mass, g/mol")
+    end_alpha: str = ""
+    end_omega: str = ""
+
+
 class MaterialIn(BaseModel):
+    chain: ChainIn | None = None
     input: str | None = None
     choices: dict[str, str] = Field(default_factory=dict)
     composition: dict[str, float] | None = Field(
@@ -156,6 +163,8 @@ def _material(m: MaterialIn) -> tuple[Resolution, Composition]:
     if not m.input or not m.input.strip():
         raise HTTPException(422, {"message": "Please enter a material."})
     res = resolve(m.input, m.choices, online=m.online)
+    if m.chain:
+        apply_chain(res, m.chain.mn, m.chain.end_alpha, m.chain.end_omega)
     if res.status != "resolved" or res.composition is None:
         raise HTTPException(422, {"message": "Material is not fully resolved.", "resolution": res.to_dict()})
     return res, res.composition
@@ -243,7 +252,10 @@ def resolve_material(m: MaterialIn):
     if m.composition:
         res, _ = _material(m)
         return res.to_dict()
-    return resolve(m.input or "", m.choices, online=m.online).to_dict()
+    res = resolve(m.input or "", m.choices, online=m.online)
+    if m.chain:
+        apply_chain(res, m.chain.mn, m.chain.end_alpha, m.chain.end_omega)
+    return res.to_dict()
 
 
 @app.post("/api/calculate")

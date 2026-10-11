@@ -40,7 +40,7 @@ export default function CalculatorPage() {
   // previous value (database or user) is dropped and the database value, if
   // any, is suggested. A user value is kept while the same material is edited.
   const suggested = resolution?.status === "resolved" ? resolution.density : null;
-  const identity = resolution?.status === "resolved" && current ? JSON.stringify([resolution.name, resolution.composition?.elements.map((e) => [e.symbol, e.mass_fraction.toFixed(6)])]) : null;
+  const identity = resolution?.status === "resolved" && current ? JSON.stringify([resolution.kind, resolution.name, resolution.material?.id ?? null, resolution.formula]) : null;
   const lastIdentity = useRef<string | null>(null);
   // A new input that is not (yet) a recognised material: forget the old density.
   const unresolvedNow = current && !!resolution && resolution.status !== "resolved";
@@ -57,7 +57,7 @@ export default function CalculatorPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [identity]);
 
-  const setInput = (text: string) => setMaterial((m) => ({ input: text, choices: m.choices, composition: null }));
+  const setInput = (text: string) => setMaterial((m) => ({ input: text, choices: m.choices, composition: null, chain: null }));
   const ready = resolution?.status === "resolved" && current;
   const energies = selectedEnergies(energy, isotopes);
   const d = parseFloat(density.value);
@@ -132,6 +132,8 @@ export default function CalculatorPage() {
             <CompositionCard
               resolution={resolution}
               manual={!!material.composition}
+              chain={material.chain ?? null}
+              onChain={(c) => setMaterial({ ...material, chain: c })}
               onChoice={(k, id) => setMaterial({ ...material, choices: { ...material.choices, [k]: id } })}
               onManualComposition={(c) => setMaterial({ ...material, composition: c })}
               onReplaceInput={(text) => {
