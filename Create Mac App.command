@@ -76,16 +76,36 @@ notify() {
 # Already running? Just show the window.
 # (--noproxy: always talk to this Mac directly; -f: only real answers count)
 lcurl() { curl -sf --noproxy '*' --max-time 3 "$@"; }
+descendants() { local c; for c in $(pgrep -P "$1"); do descendants "$c"; echo "$c"; done; }
 stop_running() {
-  for p in "$FRONT_PORT" "$BACK_PORT"; do lsof -ti "tcp:$p" -sTCP:LISTEN 2>/dev/null | xargs kill 2>/dev/null; done
+  # Stop this app's own servers: collect each one and ALL its child processes
+  # first (npm -> sh -> next-server), then stop them together.
+  local pids="" pid pat
+  for pat in "next start -p $FRONT_PORT" "uvicorn api.main:app --port $BACK_PORT"; do
+    for pid in $(pgrep -f "$pat"); do pids="$pids $pid $(descendants "$pid")"; done
+  done
+  pids="$pids $(for p in "$FRONT_PORT" "$BACK_PORT"; do lsof -ti "tcp:$p" -sTCP:LISTEN 2>/dev/null; done)"
+  [ -n "${pids// /}" ] && kill $pids 2>/dev/null
+  for i in $(seq 1 20); do
+    lcurl -o /dev/null "$URL" || lcurl -o /dev/null "http://127.0.0.1:$BACK_PORT/api/health" || return 0
+    sleep 0.5
+  done
+  kill -9 $pids 2>/dev/null   # still answering after 10 s: force
   sleep 1
 }
+# Fingerprint of everything the website build depends on (no git needed):
+# when any of these files changes, the app is rebuilt.
+build_stamp() {
+  (cd "$REPO" && find VERSION frontend/package-lock.json frontend/next.config.ts frontend/src -type f -exec cksum {} + 2>/dev/null | sort | cksum)
+}
+STAMP="$(build_stamp)"
+
 if lcurl -o /dev/null "$URL/api/health"; then
   RUNNING=1
   # A copy from before an update is still running: stop it and start the new one.
   RUN_VERSION="$(lcurl "$URL/api/meta" | sed -n 's/.*"version":"\([^"]*\)".*/\1/p')"
-  if [ "$RUN_VERSION" != "$(cat "$REPO/VERSION" 2>/dev/null)" ]; then
-    echo "Running version '$RUN_VERSION' differs from $(cat "$REPO/VERSION"); restarting."
+  if [ "$RUN_VERSION" != "$(cat "$REPO/VERSION" 2>/dev/null)" ] || [ "$(cat "$REPO/frontend/.next-app/BUILD_STAMP" 2>/dev/null)" != "$STAMP" ]; then
+    echo "Running copy is out of date (engine version '$RUN_VERSION'); restarting."
     stop_running
     RUNNING=""
   fi
@@ -103,7 +123,6 @@ if [ -z "$RUNNING" ]; then
   # First run / after an update: install and build (takes a few minutes once).
   # (npm ci installs exactly what package-lock.json lists and never edits
   # tracked files, so later updates are not blocked by local changes.)
-  STAMP="$(git -C "$REPO" rev-parse HEAD 2>/dev/null || echo nogit)"
   if [ ! -x backend/.venv/bin/python ] || [ ! -d frontend/node_modules ] || [ "$(cat frontend/.next-app/BUILD_STAMP 2>/dev/null)" != "$STAMP" ]; then
     notify "Preparing the app (first start or update). This can take a few minutes..."
     [ -x backend/.venv/bin/python ] || "$PY" -m venv backend/.venv || say_error "Could not create the Python environment. See the log: $LOG"
@@ -118,9 +137,10 @@ if [ -z "$RUNNING" ]; then
   (cd frontend && NEXT_DIST_DIR=.next-app BACKEND_URL="http://127.0.0.1:$BACK_PORT" exec npx next start -p "$FRONT_PORT") &
   FRONT_PID=$!
   cleanup() {
-    pkill -P "$FRONT_PID" 2>/dev/null; kill "$FRONT_PID" "$BACK_PID" 2>/dev/null
-    # Anything still listening on the app's own ports belongs to this app.
-    for p in "$FRONT_PORT" "$BACK_PORT"; do lsof -ti "tcp:$p" -sTCP:LISTEN 2>/dev/null | xargs kill 2>/dev/null; done
+    # Collect the whole process tree before stopping anything.
+    local tree="$FRONT_PID $(descendants "$FRONT_PID") $BACK_PID $(descendants "$BACK_PID")"
+    stop_running
+    kill $tree 2>/dev/null
   }
   trap cleanup EXIT INT TERM
 
